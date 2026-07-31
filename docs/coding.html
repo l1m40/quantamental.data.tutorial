@@ -68,21 +68,188 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="coding_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="coding_files/libs/quarto-html/anchor.min.js"></script>
 <link href="coding_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="coding_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="coding_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="coding_files/libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="coding_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="coding_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="coding_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="coding_files/libs/bootstrap/bootstrap-8ffd5f67044e5306d9846f29df41dda5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="coding_files/libs/bootstrap/bootstrap-8ffd5f67044e5306d9846f29df41dda5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="coding_files/libs/bootstrap/bootstrap-dark-5c12797cb2492709e4e4b8ddb1566284.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="coding_files/libs/bootstrap/bootstrap-8ffd5f67044e5306d9846f29df41dda5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
 
-<body class="quarto-light">
+<body class="quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
   
 </div>
 <main class="content" id="quarto-document-content">
+
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -122,7 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Loading objects…</p>
 <div class="cell">
 <details open="" class="code-fold">
-<summary>Ver código</summary>
+<summary>code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ontology <span class="ot">&lt;-</span> DAL_Ontology<span class="sc">$</span><span class="fu">new</span>() ; quantamental <span class="ot">&lt;-</span> DAL_Quantamental<span class="sc">$</span><span class="fu">new</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -137,18 +304,18 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <p>Listar os participantes, assets:</p>
 <div class="cell">
 <details open="" class="code-fold">
-<summary>Ver código</summary>
+<summary>code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ontology<span class="sc">$</span><span class="fu">get_assets</span>() <span class="sc">|&gt;</span> <span class="fu">sample</span>(<span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "VULC3"  "ENGI11" "MELI34" "PCAR3"  "BLAU3"  "KLBN11" "CSMG3"  "ISAE4" 
- [9] "SMTO3"  "SIMH3"  "INTB3"  "USIM5"  "MDIA3"  "ROXO34" "BPAN4" </code></pre>
+<pre><code> [1] "VIVA3"  "DXCO3"  "MULT3"  "BLAU3"  "VULC3"  "BPAC11" "ABCB4"  "MELI34"
+ [9] "SIMH3"  "FESA4"  "DESK3"  "VBBR3"  "ANIM3"  "B3SA3"  "SUZB3" </code></pre>
 </div>
 </div>
 <p>Setores:</p>
 <div class="cell">
 <details open="" class="code-fold">
-<summary>Ver código</summary>
+<summary>code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ontology<span class="sc">$</span><span class="fu">get_sectors</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -168,6 +335,24 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 </div>
 <p>Índices:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Índice</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"IBOV_60"</span>, <span class="st">"IBOV_90"</span>, <span class="st">"IBOV"</span>, <span class="st">"SMLL"</span>),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Participantes =</span> <span class="fu">c</span>(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    ontology<span class="sc">$</span><span class="fu">get_b3_index</span>()<span class="sc">$</span>IBOV_60 <span class="sc">|&gt;</span> <span class="fu">nrow</span>(),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    ontology<span class="sc">$</span><span class="fu">get_b3_index</span>()<span class="sc">$</span>IBOV_90 <span class="sc">|&gt;</span> <span class="fu">nrow</span>(),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    ontology<span class="sc">$</span><span class="fu">get_b3_index</span>()<span class="sc">$</span>IBOV <span class="sc">|&gt;</span> <span class="fu">nrow</span>(),</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    ontology<span class="sc">$</span><span class="fu">get_b3_index</span>()<span class="sc">$</span>SMLL <span class="sc">|&gt;</span> <span class="fu">nrow</span>()</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  Descrição <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"60% do índice IBOV"</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"90% do índice IBOV"</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Índice Bovespa completo"</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Índice Small Caps"</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Índice Participantes               Descrição
 1 IBOV_60            12      60% do índice IBOV
@@ -179,53 +364,53 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <p>Features:</p>
 <div class="cell">
 <details open="" class="code-fold">
-<summary>Ver código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> quantamental<span class="sc">$</span><span class="fu">assets</span>(<span class="fu">c</span>(<span class="st">"VALE3"</span>,<span class="st">"BRAP4"</span>,<span class="st">"CMIN3"</span>,<span class="st">"CSNA3"</span>,<span class="st">"GGBR4"</span>,<span class="st">"USIM5"</span>))</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="fu">filter</span>(date<span class="sc">&gt;=</span><span class="fu">max</span>(date)<span class="sc">-</span><span class="dv">365</span>) <span class="sc">|&gt;</span> <span class="fu">group_by</span>(asset) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">var_12M=</span>(<span class="fu">last</span>(close)<span class="sc">/</span><span class="fu">first</span>(close))<span class="sc">-</span><span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(date<span class="sc">==</span><span class="fu">max</span>(date)) <span class="sc">|&gt;</span> <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">marketcap=</span>marketcap<span class="sc">*</span><span class="dv">1000</span>,<span class="at">Net_Profit_12M=</span>Net_Profit_12M<span class="sc">*</span><span class="dv">1000</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(asset,Report_Date,marketcap,Net_Profit_12M,roe,var_12M,pe) <span class="sc">|&gt;</span> </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(marketcap)) <span class="sc">|&gt;</span> </span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">asset =</span> <span class="st">"Ticker"</span>,</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Report_Date =</span> <span class="st">"Last Report"</span>,</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">marketcap =</span> <span class="st">"Marketcap"</span>,</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Net_Profit_12M =</span> <span class="st">"Lucro.12M"</span>,</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">pe =</span> <span class="st">"P/L"</span>,</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">roe =</span> <span class="st">"ROE"</span>,</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_12M =</span> <span class="st">"Var.12M"</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_date</span>(Report_Date,<span class="at">date_style=</span><span class="st">"MMMd"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(<span class="fu">c</span>(marketcap,Net_Profit_12M),<span class="at">decimals=</span><span class="dv">1</span>,<span class="at">suffixing=</span>T) <span class="sc">|&gt;</span> </span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(pe,<span class="at">decimals=</span><span class="dv">2</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_percent</span>(<span class="fu">c</span>(roe,var_12M),<span class="at">decimals=</span><span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># opt_row_striping() |&gt;</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tab_source_note(</span></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># "Fonte: Data Lake Quantamental"</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ) |&gt;</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Features disponíveis pelo modelo"</span>,</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Cada linha representa uma empresa e cada coluna uma feature."</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<summary>code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> quantamental<span class="sc">$</span><span class="fu">assets</span>(<span class="fu">c</span>(<span class="st">"VALE3"</span>,<span class="st">"BRAP4"</span>,<span class="st">"CMIN3"</span>,<span class="st">"CSNA3"</span>,<span class="st">"GGBR4"</span>,<span class="st">"USIM5"</span>))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="fu">filter</span>(date<span class="sc">&gt;=</span><span class="fu">max</span>(date)<span class="sc">-</span><span class="dv">365</span>) <span class="sc">|&gt;</span> <span class="fu">group_by</span>(asset) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">var_12M=</span>(<span class="fu">last</span>(close)<span class="sc">/</span><span class="fu">first</span>(close))<span class="sc">-</span><span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(date<span class="sc">==</span><span class="fu">max</span>(date)) <span class="sc">|&gt;</span> <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">marketcap=</span>marketcap<span class="sc">*</span><span class="dv">1000</span>,<span class="at">Net_Profit_12M=</span>Net_Profit_12M<span class="sc">*</span><span class="dv">1000</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(asset,Report_Date,marketcap,Net_Profit_12M,roe,var_12M,pe) <span class="sc">|&gt;</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(marketcap)) <span class="sc">|&gt;</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">asset =</span> <span class="st">"Ticker"</span>,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Report_Date =</span> <span class="st">"Last Report"</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">marketcap =</span> <span class="st">"Marketcap"</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Net_Profit_12M =</span> <span class="st">"Lucro.12M"</span>,</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">pe =</span> <span class="st">"P/L"</span>,</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">roe =</span> <span class="st">"ROE"</span>,</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_12M =</span> <span class="st">"Var.12M"</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_date</span>(Report_Date,<span class="at">date_style=</span><span class="st">"MMMd"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(<span class="fu">c</span>(marketcap,Net_Profit_12M),<span class="at">decimals=</span><span class="dv">1</span>,<span class="at">suffixing=</span>T) <span class="sc">|&gt;</span> </span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(pe,<span class="at">decimals=</span><span class="dv">2</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_percent</span>(<span class="fu">c</span>(roe,var_12M),<span class="at">decimals=</span><span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># opt_row_striping() |&gt;</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tab_source_note(</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># "Fonte: Data Lake Quantamental"</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ) |&gt;</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Features disponíveis pelo modelo"</span>,</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Cada linha representa uma empresa e cada coluna uma feature."</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="mhclbpycmq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mhclbpycmq table {
+<div id="xnzlhxcukx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xnzlhxcukx table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mhclbpycmq thead, #mhclbpycmq tbody, #mhclbpycmq tfoot, #mhclbpycmq tr, #mhclbpycmq td, #mhclbpycmq th {
+#xnzlhxcukx thead, #xnzlhxcukx tbody, #xnzlhxcukx tfoot, #xnzlhxcukx tr, #xnzlhxcukx td, #xnzlhxcukx th {
   border-style: none;
 }
 
-#mhclbpycmq p {
+#xnzlhxcukx p {
   margin: 0;
   padding: 0;
 }
 
-#mhclbpycmq .gt_table {
+#xnzlhxcukx .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -251,12 +436,12 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-left-color: #D3D3D3;
 }
 
-#mhclbpycmq .gt_caption {
+#xnzlhxcukx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mhclbpycmq .gt_title {
+#xnzlhxcukx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -268,7 +453,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-bottom-width: 0;
 }
 
-#mhclbpycmq .gt_subtitle {
+#xnzlhxcukx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -280,7 +465,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-top-width: 0;
 }
 
-#mhclbpycmq .gt_heading {
+#xnzlhxcukx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -292,13 +477,13 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-right-color: #D3D3D3;
 }
 
-#mhclbpycmq .gt_bottom_border {
+#xnzlhxcukx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mhclbpycmq .gt_col_headings {
+#xnzlhxcukx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -313,7 +498,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-right-color: #D3D3D3;
 }
 
-#mhclbpycmq .gt_col_heading {
+#xnzlhxcukx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -333,7 +518,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   overflow-x: hidden;
 }
 
-#mhclbpycmq .gt_column_spanner_outer {
+#xnzlhxcukx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -345,15 +530,15 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   padding-right: 4px;
 }
 
-#mhclbpycmq .gt_column_spanner_outer:first-child {
+#xnzlhxcukx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mhclbpycmq .gt_column_spanner_outer:last-child {
+#xnzlhxcukx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mhclbpycmq .gt_column_spanner {
+#xnzlhxcukx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -365,11 +550,11 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   width: 100%;
 }
 
-#mhclbpycmq .gt_spanner_row {
+#xnzlhxcukx .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mhclbpycmq .gt_group_heading {
+#xnzlhxcukx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -395,7 +580,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   text-align: left;
 }
 
-#mhclbpycmq .gt_empty_group_heading {
+#xnzlhxcukx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -410,15 +595,15 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   vertical-align: middle;
 }
 
-#mhclbpycmq .gt_from_md > :first-child {
+#xnzlhxcukx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mhclbpycmq .gt_from_md > :last-child {
+#xnzlhxcukx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mhclbpycmq .gt_row {
+#xnzlhxcukx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -437,7 +622,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   overflow-x: hidden;
 }
 
-#mhclbpycmq .gt_stub {
+#xnzlhxcukx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -450,7 +635,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   padding-right: 5px;
 }
 
-#mhclbpycmq .gt_stub_row_group {
+#xnzlhxcukx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -464,15 +649,15 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   vertical-align: top;
 }
 
-#mhclbpycmq .gt_row_group_first td {
+#xnzlhxcukx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mhclbpycmq .gt_row_group_first th {
+#xnzlhxcukx .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mhclbpycmq .gt_summary_row {
+#xnzlhxcukx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -482,16 +667,16 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   padding-right: 5px;
 }
 
-#mhclbpycmq .gt_first_summary_row {
+#xnzlhxcukx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mhclbpycmq .gt_first_summary_row.thick {
+#xnzlhxcukx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mhclbpycmq .gt_last_summary_row {
+#xnzlhxcukx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -501,7 +686,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-bottom-color: #D3D3D3;
 }
 
-#mhclbpycmq .gt_grand_summary_row {
+#xnzlhxcukx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -511,7 +696,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   padding-right: 5px;
 }
 
-#mhclbpycmq .gt_first_grand_summary_row {
+#xnzlhxcukx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -521,7 +706,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-top-color: #D3D3D3;
 }
 
-#mhclbpycmq .gt_last_grand_summary_row_top {
+#xnzlhxcukx .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -531,11 +716,11 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-bottom-color: #D3D3D3;
 }
 
-#mhclbpycmq .gt_striped {
+#xnzlhxcukx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mhclbpycmq .gt_table_body {
+#xnzlhxcukx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -544,7 +729,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-bottom-color: #D3D3D3;
 }
 
-#mhclbpycmq .gt_footnotes {
+#xnzlhxcukx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -558,7 +743,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-right-color: #D3D3D3;
 }
 
-#mhclbpycmq .gt_footnote {
+#xnzlhxcukx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -567,7 +752,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   padding-right: 5px;
 }
 
-#mhclbpycmq .gt_sourcenotes {
+#xnzlhxcukx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -581,7 +766,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-right-color: #D3D3D3;
 }
 
-#mhclbpycmq .gt_sourcenote {
+#xnzlhxcukx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -589,72 +774,72 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   padding-right: 5px;
 }
 
-#mhclbpycmq .gt_left {
+#xnzlhxcukx .gt_left {
   text-align: left;
 }
 
-#mhclbpycmq .gt_center {
+#xnzlhxcukx .gt_center {
   text-align: center;
 }
 
-#mhclbpycmq .gt_right {
+#xnzlhxcukx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mhclbpycmq .gt_font_normal {
+#xnzlhxcukx .gt_font_normal {
   font-weight: normal;
 }
 
-#mhclbpycmq .gt_font_bold {
+#xnzlhxcukx .gt_font_bold {
   font-weight: bold;
 }
 
-#mhclbpycmq .gt_font_italic {
+#xnzlhxcukx .gt_font_italic {
   font-style: italic;
 }
 
-#mhclbpycmq .gt_super {
+#xnzlhxcukx .gt_super {
   font-size: 65%;
 }
 
-#mhclbpycmq .gt_footnote_marks {
+#xnzlhxcukx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mhclbpycmq .gt_asterisk {
+#xnzlhxcukx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mhclbpycmq .gt_indent_1 {
+#xnzlhxcukx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mhclbpycmq .gt_indent_2 {
+#xnzlhxcukx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mhclbpycmq .gt_indent_3 {
+#xnzlhxcukx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mhclbpycmq .gt_indent_4 {
+#xnzlhxcukx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mhclbpycmq .gt_indent_5 {
+#xnzlhxcukx .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mhclbpycmq .katex-display {
+#xnzlhxcukx .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mhclbpycmq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xnzlhxcukx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -744,6 +929,19 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {

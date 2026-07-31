@@ -438,7 +438,7 @@ seguintes leituras:
 
 ::: callout-caution
 Se você chegou até aqui, talvez queira ver as
-\[engrenagens\](codigos_revelados.html) rodando. ⚙️
+[engrenagens](coding.html) rodando. ⚙️
 :::
 
 ................. SAMPLE ...............

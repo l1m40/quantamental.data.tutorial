@@ -5,8 +5,10 @@ format:
     toc: true
     toc-depth: 2
     code-fold: show
-    code-summary: "Ver código"
-    theme: cosmo
+    code-summary: "code"
+    theme: 
+      light: cosmo # litera
+      dark: slate
 execute:
   echo: true
   warning: false
@@ -49,9 +51,8 @@ ontology$get_sectors()
 Índices:
 
 ```{r}
-#| echo: false
 data.frame(
-  Índice = c("IBOV_60", "IBOV_90", "IBOV", "SMLL"),
+  `Índice` = c("IBOV_60", "IBOV_90", "IBOV", "SMLL"),
   Participantes = c(
     ontology$get_b3_index()$IBOV_60 |> nrow(),
     ontology$get_b3_index()$IBOV_90 |> nrow(),
