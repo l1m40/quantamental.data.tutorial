@@ -1,0 +1,104 @@
+---
+title: "As Engrenagens"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: show
+    code-summary: "Ver código"
+    theme: cosmo
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+::: {.callout-note collapse="true"}
+#### Ferramentas
+
+Este espaço é destinado a quem deseja ver a implementação técnica sem a
+camada didática. Para detalhes sobre funções específicas do R, consulte
+o [Tidyverse Help](https://www.tidyverse.org/help/).
+
+```{r}
+#| echo: false
+data_mart_path <- file.path("..","data","mart")
+healthcheck_validation <- F
+purrr::walk(list.files("../R/dal",full.names=TRUE),source)
+```
+:::
+
+Loading objects...
+
+```{r}
+ontology <- DAL_Ontology$new() ; quantamental <- DAL_Quantamental$new()
+```
+
+Listar os participantes, assets:
+
+```{r}
+ontology$get_assets() |> sample(15)
+```
+
+Setores:
+
+```{r}
+ontology$get_sectors()
+```
+
+Índices:
+
+```{r}
+#| echo: false
+data.frame(
+  Índice = c("IBOV_60", "IBOV_90", "IBOV", "SMLL"),
+  Participantes = c(
+    ontology$get_b3_index()$IBOV_60 |> nrow(),
+    ontology$get_b3_index()$IBOV_90 |> nrow(),
+    ontology$get_b3_index()$IBOV |> nrow(),
+    ontology$get_b3_index()$SMLL |> nrow()
+  ),
+  Descrição = c(
+    "60% do índice IBOV",
+    "90% do índice IBOV",
+    "Índice Bovespa completo",
+    "Índice Small Caps"
+  )
+)
+```
+
+Features:
+
+```{r}
+library(gt)
+df <- quantamental$assets(c("VALE3","BRAP4","CMIN3","CSNA3","GGBR4","USIM5"))
+df |> filter(date>=max(date)-365) |> group_by(asset) |> mutate(var_12M=(last(close)/first(close))-1) |> filter(date==max(date)) |> ungroup() |> mutate(marketcap=marketcap*1000,Net_Profit_12M=Net_Profit_12M*1000) |> 
+  select(asset,Report_Date,marketcap,Net_Profit_12M,roe,var_12M,pe) |> 
+  arrange(desc(marketcap)) |> 
+  gt() |> 
+  cols_label(
+    asset = "Ticker",
+    Report_Date = "Last Report",
+    marketcap = "Marketcap",
+    Net_Profit_12M = "Lucro.12M",
+    pe = "P/L",
+    roe = "ROE",
+    var_12M = "Var.12M"
+  ) |>
+  fmt_date(Report_Date,date_style="MMMd") |>
+  fmt_number(c(marketcap,Net_Profit_12M),decimals=1,suffixing=T) |> 
+  fmt_number(pe,decimals=2) |>
+  fmt_percent(c(roe,var_12M),decimals=1) |>
+  # opt_row_striping() |>
+  # tab_source_note(
+    # "Fonte: Data Lake Quantamental"
+  # ) |>
+  tab_header(
+    title = "Features disponíveis pelo modelo",
+    subtitle = "Cada linha representa uma empresa e cada coluna uma feature."
+  )
+```
+
+Este espaço é destinado a quem deseja ver a implementação técnica sem a
+camada didática. Para detalhes sobre funções específicas do R, consulte
+o [Tidyverse Help](https://www.tidyverse.org/help/).

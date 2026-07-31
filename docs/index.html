@@ -23,41 +23,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -90,8 +55,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#similaridade" id="toc-similaridade" class="nav-link" data-scroll-target="#similaridade">Similaridade</a></li>
   <li><a href="#features-descrevendo-empresas-por-meio-de-dados" id="toc-features-descrevendo-empresas-por-meio-de-dados" class="nav-link" data-scroll-target="#features-descrevendo-empresas-por-meio-de-dados">Features: descrevendo empresas por meio de dados</a></li>
   <li><a href="#famílias-de-variáveis" id="toc-famílias-de-variáveis" class="nav-link" data-scroll-target="#famílias-de-variáveis">Famílias de variáveis</a></li>
-  <li><a href="#próximos-passos" id="toc-próximos-passos" class="nav-link" data-scroll-target="#próximos-passos">Próximos passos</a></li>
+  <li><a href="#próximos-passos-aprofundando-na-análise" id="toc-próximos-passos-aprofundando-na-análise" class="nav-link" data-scroll-target="#próximos-passos-aprofundando-na-análise">Próximos Passos: Aprofundando na Análise</a></li>
   <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências">Referências</a></li>
+  <li><a href="#rascunhos" id="toc-rascunhos" class="nav-link" data-scroll-target="#rascunhos">Rascunhos</a></li>
   </ul>
 </nav>
 </div>
@@ -130,7 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container callout-body">
 <p>Instalar o R versão posterior a 4.5.2 <br> <a href="https://cran.r-project.org/bin/windows/base/" class="uri">https://cran.r-project.org/bin/windows/base/</a></p>
 <p>E a IDE RStudio <br> <a href="https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads" class="uri">https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads</a></p>
-<p>Tidyverse package <a href="https://tidyverse.org">link</a> <br> &gt; <code>install.packages("tidyverse")</code></p>
+<p>Tidyverse package é suficiente para execuções básicas - <a href="https://tidyverse.org">link</a>- <br> &gt; <code>install.packages("tidyverse")</code></p>
 </div>
 </div>
 </div>
@@ -201,12 +167,8 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <h2 class="anchored" data-anchor-id="participantes-do-projeto">Participantes do projeto</h2>
 <p>Os participantes correspondem aos ativos cadastrados, empresas que serão analisadas nesse estudo. Aqui abaixo segue uma lista de amostragem com 8 ativos.</p>
 <div class="cell">
-<details open="" class="code-fold">
-<summary>Ver código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ontology<span class="sc">$</span><span class="fu">get_assets</span>() <span class="sc">|&gt;</span> <span class="fu">sample</span>(n_sample_assets)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "DESK3" "AXIA3" "DEXP3" "RECV3" "TIMS3" "CASH3" "GFSA3" "VIVT3"</code></pre>
+<pre><code>[1] "RAIZ4"  "TEND3"  "CPLE3"  "BRAP4"  "ITUB4"  "ORVR3"  "JBSS32" "KLBN11"</code></pre>
 </div>
 </div>
 </section>
@@ -214,10 +176,6 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <h2 class="anchored" data-anchor-id="setores">Setores</h2>
 <p>A ontologia também organiza os setores econômicos utilizados para agrupar os ativos.</p>
 <div class="cell">
-<details open="" class="code-fold">
-<summary>Ver código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ontology<span class="sc">$</span><span class="fu">get_sectors</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Açúcar e Álcool"         "Agronegócio"            
  [3] "Água e Saneamento"       "Alimentos e Bebidas"    
@@ -250,7 +208,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <h3 class="anchored" data-anchor-id="o-que-representam-esses-índices">O que representam esses índices?</h3>
 <ul>
 <li><strong>IBOV</strong>: principal índice da bolsa brasileira B3, reunindo as ações mais negociadas.</li>
-<li><strong>IBOV_90</strong>: subconjunto de aproximadamente 90% da composição do IBOV.</li>
+<li><strong>IBOV_90</strong>: subconjunto de aprox. 90% das maiores composições do IBOV.</li>
 <li><strong>IBOV_60</strong>: Bluechips, aproximadamente 60% da composição do IBOV.</li>
 <li><strong>SMLL</strong>: índice composto por empresas classificadas como Small Caps.</li>
 </ul>
@@ -316,29 +274,30 @@ Note
 </section>
 <section id="features-descrevendo-empresas-por-meio-de-dados" class="level2">
 <h2 class="anchored" data-anchor-id="features-descrevendo-empresas-por-meio-de-dados">Features: descrevendo empresas por meio de dados</h2>
-<p>Até este ponto, vimos como a ontologia organiza o universo de ativos e como a matriz de similaridade permite identificar relações entre empresas e setores. O próximo passo é compreender como cada empresa é representada dentro de um modelo Quantamental.</p>
-<p>Uma <strong>feature</strong> é uma característica mensurável de uma empresa. Ela representa um aspecto específico do negócio, do mercado ou do comportamento do ativo e é utilizada como informação de entrada para análises quantitativas. Exemplos de features incluem indicadores fundamentalistas, como Preço/Lucro (P/L), Retorno sobre Patrimônio (ROE) e Margem EBITDA, além de métricas de mercado, como volatilidade, liquidez, retorno acumulado e beta.</p>
+<p>Até este ponto, vimos como a ontologia organiza o universo de ativos e como a matriz de similaridade permite identificar relações entre empresas e setores. O próximo passo é compreender como cada empresa é representada dentro de um modelo.</p>
+<p>Uma <strong>feature</strong> é uma característica mensurável de uma empresa. Ela representa um aspecto específico do negócio, do mercado ou do comportamento do ativo e é utilizada como informação de entrada para análises quantitativas.</p>
+<p>Exemplos de features incluem indicadores fundamentalistas, como Preço/Lucro (P/L), Retorno sobre Patrimônio (ROE) e Margem EBITDA, além de métricas de mercado, como volatilidade, liquidez, retorno acumulado e beta.</p>
 <p>Individualmente, cada feature oferece uma perspectiva limitada sobre uma empresa. Em conjunto, porém, elas formam uma representação multidimensional do ativo, permitindo que empresas sejam comparadas, agrupadas e avaliadas de forma objetiva. Em vez de responder se uma empresa é “boa” ou “ruim” com base em um único indicador, um modelo Quantamental considera simultaneamente centenas de features para construir uma visão mais abrangente de suas características.</p>
 <p>A tabela a seguir ilustra, de forma simplificada, como diferentes empresas podem ser descritas por um conjunto de features.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="uttlozdbrb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#uttlozdbrb table {
+<div id="sxrjahipsh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#sxrjahipsh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#uttlozdbrb thead, #uttlozdbrb tbody, #uttlozdbrb tfoot, #uttlozdbrb tr, #uttlozdbrb td, #uttlozdbrb th {
+#sxrjahipsh thead, #sxrjahipsh tbody, #sxrjahipsh tfoot, #sxrjahipsh tr, #sxrjahipsh td, #sxrjahipsh th {
   border-style: none;
 }
 
-#uttlozdbrb p {
+#sxrjahipsh p {
   margin: 0;
   padding: 0;
 }
 
-#uttlozdbrb .gt_table {
+#sxrjahipsh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -364,12 +323,12 @@ Note
   border-left-color: #D3D3D3;
 }
 
-#uttlozdbrb .gt_caption {
+#sxrjahipsh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#uttlozdbrb .gt_title {
+#sxrjahipsh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -381,7 +340,7 @@ Note
   border-bottom-width: 0;
 }
 
-#uttlozdbrb .gt_subtitle {
+#sxrjahipsh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -393,7 +352,7 @@ Note
   border-top-width: 0;
 }
 
-#uttlozdbrb .gt_heading {
+#sxrjahipsh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -405,13 +364,13 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#uttlozdbrb .gt_bottom_border {
+#sxrjahipsh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uttlozdbrb .gt_col_headings {
+#sxrjahipsh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -426,7 +385,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#uttlozdbrb .gt_col_heading {
+#sxrjahipsh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -446,7 +405,7 @@ Note
   overflow-x: hidden;
 }
 
-#uttlozdbrb .gt_column_spanner_outer {
+#sxrjahipsh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -458,15 +417,15 @@ Note
   padding-right: 4px;
 }
 
-#uttlozdbrb .gt_column_spanner_outer:first-child {
+#sxrjahipsh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uttlozdbrb .gt_column_spanner_outer:last-child {
+#sxrjahipsh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uttlozdbrb .gt_column_spanner {
+#sxrjahipsh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -478,11 +437,11 @@ Note
   width: 100%;
 }
 
-#uttlozdbrb .gt_spanner_row {
+#sxrjahipsh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#uttlozdbrb .gt_group_heading {
+#sxrjahipsh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -508,7 +467,7 @@ Note
   text-align: left;
 }
 
-#uttlozdbrb .gt_empty_group_heading {
+#sxrjahipsh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -523,15 +482,15 @@ Note
   vertical-align: middle;
 }
 
-#uttlozdbrb .gt_from_md > :first-child {
+#sxrjahipsh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uttlozdbrb .gt_from_md > :last-child {
+#sxrjahipsh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uttlozdbrb .gt_row {
+#sxrjahipsh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -550,7 +509,7 @@ Note
   overflow-x: hidden;
 }
 
-#uttlozdbrb .gt_stub {
+#sxrjahipsh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -563,7 +522,7 @@ Note
   padding-right: 5px;
 }
 
-#uttlozdbrb .gt_stub_row_group {
+#sxrjahipsh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -577,15 +536,15 @@ Note
   vertical-align: top;
 }
 
-#uttlozdbrb .gt_row_group_first td {
+#sxrjahipsh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uttlozdbrb .gt_row_group_first th {
+#sxrjahipsh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#uttlozdbrb .gt_summary_row {
+#sxrjahipsh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -595,16 +554,16 @@ Note
   padding-right: 5px;
 }
 
-#uttlozdbrb .gt_first_summary_row {
+#sxrjahipsh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uttlozdbrb .gt_first_summary_row.thick {
+#sxrjahipsh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uttlozdbrb .gt_last_summary_row {
+#sxrjahipsh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -614,7 +573,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#uttlozdbrb .gt_grand_summary_row {
+#sxrjahipsh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -624,7 +583,7 @@ Note
   padding-right: 5px;
 }
 
-#uttlozdbrb .gt_first_grand_summary_row {
+#sxrjahipsh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -634,7 +593,7 @@ Note
   border-top-color: #D3D3D3;
 }
 
-#uttlozdbrb .gt_last_grand_summary_row_top {
+#sxrjahipsh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -644,11 +603,11 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#uttlozdbrb .gt_striped {
+#sxrjahipsh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uttlozdbrb .gt_table_body {
+#sxrjahipsh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -657,7 +616,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#uttlozdbrb .gt_footnotes {
+#sxrjahipsh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -671,7 +630,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#uttlozdbrb .gt_footnote {
+#sxrjahipsh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -680,7 +639,7 @@ Note
   padding-right: 5px;
 }
 
-#uttlozdbrb .gt_sourcenotes {
+#sxrjahipsh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -694,7 +653,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#uttlozdbrb .gt_sourcenote {
+#sxrjahipsh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -702,72 +661,72 @@ Note
   padding-right: 5px;
 }
 
-#uttlozdbrb .gt_left {
+#sxrjahipsh .gt_left {
   text-align: left;
 }
 
-#uttlozdbrb .gt_center {
+#sxrjahipsh .gt_center {
   text-align: center;
 }
 
-#uttlozdbrb .gt_right {
+#sxrjahipsh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uttlozdbrb .gt_font_normal {
+#sxrjahipsh .gt_font_normal {
   font-weight: normal;
 }
 
-#uttlozdbrb .gt_font_bold {
+#sxrjahipsh .gt_font_bold {
   font-weight: bold;
 }
 
-#uttlozdbrb .gt_font_italic {
+#sxrjahipsh .gt_font_italic {
   font-style: italic;
 }
 
-#uttlozdbrb .gt_super {
+#sxrjahipsh .gt_super {
   font-size: 65%;
 }
 
-#uttlozdbrb .gt_footnote_marks {
+#sxrjahipsh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#uttlozdbrb .gt_asterisk {
+#sxrjahipsh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uttlozdbrb .gt_indent_1 {
+#sxrjahipsh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#uttlozdbrb .gt_indent_2 {
+#sxrjahipsh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#uttlozdbrb .gt_indent_3 {
+#sxrjahipsh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#uttlozdbrb .gt_indent_4 {
+#sxrjahipsh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#uttlozdbrb .gt_indent_5 {
+#sxrjahipsh .gt_indent_5 {
   text-indent: 25px;
 }
 
-#uttlozdbrb .katex-display {
+#sxrjahipsh .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#uttlozdbrb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#sxrjahipsh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -801,7 +760,7 @@ Note
 <td class="gt_row gt_right" headers="var_12M">23.3%</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="company_name">Itau</td>
+<td class="gt_row gt_left" headers="company_name">Itaú</td>
 <td class="gt_row gt_left" headers="asset">ITUB4</td>
 <td class="gt_row gt_right" headers="Report_Date">May 6</td>
 <td class="gt_row gt_right" headers="marketcap">461.1B</td>
@@ -895,23 +854,23 @@ Note
 <p>As principais famílias utilizadas no projeto são apresentadas a seguir.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="jfxzmephtd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jfxzmephtd table {
+<div id="fvrpagwtru" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fvrpagwtru table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jfxzmephtd thead, #jfxzmephtd tbody, #jfxzmephtd tfoot, #jfxzmephtd tr, #jfxzmephtd td, #jfxzmephtd th {
+#fvrpagwtru thead, #fvrpagwtru tbody, #fvrpagwtru tfoot, #fvrpagwtru tr, #fvrpagwtru td, #fvrpagwtru th {
   border-style: none;
 }
 
-#jfxzmephtd p {
+#fvrpagwtru p {
   margin: 0;
   padding: 0;
 }
 
-#jfxzmephtd .gt_table {
+#fvrpagwtru .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -937,12 +896,12 @@ Note
   border-left-color: #D3D3D3;
 }
 
-#jfxzmephtd .gt_caption {
+#fvrpagwtru .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jfxzmephtd .gt_title {
+#fvrpagwtru .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -954,7 +913,7 @@ Note
   border-bottom-width: 0;
 }
 
-#jfxzmephtd .gt_subtitle {
+#fvrpagwtru .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -966,7 +925,7 @@ Note
   border-top-width: 0;
 }
 
-#jfxzmephtd .gt_heading {
+#fvrpagwtru .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -978,13 +937,13 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#jfxzmephtd .gt_bottom_border {
+#fvrpagwtru .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jfxzmephtd .gt_col_headings {
+#fvrpagwtru .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -999,7 +958,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#jfxzmephtd .gt_col_heading {
+#fvrpagwtru .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1019,7 +978,7 @@ Note
   overflow-x: hidden;
 }
 
-#jfxzmephtd .gt_column_spanner_outer {
+#fvrpagwtru .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1031,15 +990,15 @@ Note
   padding-right: 4px;
 }
 
-#jfxzmephtd .gt_column_spanner_outer:first-child {
+#fvrpagwtru .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jfxzmephtd .gt_column_spanner_outer:last-child {
+#fvrpagwtru .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jfxzmephtd .gt_column_spanner {
+#fvrpagwtru .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1051,11 +1010,11 @@ Note
   width: 100%;
 }
 
-#jfxzmephtd .gt_spanner_row {
+#fvrpagwtru .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jfxzmephtd .gt_group_heading {
+#fvrpagwtru .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1081,7 +1040,7 @@ Note
   text-align: left;
 }
 
-#jfxzmephtd .gt_empty_group_heading {
+#fvrpagwtru .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1096,15 +1055,15 @@ Note
   vertical-align: middle;
 }
 
-#jfxzmephtd .gt_from_md > :first-child {
+#fvrpagwtru .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jfxzmephtd .gt_from_md > :last-child {
+#fvrpagwtru .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jfxzmephtd .gt_row {
+#fvrpagwtru .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1123,7 +1082,7 @@ Note
   overflow-x: hidden;
 }
 
-#jfxzmephtd .gt_stub {
+#fvrpagwtru .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1136,7 +1095,7 @@ Note
   padding-right: 5px;
 }
 
-#jfxzmephtd .gt_stub_row_group {
+#fvrpagwtru .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1150,15 +1109,15 @@ Note
   vertical-align: top;
 }
 
-#jfxzmephtd .gt_row_group_first td {
+#fvrpagwtru .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jfxzmephtd .gt_row_group_first th {
+#fvrpagwtru .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jfxzmephtd .gt_summary_row {
+#fvrpagwtru .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1168,16 +1127,16 @@ Note
   padding-right: 5px;
 }
 
-#jfxzmephtd .gt_first_summary_row {
+#fvrpagwtru .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jfxzmephtd .gt_first_summary_row.thick {
+#fvrpagwtru .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jfxzmephtd .gt_last_summary_row {
+#fvrpagwtru .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1187,7 +1146,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#jfxzmephtd .gt_grand_summary_row {
+#fvrpagwtru .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1197,7 +1156,7 @@ Note
   padding-right: 5px;
 }
 
-#jfxzmephtd .gt_first_grand_summary_row {
+#fvrpagwtru .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1207,7 +1166,7 @@ Note
   border-top-color: #D3D3D3;
 }
 
-#jfxzmephtd .gt_last_grand_summary_row_top {
+#fvrpagwtru .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1217,11 +1176,11 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#jfxzmephtd .gt_striped {
+#fvrpagwtru .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jfxzmephtd .gt_table_body {
+#fvrpagwtru .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1230,7 +1189,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#jfxzmephtd .gt_footnotes {
+#fvrpagwtru .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1244,7 +1203,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#jfxzmephtd .gt_footnote {
+#fvrpagwtru .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1253,7 +1212,7 @@ Note
   padding-right: 5px;
 }
 
-#jfxzmephtd .gt_sourcenotes {
+#fvrpagwtru .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1267,7 +1226,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#jfxzmephtd .gt_sourcenote {
+#fvrpagwtru .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1275,72 +1234,72 @@ Note
   padding-right: 5px;
 }
 
-#jfxzmephtd .gt_left {
+#fvrpagwtru .gt_left {
   text-align: left;
 }
 
-#jfxzmephtd .gt_center {
+#fvrpagwtru .gt_center {
   text-align: center;
 }
 
-#jfxzmephtd .gt_right {
+#fvrpagwtru .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jfxzmephtd .gt_font_normal {
+#fvrpagwtru .gt_font_normal {
   font-weight: normal;
 }
 
-#jfxzmephtd .gt_font_bold {
+#fvrpagwtru .gt_font_bold {
   font-weight: bold;
 }
 
-#jfxzmephtd .gt_font_italic {
+#fvrpagwtru .gt_font_italic {
   font-style: italic;
 }
 
-#jfxzmephtd .gt_super {
+#fvrpagwtru .gt_super {
   font-size: 65%;
 }
 
-#jfxzmephtd .gt_footnote_marks {
+#fvrpagwtru .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jfxzmephtd .gt_asterisk {
+#fvrpagwtru .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jfxzmephtd .gt_indent_1 {
+#fvrpagwtru .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jfxzmephtd .gt_indent_2 {
+#fvrpagwtru .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jfxzmephtd .gt_indent_3 {
+#fvrpagwtru .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jfxzmephtd .gt_indent_4 {
+#fvrpagwtru .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jfxzmephtd .gt_indent_5 {
+#fvrpagwtru .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jfxzmephtd .katex-display {
+#fvrpagwtru .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jfxzmephtd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fvrpagwtru div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1359,7 +1318,7 @@ Note
 <td colspan="6" class="gt_heading gt_title gt_font_normal"><strong>Principais famílias de features</strong></td>
 </tr>
 <tr class="gt_heading even">
-<td colspan="6" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Exemplos de indicadores utilizados em modelos Quantamentais.</td>
+<td colspan="6" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Exemplos de indicadores disponíveis no modelo.</td>
 </tr>
 <tr class="gt_col_headings gt_spanner_row header">
 <th colspan="3" id="Fundamental Analysis" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
@@ -1439,19 +1398,70 @@ Market Analysis
 <li>É fácil negociar esse ativo?</li>
 </ul>
 <p>Embora cada indicador forneça apenas uma perspectiva sobre a empresa, a combinação de features pertencentes a diferentes famílias produz uma descrição muito mais rica do ativo. Por exemplo, uma empresa pode apresentar um múltiplo de valuation atrativo, mas possuir baixa rentabilidade ou elevado risco. Da mesma forma, empresas com excelentes fundamentos podem apresentar desempenho inferior no curto prazo caso o mercado esteja precificando expectativas desfavoráveis.</p>
-<p>Essa visão multidimensional é um dos pilares da abordagem Quantamental. Em vez de basear uma decisão em um único indicador, os modelos combinam informações provenientes de diferentes famílias de variáveis para construir uma representação mais completa e objetiva de cada empresa.</p>
-<p>Nos próximos capítulos exploraremos essas famílias em maior profundidade, começando pelos indicadores de <strong>Valuation</strong>, utilizando o <strong>Preço/Lucro (P/L)</strong> como exemplo para apresentar conceitos fundamentais da análise Quantamental.</p>
+<p>Essa visão multidimensional é uma das principais características da abordagem Quantamental. Em vez de basear uma decisão em um único indicador, os modelos combinam informações provenientes de diferentes famílias de variáveis para construir uma representação mais completa e objetiva de cada empresa.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="próximos-passos" class="level2">
-<h2 class="anchored" data-anchor-id="próximos-passos">Próximos passos</h2>
-<p>Referências para outros arquivos scripts .R, .Rmd ou tutoriais</p>
+<section id="próximos-passos-aprofundando-na-análise" class="level2">
+<h2 class="anchored" data-anchor-id="próximos-passos-aprofundando-na-análise">Próximos Passos: Aprofundando na Análise</h2>
+<p>Com a ontologia enriquecida por features (em séries temporais principalmente), você pode ir além dos exemplos básicos e explorar análises mais complexas: * <strong>Séries Temporais:</strong> Integre dados para visualizar a evolução dos ativos em comparação direta com seus pares mais similares identificados na ontologia. Utilize o cálculo de <strong>medianas</strong> para criar índices sintéticos de grupos de afinidade, servindo como um <em>benchmark</em> que mitiga o efeito de <em>outliers</em> e permite identificar desvios significativos de performance ou <em>valuation</em> dentro de um mesmo cluster ao longo do tempo.</p>
+<ul>
+<li><strong>Estudo de Caso de Similaridade:</strong> Escolha um setor específico (ex: “Bancos”) e analise a matriz de similaridade para identificar empresas com características inesperadamente semelhantes ou diferentes. Compare os resultados com a classificação setorial tradicional.</li>
+<li><strong>Feature Engineering:</strong> Utilize as “famílias de variáveis” para construir fatores de investimento (ex: um fator de valor combinando P/L e FCF Yield) e teste sua performance histórica.</li>
+<li><strong>Integração com Dados de Preço:</strong> Combine a ontologia com dados históricos de preço para analisar o comportamento de portfólios baseados em similaridade ou fatores. Aqui está a sugestão para o novo item de <strong>Próximos Passos</strong>, focado em arbitragem estatística e modelos dinâmicos:</li>
+<li><strong>Estratégias de Pares e Cointegração:</strong> Utilize a matriz de similaridade para identificar ativos candidatos a estratégias de <em>Long &amp; Short</em>. Aplique testes de <strong>cointegração</strong> para verificar relações de equilíbrio de longo prazo e utilize o Filtro de Kalman para estimar parâmetros dinâmicos, permitindo a execução de operações de arbitragem estatística.</li>
+<li><strong>Visualização Avançada:</strong> Explore outras formas de visualizar a matriz de similaridade e as relações entre empresas, como grafos de rede.</li>
+</ul>
 </section>
 <section id="referências" class="level2">
 <h2 class="anchored" data-anchor-id="referências">Referências</h2>
-<p>Como criar um arquivo Rmd R Markdown? <a href="https://rmarkdown.rstudio.com/">link</a></p>
+<p>Este tutorial se baseia em conceitos de finanças quantitativas e análise fundamentalista. Para aprofundar nos temas abordados, sugerimos as seguintes leituras:</p>
+<ul>
+<li><p>Livros TBD</p></li>
+<li><p>Como criar um arquivo Rmd R Markdown? <a href="https://rmarkdown.rstudio.com/">link</a></p></li>
+</ul>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se você chegou até aqui, talvez queira ver as [engrenagens](codigos_revelados.html) rodando. ⚙️</p>
+</div>
+</div>
+<p>…………….. SAMPLE ……………</p>
+<ol type="1">
+<li><strong>Fama, E. F., &amp; French, K. R. (1993). Common risk factors in the returns on stocks and bonds.</strong> <em>Journal of Financial Economics, 33</em>(1), 3-56. <a href="https://www.sciencedirect.com/science/article/abs/pii/0304405X93900235">Link para o artigo</a></li>
+<li><strong>Litterman, R. (2003). <em>Modern Investment Management: An Equilibrium Approach</em>.</strong> John Wiley &amp; Sons. <a href="https://www.wiley.com/en-us/Modern+Investment+Management%3A+An+Equilibrium+Approach-p-9780471172221">Link para a editora/livro</a></li>
+<li><strong>Hadley Wickham (2017). <em>R for Data Science</em>.</strong> O’Reilly Media. <a href="https://r4ds.had.co.nz/">Link para o livro online</a></li>
+<li><strong>Documentação Oficial do Tidyverse:</strong> Para detalhes sobre a manipulação de dados em R. <a href="https://www.tidyverse.org/">Link para a documentação</a></li>
+</ol>
+</section>
+<section id="rascunhos" class="level2">
+<h2 class="anchored" data-anchor-id="rascunhos">Rascunhos</h2>
+<p>Referências para outros arquivos scripts .R, .Rmd, tutoriais ou repositórios</p>
+<ul>
+<li><p>Feature Engineering</p></li>
+<li><p>Uso avançado com o pacote quantamental.data</p></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Este tutorial possui caráter exploratório e educacional, tendo como objetivo apresentar os principais conceitos por meio de exemplos simples e intuitivos. As implementações e fluxos de trabalho foram simplificados para facilitar o aprendizado e não representam, necessariamente, a forma mais eficiente ou completa de utilização do framework. Para uma abordagem mais avançada, incluindo funções especializadas, abstrações e recursos voltados ao desenvolvimento de aplicações, recomenda-se a utilização do pacote quantamental.data, disponível publicamente no GitHub.</p>
+</div>
+</div>
 <p>::</p>
 <p>TESTING AREA</p>
 <p>::</p>

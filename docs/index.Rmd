@@ -16,11 +16,15 @@ execute:
 ::: {.callout-note collapse="true"}
 ## Pré-requisitos
 
-Instalar o R versão posterior a `r paste0(R.version$major, ".", R.version$minor)` <br> <https://cran.r-project.org/bin/windows/base/>
+Instalar o R versão posterior a
+`r paste0(R.version$major, ".", R.version$minor)` <br>
+<https://cran.r-project.org/bin/windows/base/>
 
-E a IDE RStudio <br> <https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads>
+E a IDE RStudio <br>
+<https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads>
 
-Tidyverse package [link](https://tidyverse.org) <br> \> `install.packages("tidyverse")`
+Tidyverse package é suficiente para execuções básicas -
+[link](https://tidyverse.org)- <br> \> `install.packages("tidyverse")`
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -28,29 +32,51 @@ Tidyverse package [link](https://tidyverse.org) <br> \> `install.packages("tidyv
 
 *Quanta.mental* <br>
 
-\- **Quantitativo:** refere-se à análise quantitativa — modelos matemáticos, algoritmos, estatística e processamento de dados.
+\- **Quantitativo:** refere-se à análise quantitativa — modelos
+matemáticos, algoritmos, estatística e processamento de dados.
 
-\- **Fundamental:** refere-se à análise fundamentalista tradicional — avaliação de balanços patrimoniais, saúde do negócio, governança e contexto de mercado.
+\- **Fundamental:** refere-se à análise fundamentalista tradicional —
+avaliação de balanços patrimoniais, saúde do negócio, governança e
+contexto de mercado.
 
 ### Origem e Contexto Histórico
 
-A palavra começou a ganhar forte tração em Wall Street por volta de 2015–2017, em resposta a uma mudança estrutural no mercado financeiro global:
+A palavra começou a ganhar forte tração em Wall Street por volta de
+2015–2017, em resposta a uma mudança estrutural no mercado financeiro
+global:
 
-- A explosão dos Big Data e IA: Os gestores fundamentalistas tradicionais (como os seguidores da escola de Warren Buffett) perceberam que a análise manual de balanços e relatórios já não era suficiente diante do volume massivo de dados alternativos (como dados de satélite, navegação na web e transações de cartão de crédito).
+- A explosão dos Big Data e IA: Os gestores fundamentalistas
+  tradicionais (como os seguidores da escola de Warren Buffett)
+  perceberam que a análise manual de balanços e relatórios já não era
+  suficiente diante do volume massivo de dados alternativos (como dados
+  de satélite, navegação na web e transações de cartão de crédito).
 
-- Os limites dos algoritmos puros: Por outro lado, os fundos puramente quantitativos (quant, pioneiros como Jim Simons) enfrentavam desafios com eventos imprevisíveis (black swans) e "ruídos" estatísticos onde o julgamento humano e a visão macro ainda se faziam indispensáveis.
+- Os limites dos algoritmos puros: Por outro lado, os fundos puramente
+  quantitativos (quant, pioneiros como Jim Simons) enfrentavam desafios
+  com eventos imprevisíveis (black swans) e "ruídos" estatísticos onde o
+  julgamento humano e a visão macro ainda se faziam indispensáveis.
 
-A gestão quantamental propõe o "melhor dos dois mundos": o poder computacional analisa de dados para gerar hipóteses e identificar oportunidades, enquanto o faro e julgamento do analista humano valida essas teses e compreende as nuances do negócio que a matemática pura não consegue capturar.
+A gestão quantamental propõe o "melhor dos dois mundos": o poder
+computacional analisa de dados para gerar hipóteses e identificar
+oportunidades, enquanto o faro e julgamento do analista humano valida
+essas teses e compreende as nuances do negócio que a matemática pura não
+consegue capturar.
 :::
 
-**Quantamental** é um neologismo no mercado financeiro combinando dois conceitos: quantitativo (análise estatística) e fundamental (dados fundamentalistas referentes aos negócios da empresa).
+**Quantamental** é um neologismo no mercado financeiro combinando dois
+conceitos: quantitativo (análise estatística) e fundamental (dados
+fundamentalistas referentes aos negócios da empresa).
 
-A proposta desse projeto é unir essas duas visões por meio de uma **ontologia do mercado financeiro**, organizando informações sobre empresas, setores e índices da B3 de forma simples para análise em R.
+A proposta desse projeto é unir essas duas visões por meio de uma
+**ontologia do mercado financeiro**, organizando informações sobre
+empresas, setores e índices da B3 de forma simples para análise em R.
 
 ::: {.callout-tip collapse="true"}
 ## Veja mais...
 
-Uma ontologia pode ser entendida como um **mapa de conhecimento**. Em vez de trabalhar apenas com tabelas isoladas, ela organiza como os elementos do mercado financeiro se relacionam.
+Uma ontologia pode ser entendida como um **mapa de conhecimento**. Em
+vez de trabalhar apenas com tabelas isoladas, ela organiza como os
+elementos do mercado financeiro se relacionam.
 
 Por exemplo:
 
@@ -59,7 +85,8 @@ Por exemplo:
 - uma empresa pode fazer parte de um ou mais índices da B3;
 - empresas do mesmo setor tendem a possuir características semelhantes.
 
-Essa organização facilita análises exploratórias, construção de modelos quantitativos e geração de insights para investimento.
+Essa organização facilita análises exploratórias, construção de modelos
+quantitativos e geração de insights para investimento.
 
 ```{r}
 #| echo: false
@@ -73,27 +100,37 @@ quantamental <- DAL_Quantamental$new()
 
 ## Participantes do projeto
 
-```{r setup, echo=FALSE, include=FALSE}
+```{r}
+#| echo: false
 n_sample_assets <- 8
 ```
 
-Os participantes correspondem aos ativos cadastrados, empresas que serão analisadas nesse estudo. Aqui abaixo segue uma lista de amostragem com `r n_sample_assets` ativos.
+Os participantes correspondem aos ativos cadastrados, empresas que serão
+analisadas nesse estudo. Aqui abaixo segue uma lista de amostragem com
+`r n_sample_assets` ativos.
 
 ```{r}
+#| echo: false
 ontology$get_assets() |> sample(n_sample_assets)
 ```
 
 ## Setores
 
-A ontologia também organiza os setores econômicos utilizados para agrupar os ativos.
+A ontologia também organiza os setores econômicos utilizados para
+agrupar os ativos.
 
 ```{r}
+#| echo: false
 ontology$get_sectors()
 ```
 
 ## Índices B3
 
-Os índices da B3 agrupam empresas segundo diferentes critérios e atribui um percentual de participação para cada constituinte. A partir dos índices é possível fazer novas composições. A tabela abaixo mostra quantos ativos estão presentes em alguns índices disponíveis na ontologia do projeto.
+Os índices da B3 agrupam empresas segundo diferentes critérios e atribui
+um percentual de participação para cada constituinte. A partir dos
+índices é possível fazer novas composições. A tabela abaixo mostra
+quantos ativos estão presentes em alguns índices disponíveis na
+ontologia do projeto.
 
 ```{r}
 #| echo: false
@@ -116,16 +153,32 @@ data.frame(
 
 ### O que representam esses índices?
 
-- **IBOV**: principal índice da bolsa brasileira B3, reunindo as ações mais negociadas.
-- **IBOV_90**: subconjunto de aproximadamente 90% da composição do IBOV.
+- **IBOV**: principal índice da bolsa brasileira B3, reunindo as ações
+  mais negociadas.
+- **IBOV_90**: subconjunto de aprox. 90% das maiores composições do
+  IBOV.
 - **IBOV_60**: Bluechips, aproximadamente 60% da composição do IBOV.
 - **SMLL**: índice composto por empresas classificadas como Small Caps.
 
 ## Similaridade
 
-A **matriz de similaridade** mede o quanto duas empresas se parecem considerando diversas características observadas pelo modelo. Em vez de classificá-las apenas em setores tradicionais, ela atribui um grau de proximidade entre cada par de empresas. Quanto maior essa similaridade, maior a probabilidade de que os ativos compartilhem comportamentos, exposições ou características em comum. Essa informação permite formar agrupamentos dinâmicos de empresas, refletindo relações que podem não ser capturadas pelas classificações convencionais.
+A **matriz de similaridade** mede o quanto duas empresas se parecem
+considerando diversas características observadas pelo modelo. Em vez de
+classificá-las apenas em setores tradicionais, ela atribui um grau de
+proximidade entre cada par de empresas. Quanto maior essa similaridade,
+maior a probabilidade de que os ativos compartilhem comportamentos,
+exposições ou características em comum. Essa informação permite formar
+agrupamentos dinâmicos de empresas, refletindo relações que podem não
+ser capturadas pelas classificações convencionais.
 
-A matriz de similaridade também pode ser utilizada para analisar relações em um nível mais agregado. Ao agrupar os ativos por setor econômico, é possível calcular a similaridade média entre todos os pares de empresas pertencentes a dois setores, produzindo uma medida de proximidade entre eles. O mapa de calor (heatmap) apresentado a seguir resume essas relações. Essa visualização facilita a identificação de setores com características semelhantes e evidencia afinidades que podem não ser percebidas apenas pela classificação setorial tradicional.
+A matriz de similaridade também pode ser utilizada para analisar
+relações em um nível mais agregado. Ao agrupar os ativos por setor
+econômico, é possível calcular a similaridade média entre todos os pares
+de empresas pertencentes a dois setores, produzindo uma medida de
+proximidade entre eles. O mapa de calor (heatmap) apresentado a seguir
+resume essas relações. Essa visualização facilita a identificação de
+setores com características semelhantes e evidencia afinidades que podem
+não ser percebidas apenas pela classificação setorial tradicional.
 
 ```{r generate-similarity-heatmap-plot, echo=FALSE, include=FALSE}
 # Create and save plot if file doesn't exist
@@ -136,7 +189,7 @@ A matriz de similaridade também pode ser utilizada para analisar relações em 
   plot <- ontology$similarity()$sector_matrix_df |> 
     ggplot(aes(x = sector1, y = sector2, fill = avg_score)) +
       geom_tile(color = "white", lwd = 0.5, linetype = 1) +
-      scale_fill_gradient2(low = "tomato", mid = "gray89", high = "blue", midpoint = midpoint_data) +
+      scale_fill_gradient2(low = "tomato", mid = "white", high = "blue", midpoint = midpoint_data) +
       labs(
         title = "Macro-Sector Semantic Similarity Heatmap",
         subtitle = "Average embedding scores aggregated across industries",
@@ -158,40 +211,76 @@ if (file.exists("html/similarity_heatmap.png")) knitr::include_graphics("html/si
 ::: {.callout-tip collapse="true"}
 #### Como é criada a matriz de similaridade?
 
-Uma forma intuitiva de entender a matriz de similaridade é imaginar uma rede de empresas, em que cada empresa está conectada às demais por um grau de afinidade.
+Uma forma intuitiva de entender a matriz de similaridade é imaginar uma
+rede de empresas, em que cada empresa está conectada às demais por um
+grau de afinidade.
 
-Enquanto classificações tradicionais agrupam empresas apenas por setor econômico (por exemplo, bancos, varejo ou energia), a matriz de similaridade considera um conjunto muito mais amplo de informações, como características descritivas, financeiras, operacionais, fatores de risco, métricas de mercado e outros atributos utilizados pelo modelo.
+Enquanto classificações tradicionais agrupam empresas apenas por setor
+econômico (por exemplo, bancos, varejo ou energia), a matriz de
+similaridade considera um conjunto muito mais amplo de informações, como
+características descritivas, financeiras, operacionais, fatores de
+risco, métricas de mercado e outros atributos utilizados pelo modelo.
 
-O resultado é uma matriz em que cada elemento representa a intensidade da similaridade entre duas empresas:
+O resultado é uma matriz em que cada elemento representa a intensidade
+da similaridade entre duas empresas:
 
 - valores altos indicam empresas muito semelhantes;
 - valores baixos indicam empresas com poucas características em comum.
 
-Essa abordagem permite construir agrupamentos de forma **dinâmica**, isto é, os grupos surgem a partir dos dados observados e podem evoluir conforme as empresas mudam ao longo do tempo.
+Essa abordagem permite construir agrupamentos de forma **dinâmica**,
+isto é, os grupos surgem a partir dos dados observados e podem evoluir
+conforme as empresas mudam ao longo do tempo.
 
 Na prática, isso oferece diversas vantagens:
 
-- identifica pares de empresas comparáveis mesmo quando pertencem a setores diferentes;
-- encontra relações que não aparecem em classificações econômicas tradicionais;
+- identifica pares de empresas comparáveis mesmo quando pertencem a
+  setores diferentes;
+- encontra relações que não aparecem em classificações econômicas
+  tradicionais;
 - produz grupos mais homogêneos para análises quantitativas;
-- melhora processos como seleção de comparáveis, construção de fatores, análise de risco e diversificação de portfólio.
+- melhora processos como seleção de comparáveis, construção de fatores,
+  análise de risco e diversificação de portfólio.
 
-Dessa forma, a ontologia deixa de representar apenas uma estrutura hierárquica de conhecimento e passa a incorporar também a **intensidade das relações** entre os participantes, enriquecendo a representação do universo de ativos.
+Dessa forma, a ontologia deixa de representar apenas uma estrutura
+hierárquica de conhecimento e passa a incorporar também a **intensidade
+das relações** entre os participantes, enriquecendo a representação do
+universo de ativos.
 :::
 
 ::: callout-note
-Até esse ponto não tocamos nas variáveis preço, receita ou lucro. Ao longo deste tutorial utilizaremos esses conjuntos de empresas para explorar os dados da ontologia e entender como as relações entre empresas e setores podem auxiliar em análises financeiras.
+Até esse ponto não tocamos nas variáveis preço, receita ou lucro. Ao
+longo deste tutorial utilizaremos esses conjuntos de empresas para
+explorar os dados da ontologia e entender como as relações entre
+empresas e setores podem auxiliar em análises financeiras.
 :::
 
 ## Features: descrevendo empresas por meio de dados
 
-Até este ponto, vimos como a ontologia organiza o universo de ativos e como a matriz de similaridade permite identificar relações entre empresas e setores. O próximo passo é compreender como cada empresa é representada dentro de um modelo Quantamental.
+Até este ponto, vimos como a ontologia organiza o universo de ativos e
+como a matriz de similaridade permite identificar relações entre
+empresas e setores. O próximo passo é compreender como cada empresa é
+representada dentro de um modelo.
 
-Uma **feature** é uma característica mensurável de uma empresa. Ela representa um aspecto específico do negócio, do mercado ou do comportamento do ativo e é utilizada como informação de entrada para análises quantitativas. Exemplos de features incluem indicadores fundamentalistas, como Preço/Lucro (P/L), Retorno sobre Patrimônio (ROE) e Margem EBITDA, além de métricas de mercado, como volatilidade, liquidez, retorno acumulado e beta.
+Uma **feature** é uma característica mensurável de uma empresa. Ela
+representa um aspecto específico do negócio, do mercado ou do
+comportamento do ativo e é utilizada como informação de entrada para
+análises quantitativas.
 
-Individualmente, cada feature oferece uma perspectiva limitada sobre uma empresa. Em conjunto, porém, elas formam uma representação multidimensional do ativo, permitindo que empresas sejam comparadas, agrupadas e avaliadas de forma objetiva. Em vez de responder se uma empresa é "boa" ou "ruim" com base em um único indicador, um modelo Quantamental considera simultaneamente centenas de features para construir uma visão mais abrangente de suas características.
+Exemplos de features incluem indicadores fundamentalistas, como
+Preço/Lucro (P/L), Retorno sobre Patrimônio (ROE) e Margem EBITDA, além
+de métricas de mercado, como volatilidade, liquidez, retorno acumulado e
+beta.
 
-A tabela a seguir ilustra, de forma simplificada, como diferentes empresas podem ser descritas por um conjunto de features.
+Individualmente, cada feature oferece uma perspectiva limitada sobre uma
+empresa. Em conjunto, porém, elas formam uma representação
+multidimensional do ativo, permitindo que empresas sejam comparadas,
+agrupadas e avaliadas de forma objetiva. Em vez de responder se uma
+empresa é "boa" ou "ruim" com base em um único indicador, um modelo
+Quantamental considera simultaneamente centenas de features para
+construir uma visão mais abrangente de suas características.
+
+A tabela a seguir ilustra, de forma simplificada, como diferentes
+empresas podem ser descritas por um conjunto de features.
 
 ```{r}
 #| echo: false
@@ -235,9 +324,16 @@ df |>
 
 ## Famílias de variáveis
 
-Até este ponto, vimos que cada empresa pode ser representada por centenas de *features*. Entretanto, essas variáveis não constituem apenas uma lista de indicadores independentes. Cada uma delas descreve um aspecto específico da empresa e, por esse motivo, podem ser organizadas em **famílias de variáveis**.
+Até este ponto, vimos que cada empresa pode ser representada por
+centenas de *features*. Entretanto, essas variáveis não constituem
+apenas uma lista de indicadores independentes. Cada uma delas descreve
+um aspecto específico da empresa e, por esse motivo, podem ser
+organizadas em **famílias de variáveis**.
 
-Essa organização facilita a interpretação dos dados e introduz, de forma natural, os principais conceitos da análise fundamentalista. Em vez de memorizar indicadores isolados, o investidor passa a compreender qual dimensão da empresa cada variável procura representar.
+Essa organização facilita a interpretação dos dados e introduz, de forma
+natural, os principais conceitos da análise fundamentalista. Em vez de
+memorizar indicadores isolados, o investidor passa a compreender qual
+dimensão da empresa cada variável procura representar.
 
 As principais famílias utilizadas no projeto são apresentadas a seguir.
 
@@ -280,22 +376,106 @@ De forma simplificada, cada família responde a uma pergunta diferente:
 - Qual o risco do investimento?
 - É fácil negociar esse ativo?
 
-Embora cada indicador forneça apenas uma perspectiva sobre a empresa, a combinação de features pertencentes a diferentes famílias produz uma descrição muito mais rica do ativo. Por exemplo, uma empresa pode apresentar um múltiplo de valuation atrativo, mas possuir baixa rentabilidade ou elevado risco. Da mesma forma, empresas com excelentes fundamentos podem apresentar desempenho inferior no curto prazo caso o mercado esteja precificando expectativas desfavoráveis.
+Embora cada indicador forneça apenas uma perspectiva sobre a empresa, a
+combinação de features pertencentes a diferentes famílias produz uma
+descrição muito mais rica do ativo. Por exemplo, uma empresa pode
+apresentar um múltiplo de valuation atrativo, mas possuir baixa
+rentabilidade ou elevado risco. Da mesma forma, empresas com excelentes
+fundamentos podem apresentar desempenho inferior no curto prazo caso o
+mercado esteja precificando expectativas desfavoráveis.
 
-Essa visão multidimensional é um dos pilares da abordagem Quantamental. Em vez de basear uma decisão em um único indicador, os modelos combinam informações provenientes de diferentes famílias de variáveis para construir uma representação mais completa e objetiva de cada empresa.
-
-Nos próximos capítulos exploraremos essas famílias em maior profundidade, começando pelos indicadores de **Valuation**, utilizando o **Preço/Lucro (P/L)** como exemplo para apresentar conceitos fundamentais da análise Quantamental.
+Essa visão multidimensional é uma das principais características da
+abordagem Quantamental. Em vez de basear uma decisão em um único
+indicador, os modelos combinam informações provenientes de diferentes
+famílias de variáveis para construir uma representação mais completa e
+objetiva de cada empresa.
 :::
 
-## Próximos passos
+## Próximos Passos: Aprofundando na Análise
 
-Referências para outros arquivos scripts .R, .Rmd ou tutoriais
+Com a ontologia enriquecida por features (em séries temporais
+principalmente), você pode ir além dos exemplos básicos e explorar
+análises mais complexas: \* **Séries Temporais:** Integre dados para
+visualizar a evolução dos ativos em comparação direta com seus pares
+mais similares identificados na ontologia. Utilize o cálculo de
+**medianas** para criar índices sintéticos de grupos de afinidade,
+servindo como um *benchmark* que mitiga o efeito de *outliers* e permite
+identificar desvios significativos de performance ou *valuation* dentro
+de um mesmo cluster ao longo do tempo.
 
-- Feature Engineering
+- **Estudo de Caso de Similaridade:** Escolha um setor específico (ex:
+  "Bancos") e analise a matriz de similaridade para identificar empresas
+  com características inesperadamente semelhantes ou diferentes. Compare
+  os resultados com a classificação setorial tradicional.
+- **Feature Engineering:** Utilize as "famílias de variáveis" para
+  construir fatores de investimento (ex: um fator de valor combinando
+  P/L e FCF Yield) e teste sua performance histórica.
+- **Integração com Dados de Preço:** Combine a ontologia com dados
+  históricos de preço para analisar o comportamento de portfólios
+  baseados em similaridade ou fatores. Aqui está a sugestão para o novo
+  item de **Próximos Passos**, focado em arbitragem estatística e
+  modelos dinâmicos:
+- **Estratégias de Pares e Cointegração:** Utilize a matriz de
+  similaridade para identificar ativos candidatos a estratégias de *Long
+  & Short*. Aplique testes de **cointegração** para verificar relações
+  de equilíbrio de longo prazo e utilize o Filtro de Kalman para estimar
+  parâmetros dinâmicos, permitindo a execução de operações de arbitragem
+  estatística.
+- **Visualização Avançada:** Explore outras formas de visualizar a
+  matriz de similaridade e as relações entre empresas, como grafos de
+  rede.
 
 ## Referências
 
-Como criar um arquivo Rmd R Markdown? [link](https://rmarkdown.rstudio.com/)
+Este tutorial se baseia em conceitos de finanças quantitativas e análise
+fundamentalista. Para aprofundar nos temas abordados, sugerimos as
+seguintes leituras:
+
+- Livros TBD
+
+- Como criar um arquivo Rmd R Markdown?
+  [link](https://rmarkdown.rstudio.com/)
+
+::: callout-caution
+Se você chegou até aqui, talvez queira ver as
+\[engrenagens\](codigos_revelados.html) rodando. ⚙️
+:::
+
+................. SAMPLE ...............
+
+1.  **Fama, E. F., & French, K. R. (1993). Common risk factors in the
+    returns on stocks and bonds.** *Journal of Financial Economics,
+    33*(1), 3-56. [Link para o
+    artigo](https://www.sciencedirect.com/science/article/abs/pii/0304405X93900235)
+2.  **Litterman, R. (2003). *Modern Investment Management: An
+    Equilibrium Approach*.** John Wiley & Sons. [Link para a
+    editora/livro](https://www.wiley.com/en-us/Modern+Investment+Management%3A+An+Equilibrium+Approach-p-9780471172221)
+3.  **Hadley Wickham (2017). *R for Data Science*.** O'Reilly Media.
+    [Link para o livro online](https://r4ds.had.co.nz/)
+4.  **Documentação Oficial do Tidyverse:** Para detalhes sobre a
+    manipulação de dados em R. [Link para a
+    documentação](https://www.tidyverse.org/)
+
+## Rascunhos
+
+Referências para outros arquivos scripts .R, .Rmd, tutoriais ou
+repositórios
+
+- Feature Engineering
+
+- Uso avançado com o pacote quantamental.data
+
+::: callout-note
+Este tutorial possui caráter exploratório e educacional, tendo como
+objetivo apresentar os principais conceitos por meio de exemplos simples
+e intuitivos. As implementações e fluxos de trabalho foram simplificados
+para facilitar o aprendizado e não representam, necessariamente, a forma
+mais eficiente ou completa de utilização do framework. Para uma
+abordagem mais avançada, incluindo funções especializadas, abstrações e
+recursos voltados ao desenvolvimento de aplicações, recomenda-se a
+utilização do pacote quantamental.data, disponível publicamente no
+GitHub.
+:::
 
 ::
 
