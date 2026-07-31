@@ -1,0 +1,218 @@
+Create a complete R Markdown (.Rmd) chapter titled "Feature Engineering" for the Quantamental Data Lake tutorial.
+
+Target audience:
+- Beginners in Quantamental Investing.
+- Familiar with financial markets but not necessarily machine learning.
+- The chapter should be educational rather than mathematical.
+
+Writing style:
+- Professional and didactic.
+- Similar to documentation from Bloomberg, FactSet or MSCI.
+- Explain concepts intuitively before introducing technical terminology.
+- Use short paragraphs and include callout boxes (`collapse=true`) whenever a deeper explanation is useful.
+
+The chapter should contain the following sections.
+
+# 1. Introduction
+
+Explain that a Data Lake stores raw information, but quantitative models rarely consume raw variables directly.
+
+Introduce the concept that a feature is an engineered representation of information that is more useful for statistical models.
+
+Use examples such as:
+
+- Price
+- Earnings
+- Shares Outstanding
+- Financial Statements
+
+versus engineered features like
+
+- Price/Earnings
+- Enterprise Value / EBITDA
+- Earnings Yield
+- Momentum
+- Rolling Volatility
+
+Explain that Feature Engineering is the process of transforming raw information into predictive variables.
+
+---
+
+# 2. Raw Variables versus Features
+
+Explain the difference between:
+
+Raw data
+
+↓
+
+Business metrics
+
+↓
+
+Features
+
+↓
+
+Models
+
+Include a placeholder where I will insert a simple diagram.
+
+---
+
+# 3. Categories of Features
+
+Create subsections for
+
+## Valuation
+
+Examples:
+P/E
+EV/EBITDA
+Price/Book
+Free Cash Flow Yield
+
+Explain what these features attempt to measure.
+
+Leave placeholders where I will insert histograms.
+
+---
+
+## Quality
+
+Examples:
+ROE
+ROIC
+Gross Margin
+EBITDA Margin
+
+Explain why profitable companies tend to share characteristics.
+
+Leave placeholders for boxplots.
+
+---
+
+## Growth
+
+Examples:
+Revenue Growth
+EPS Growth
+EBITDA Growth
+
+Explain growth versus value.
+
+---
+
+## Momentum
+
+Examples:
+12M Return
+6M Return
+Relative Strength
+
+Explain behavioral finance intuition.
+
+Leave placeholders for time-series plots.
+
+---
+
+## Risk
+
+Examples:
+Beta
+Volatility
+Maximum Drawdown
+
+Explain that risk is also information.
+
+---
+
+## Liquidity
+
+Examples:
+Average Daily Volume
+Market Capitalization
+Turnover
+
+Explain why liquidity matters for institutional investors.
+
+---
+
+# 4. Creating Features
+
+Explain that many features do not exist explicitly inside financial statements.
+
+Illustrate with examples:
+
+Enterprise Value =
+Market Cap
++
+Debt
+-
+Cash
+
+Earnings Yield =
+1 / (P/E)
+
+Momentum =
+12-month cumulative return excluding the most recent month.
+
+Rolling Volatility =
+Standard deviation of daily returns over the last 252 trading days.
+
+Do not derive formulas in detail.
+
+Focus on intuition.
+
+---
+
+# 5. Why Feature Engineering Matters
+
+Explain that two models trained with the same algorithm may produce completely different results depending on feature quality.
+
+Use the analogy that features are the ingredients and the model is the recipe.
+
+Good ingredients usually matter more than a sophisticated recipe.
+
+---
+
+# 6. Practical Examples
+
+Create placeholders where I will insert:
+
+- gt tables
+- ggplot histograms
+- scatter plots
+- density plots
+- boxplots
+
+Do not generate R code.
+
+Instead, create markdown sections indicating where each figure should appear.
+
+---
+
+# 7. Best Practices
+
+Create a short list discussing:
+
+- avoid look-ahead bias
+- normalize features
+- remove outliers when appropriate
+- understand economic intuition
+- document every feature
+- monitor feature stability over time
+
+---
+
+# 8. Summary
+
+Conclude by emphasizing that Feature Engineering is one of the most important stages of any Quantamental pipeline.
+
+End with a paragraph introducing the next chapter:
+
+"Feature Distribution", where readers will explore the empirical behavior of individual features beginning with the Price/Earnings ratio.
+
+Do not include R code.
+
+Generate only markdown and explanatory text suitable for an R Markdown document.

@@ -67,6 +67,7 @@ data_mart_path <- file.path("..","data","mart")
 healthcheck_validation <- F
 purrr::walk(list.files("../R/dal",full.names=TRUE),source)
 ontology <- DAL_Ontology$new()
+quantamental <- DAL_Quantamental$new()
 ```
 :::
 
@@ -92,18 +93,18 @@ ontology$get_sectors()
 
 ## Índices B3
 
-Os índices da B3 agrupam empresas segundo diferentes critérios. A partir dos índices é possível fazer novas composições. A tabela abaixo mostra quantos ativos estão presentes em cada índice disponível na ontologia.
+Os índices da B3 agrupam empresas segundo diferentes critérios e atribui um percentual de participação para cada constituinte. A partir dos índices é possível fazer novas composições. A tabela abaixo mostra quantos ativos estão presentes em alguns índices disponíveis na ontologia do projeto.
 
 ```{r}
 #| echo: false
 data.frame(
+  Índice = c("IBOV_60", "IBOV_90", "IBOV", "SMLL"),
   Participantes = c(
     ontology$get_b3_index()$IBOV_60 |> nrow(),
     ontology$get_b3_index()$IBOV_90 |> nrow(),
     ontology$get_b3_index()$IBOV |> nrow(),
     ontology$get_b3_index()$SMLL |> nrow()
   ),
-  Índice = c("IBOV_60", "IBOV_90", "IBOV", "SMLL"),
   Descrição = c(
     "60% do índice IBOV",
     "90% do índice IBOV",
@@ -120,17 +121,177 @@ data.frame(
 - **IBOV_60**: Bluechips, aproximadamente 60% da composição do IBOV.
 - **SMLL**: índice composto por empresas classificadas como Small Caps.
 
-::: callout-note
-Ao longo deste tutorial utilizaremos esses conjuntos de empresas para explorar os dados da ontologia e entender como as relações entre empresas e setores podem auxiliar em análises financeiras.
-:::
-
 ## Similaridade
 
-Escrever sobre o conceito de similaridade entre empresas.
+A **matriz de similaridade** mede o quanto duas empresas se parecem considerando diversas características observadas pelo modelo. Em vez de classificá-las apenas em setores tradicionais, ela atribui um grau de proximidade entre cada par de empresas. Quanto maior essa similaridade, maior a probabilidade de que os ativos compartilhem comportamentos, exposições ou características em comum. Essa informação permite formar agrupamentos dinâmicos de empresas, refletindo relações que podem não ser capturadas pelas classificações convencionais.
+
+A matriz de similaridade também pode ser utilizada para analisar relações em um nível mais agregado. Ao agrupar os ativos por setor econômico, é possível calcular a similaridade média entre todos os pares de empresas pertencentes a dois setores, produzindo uma medida de proximidade entre eles. O mapa de calor (heatmap) apresentado a seguir resume essas relações. Essa visualização facilita a identificação de setores com características semelhantes e evidencia afinidades que podem não ser percebidas apenas pela classificação setorial tradicional.
+
+```{r generate-similarity-heatmap-plot, echo=FALSE, include=FALSE}
+# Create and save plot if file doesn't exist
+# if (file.exists("my_plot.png")) {
+  library(tidyverse)
+  png("html/similarity_heatmap.png", width = 800, height = 600, res = 100)
+  midpoint_data <- quantile(ontology$similarity()$matrix$score,.5)
+  plot <- ontology$similarity()$sector_matrix_df |> 
+    ggplot(aes(x = sector1, y = sector2, fill = avg_score)) +
+      geom_tile(color = "white", lwd = 0.5, linetype = 1) +
+      scale_fill_gradient2(low = "tomato", mid = "gray89", high = "blue", midpoint = midpoint_data) +
+      labs(
+        title = "Macro-Sector Semantic Similarity Heatmap",
+        subtitle = "Average embedding scores aggregated across industries",
+        x = "Sector A",
+        y = "Sector B",
+        fill = "Avg Score"
+      ) +
+      theme_minimal() +
+      theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+  plot(plot, main = "My Cached Plot")
+  dev.off()
+# }
+```
+
+```{r load-similarity-heatmap-plot, echo=FALSE, out.width="80%"}
+if (file.exists("html/similarity_heatmap.png")) knitr::include_graphics("html/similarity_heatmap.png")
+```
+
+::: {.callout-tip collapse="true"}
+#### Como é criada a matriz de similaridade?
+
+Uma forma intuitiva de entender a matriz de similaridade é imaginar uma rede de empresas, em que cada empresa está conectada às demais por um grau de afinidade.
+
+Enquanto classificações tradicionais agrupam empresas apenas por setor econômico (por exemplo, bancos, varejo ou energia), a matriz de similaridade considera um conjunto muito mais amplo de informações, como características descritivas, financeiras, operacionais, fatores de risco, métricas de mercado e outros atributos utilizados pelo modelo.
+
+O resultado é uma matriz em que cada elemento representa a intensidade da similaridade entre duas empresas:
+
+- valores altos indicam empresas muito semelhantes;
+- valores baixos indicam empresas com poucas características em comum.
+
+Essa abordagem permite construir agrupamentos de forma **dinâmica**, isto é, os grupos surgem a partir dos dados observados e podem evoluir conforme as empresas mudam ao longo do tempo.
+
+Na prática, isso oferece diversas vantagens:
+
+- identifica pares de empresas comparáveis mesmo quando pertencem a setores diferentes;
+- encontra relações que não aparecem em classificações econômicas tradicionais;
+- produz grupos mais homogêneos para análises quantitativas;
+- melhora processos como seleção de comparáveis, construção de fatores, análise de risco e diversificação de portfólio.
+
+Dessa forma, a ontologia deixa de representar apenas uma estrutura hierárquica de conhecimento e passa a incorporar também a **intensidade das relações** entre os participantes, enriquecendo a representação do universo de ativos.
+:::
+
+::: callout-note
+Até esse ponto não tocamos nas variáveis preço, receita ou lucro. Ao longo deste tutorial utilizaremos esses conjuntos de empresas para explorar os dados da ontologia e entender como as relações entre empresas e setores podem auxiliar em análises financeiras.
+:::
+
+## Features: descrevendo empresas por meio de dados
+
+Até este ponto, vimos como a ontologia organiza o universo de ativos e como a matriz de similaridade permite identificar relações entre empresas e setores. O próximo passo é compreender como cada empresa é representada dentro de um modelo Quantamental.
+
+Uma **feature** é uma característica mensurável de uma empresa. Ela representa um aspecto específico do negócio, do mercado ou do comportamento do ativo e é utilizada como informação de entrada para análises quantitativas. Exemplos de features incluem indicadores fundamentalistas, como Preço/Lucro (P/L), Retorno sobre Patrimônio (ROE) e Margem EBITDA, além de métricas de mercado, como volatilidade, liquidez, retorno acumulado e beta.
+
+Individualmente, cada feature oferece uma perspectiva limitada sobre uma empresa. Em conjunto, porém, elas formam uma representação multidimensional do ativo, permitindo que empresas sejam comparadas, agrupadas e avaliadas de forma objetiva. Em vez de responder se uma empresa é "boa" ou "ruim" com base em um único indicador, um modelo Quantamental considera simultaneamente centenas de features para construir uma visão mais abrangente de suas características.
+
+A tabela a seguir ilustra, de forma simplificada, como diferentes empresas podem ser descritas por um conjunto de features.
+
+```{r}
+#| echo: false
+library(gt)
+df <- quantamental$assets(c(ontology$get_b3_index()$IBOV_60$asset))
+company_names_df <- data.frame(
+  asset=c("PETR4","ITUB4","VALE3","BPAC11","WEGE3","BBDC4","AXIA3","BBAS3","SBSP3","B3SA3"),
+  company_name=c("Petrobras","Itaú","Vale","BTG","Weg","Bradesco","Axia","BB","Sabesp","B3")
+)
+df |> 
+  filter(!asset %in% c("PETR3","ITSA4")) |> 
+  filter(date>=max(date)-365) |> 
+  group_by(asset) |> mutate(var_12M=(last(close)/first(close))-1) |> filter(date==max(date)) |> ungroup() |> 
+  mutate(marketcap=marketcap*1000) |> 
+  left_join(company_names_df |> select(asset,company_name),by="asset") |> 
+  select(company_name,asset,Report_Date,marketcap,pe,roe,var_12M) |> 
+  arrange(desc(marketcap)) |> 
+  gt() |> 
+  cols_label(
+    company_name = "Empresa",
+    asset = "Ticker",
+    Report_Date = "Last Report",
+    marketcap = "Marketcap",
+    pe = "P/L",
+    roe = "ROE",
+    var_12M = "Var.12M"
+  ) |>
+  fmt_date(Report_Date,date_style="MMMd") |>
+  fmt_number(marketcap,decimals=1,suffixing=T) |> 
+  fmt_number(pe,decimals=2) |>
+  fmt_percent(c(roe,var_12M),decimals=1) |>
+  # opt_row_striping() |>
+  # tab_source_note(
+    # "Fonte: Data Lake Quantamental"
+  # ) |>
+  tab_header(
+    title = "Features disponíveis pelo modelo",
+    subtitle = "Cada linha representa uma empresa e cada coluna uma feature."
+  )
+```
+
+## Famílias de variáveis
+
+Até este ponto, vimos que cada empresa pode ser representada por centenas de *features*. Entretanto, essas variáveis não constituem apenas uma lista de indicadores independentes. Cada uma delas descreve um aspecto específico da empresa e, por esse motivo, podem ser organizadas em **famílias de variáveis**.
+
+Essa organização facilita a interpretação dos dados e introduz, de forma natural, os principais conceitos da análise fundamentalista. Em vez de memorizar indicadores isolados, o investidor passa a compreender qual dimensão da empresa cada variável procura representar.
+
+As principais famílias utilizadas no projeto são apresentadas a seguir.
+
+```{r feature-families-table, echo=FALSE, message=FALSE, warning=FALSE}
+library(tibble)
+library(gt)
+
+tribble(
+  ~Valuation,      ~Quality,          ~Growth,             ~Momentum,         ~Risk,          ~Liquidity,
+  "P/L",           "ROE",             "Revenue Growth",    "12M Return",      "Beta",         "Market Cap",
+  "EV/EBITDA",     "ROIC",            "EPS Growth",        "6M Return",       "Volatility",   "Daily Volume",
+  "P/Book",        "EBITDA Margin",   "EBITDA Growth",     "Relative Strength","Drawdown",    "Turnover",
+  "FCF Yield",     "Gross Margin",    "Cash Flow Growth",  "Price Trend",     "Tracking Error","Free Float"
+) |>
+gt() |>
+tab_header(
+  title = md("**Principais famílias de features**"),
+  subtitle = "Exemplos de indicadores disponíveis no modelo."
+) |>
+tab_spanner(
+  label = "Fundamental Analysis",
+  columns = c(Valuation, Quality, Growth)
+) |>
+tab_spanner(
+  label = "Market Analysis",
+  columns = c(Momentum, Risk, Liquidity)
+) |>
+opt_row_striping()
+```
+
+::: {.callout-tip collapse="true"}
+#### Explicação fundamentalista
+
+De forma simplificada, cada família responde a uma pergunta diferente:
+
+- A empresa está cara ou barata?
+- A empresa é rentável?
+- A empresa está crescendo?
+- O mercado tem favorecido suas ações?
+- Qual o risco do investimento?
+- É fácil negociar esse ativo?
+
+Embora cada indicador forneça apenas uma perspectiva sobre a empresa, a combinação de features pertencentes a diferentes famílias produz uma descrição muito mais rica do ativo. Por exemplo, uma empresa pode apresentar um múltiplo de valuation atrativo, mas possuir baixa rentabilidade ou elevado risco. Da mesma forma, empresas com excelentes fundamentos podem apresentar desempenho inferior no curto prazo caso o mercado esteja precificando expectativas desfavoráveis.
+
+Essa visão multidimensional é um dos pilares da abordagem Quantamental. Em vez de basear uma decisão em um único indicador, os modelos combinam informações provenientes de diferentes famílias de variáveis para construir uma representação mais completa e objetiva de cada empresa.
+
+Nos próximos capítulos exploraremos essas famílias em maior profundidade, começando pelos indicadores de **Valuation**, utilizando o **Preço/Lucro (P/L)** como exemplo para apresentar conceitos fundamentais da análise Quantamental.
+:::
 
 ## Próximos passos
 
 Referências para outros arquivos scripts .R, .Rmd ou tutoriais
+
+- Feature Engineering
 
 ## Referências
 
@@ -141,7 +302,6 @@ Como criar um arquivo Rmd R Markdown? [link](https://rmarkdown.rstudio.com/)
 TESTING AREA
 
 ::
-
 
 ```{r generate-plot, echo=FALSE, include=FALSE}
 # Create and save plot if file doesn't exist
