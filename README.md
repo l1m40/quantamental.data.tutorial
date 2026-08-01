@@ -1,12 +1,12 @@
-# Quantamental Data Lake Tutorial
+
 
 > 📖 **Documentação online:** https://l1m40.github.io/quantamental.data.tutorial/
 
-Bem-vindo ao **Quantamental Data Lake Tutorial**.
+# Quantamental Data Lake Tutorial
 
 Este repositório reúne tutoriais, exemplos e documentação sobre a utilização do **Quantamental Data Lake**, apresentando os principais conceitos utilizados na construção de modelos quantitativos para análise de empresas e ativos financeiros.
 
-O objetivo é oferecer um material introdutório para analistas, pesquisadores e desenvolvedores que desejam compreender como os dados do Data Lake são organizados e utilizados em modelos Quantamentais.
+O objetivo é oferecer um material introdutório para analistas, pesquisadores e desenvolvedores que desejam compreender como os dados do Data Lake são organizados e utilizados em modelos estatísticos.
 
 ---
 
@@ -41,7 +41,7 @@ Novos capítulos serão adicionados continuamente.
 ```text
 .
 ├── README.md
-├── index.Rmd              # Tutorial principal
+├── docs/index.Rmd         # Tutorial principal
 ├── docs/                  # HTML publicado pelo GitHub Pages
 ├── figures/               # Imagens do tutorial
 ├── scripts/               # Scripts auxiliares
@@ -60,9 +60,9 @@ Este material destina-se a:
 - Cientistas de Dados
 - Pesquisadores
 - Estudantes
-- Desenvolvedores que utilizam o Quantamental Data Lake
+- Desenvolvedores que utilizam o pacote quantamental.data
 
-Não é necessário possuir experiência prévia em modelos Quantamentais. Os conceitos são apresentados de maneira gradual e ilustrados com exemplos práticos.
+Não é necessário possuir experiência prévia em modelos quantitativos ou fundamentalistas. Os conceitos são apresentados de maneira gradual e ilustrados com exemplos práticos.
 
 ---
 
@@ -91,35 +91,12 @@ Ao final da leitura, espera-se que o usuário seja capaz de:
 - utilizar os dados do Data Lake em análises próprias;
 - compreender os fundamentos da abordagem Quantamental.
 
----
-
-## Publicação
-
-Toda a documentação é escrita em **R Markdown** e renderizada para HTML.
-
-O site é publicado automaticamente através do **GitHub Pages**, permitindo a navegação pela documentação diretamente no navegador.
-
----
-
 ## Contribuições
 
 Sugestões de melhorias, correções e novos exemplos são sempre bem-vindos.
 
 Caso encontre algum problema ou tenha uma ideia para ampliar a documentação, fique à vontade para abrir uma **Issue** ou enviar um **Pull Request**.
 
----
-
-## Licença
-
-Defina aqui a licença adotada pelo projeto.
-
-Por exemplo:
-
-- MIT License
-- Apache 2.0
-- BSD 3-Clause
-
----
 
 # Comece pelo tutorial
 
