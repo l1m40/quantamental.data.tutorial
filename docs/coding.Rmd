@@ -1,5 +1,5 @@
 ---
-title: "As Engrenagens"
+# title: "As Engrenagens"
 format:
   html:
     toc: true
@@ -14,6 +14,50 @@ execute:
   warning: false
   message: false
 ---
+
+
+<style>
+
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0 30px 0;
+}
+
+.page-header h2 {
+    margin: 0;
+    line-height: 1.1;
+}
+
+.back-button {
+    font-size: 2rem;
+    text-decoration: none;
+    color: inherit;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.back-button:hover {
+    color: #0d6efd;
+    transform: translateX(-2px);
+}
+
+</style>
+
+<div class="page-header">
+
+<a class="back-button" href="index.html" title="Back to Home">
+    &#10094;
+</a>
+
+<h2>As Engrenagens</h2>
+
+</div>
+
 
 ::: {.callout-note collapse="true"}
 #### Ferramentas

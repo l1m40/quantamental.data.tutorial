@@ -1,0 +1,88 @@
+---
+# title: "top buttons template"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: show
+    code-summary: "Ver código"
+    theme: cosmo
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+
+<style>
+
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 16px;
+  max-width: 1400px;
+  margin: 30px auto;
+}
+
+.dashboard img {
+    background: #fafafa;
+    border: none;
+    width: 50px;      
+    height: 50px;
+    object-fit: contain;
+}
+
+.dashboard a {
+    text-align: center;
+    text-decoration: none;
+}
+
+</style>
+
+<div class="dashboard">
+
+<a href="#time_series">
+<img src="html/icon_time_series.png">
+</a>
+
+<a href="#similarity">
+<img src="html/icon_similarity.png">
+</a>
+
+<a href="#generic">
+<img src="html/icon_generic.png">
+</a>
+
+<a href="#generic">
+<img src="html/icon_generic.png">
+</a>
+
+<a href="#generic">
+<img src="html/icon_generic.png">
+</a>
+
+<a href="#generic">
+<img src="html/icon_generic.png">
+</a>
+
+<a href="#generic">
+<img src="html/icon_generic.png">
+</a>
+
+<a href="#rocket">
+<img src="html/icon_rocket.png">
+</a>
+
+</div>
+
+#### top buttons template
+
+
+# Sales {#sales}
+
+...
+
+# Finance {#finance}
+
+...

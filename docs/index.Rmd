@@ -1,5 +1,5 @@
 ---
-title: "Quantamental"
+# title: "Quantamental"
 format:
   html:
     toc: true
@@ -12,6 +12,54 @@ execute:
   warning: false
   message: false
 ---
+
+```{=html}
+<style>
+
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 16px;
+  max-width: 1400px;
+  margin: 30px auto;
+}
+
+.dashboard img {
+    background: #fafafa;
+    border: none;
+    width: 50px;      
+    height: 50px;
+    object-fit: contain;
+}
+
+.dashboard a {
+    text-align: center;
+    text-decoration: none;
+}
+
+</style>
+```
+
+::: dashboard
+<a href="#time_series"> <img src="html/icon_time_series.png"/> </a>
+
+<a href="#similarity"> <img src="html/icon_similarity.png"/> </a>
+
+<a href="#generic"> <img src="html/icon_generic.png"/> </a>
+
+<a href="#generic"> <img src="html/icon_generic.png"/> </a>
+
+<a href="#generic"> <img src="html/icon_generic.png"/> </a>
+
+<a href="#generic"> <img src="html/icon_generic.png"/> </a>
+
+<a href="#generic"> <img src="html/icon_generic.png"/> </a>
+
+<a href="coding.html"> <img src="html/icon_rocket.png"/> </a>
+:::
+
+# Quantamental
 
 ::: {.callout-note collapse="true"}
 ## Pré-requisitos
@@ -395,32 +443,38 @@ objetiva de cada empresa.
 
 Com a ontologia enriquecida por features (em séries temporais
 principalmente), você pode ir além dos exemplos básicos e explorar
-análises mais complexas: \* **Séries Temporais:** Integre dados para
-visualizar a evolução dos ativos em comparação direta com seus pares
-mais similares identificados na ontologia. Utilize o cálculo de
-**medianas** para criar índices sintéticos de grupos de afinidade,
-servindo como um *benchmark* que mitiga o efeito de *outliers* e permite
-identificar desvios significativos de performance ou *valuation* dentro
-de um mesmo cluster ao longo do tempo.
+análises mais complexas:
+
+- **Séries Temporais:** Integre dados para visualizar a evolução dos
+  ativos em comparação direta com seus pares mais similares
+  identificados na ontologia. Utilize o cálculo de **medianas** para
+  criar índices sintéticos de grupos de afinidade, servindo como um
+  *benchmark* que mitiga o efeito de *outliers* e permite identificar
+  desvios significativos de performance ou *valuation* dentro de um
+  mesmo cluster ao longo do tempo.
 
 - **Estudo de Caso de Similaridade:** Escolha um setor específico (ex:
   "Bancos") e analise a matriz de similaridade para identificar empresas
   com características inesperadamente semelhantes ou diferentes. Compare
   os resultados com a classificação setorial tradicional.
+
 - **Feature Engineering:** Utilize as "famílias de variáveis" para
   construir fatores de investimento (ex: um fator de valor combinando
   P/L e FCF Yield) e teste sua performance histórica.
+
 - **Integração com Dados de Preço:** Combine a ontologia com dados
   históricos de preço para analisar o comportamento de portfólios
-  baseados em similaridade ou fatores. Aqui está a sugestão para o novo
+  baseados em similaridade ou fataores. Aqui está a sugestão para o novo
   item de **Próximos Passos**, focado em arbitragem estatística e
   modelos dinâmicos:
+
 - **Estratégias de Pares e Cointegração:** Utilize a matriz de
   similaridade para identificar ativos candidatos a estratégias de *Long
   & Short*. Aplique testes de **cointegração** para verificar relações
   de equilíbrio de longo prazo e utilize o Filtro de Kalman para estimar
   parâmetros dinâmicos, permitindo a execução de operações de arbitragem
   estatística.
+
 - **Visualização Avançada:** Explore outras formas de visualizar a
   matriz de similaridade e as relações entre empresas, como grafos de
   rede.
@@ -432,14 +486,6 @@ fundamentalista. Para aprofundar nos temas abordados, sugerimos as
 seguintes leituras:
 
 - Livros TBD
-
-- Como criar um arquivo Rmd R Markdown?
-  [link](https://rmarkdown.rstudio.com/)
-
-::: callout-caution
-Se você chegou até aqui, talvez queira ver as
-[engrenagens](coding.html) rodando. ⚙️
-:::
 
 ................. SAMPLE ...............
 
@@ -456,45 +502,20 @@ Se você chegou até aqui, talvez queira ver as
     manipulação de dados em R. [Link para a
     documentação](https://www.tidyverse.org/)
 
-## Rascunhos
+.................... SAMPLE ................
 
-Referências para outros arquivos scripts .R, .Rmd, tutoriais ou
-repositórios
+## 
 
 - Feature Engineering
 
 - Uso avançado com o pacote quantamental.data
 
-::: callout-note
-Este tutorial possui caráter exploratório e educacional, tendo como
-objetivo apresentar os principais conceitos por meio de exemplos simples
-e intuitivos. As implementações e fluxos de trabalho foram simplificados
-para facilitar o aprendizado e não representam, necessariamente, a forma
-mais eficiente ou completa de utilização do framework. Para uma
-abordagem mais avançada, incluindo funções especializadas, abstrações e
-recursos voltados ao desenvolvimento de aplicações, recomenda-se a
-utilização do pacote quantamental.data, disponível publicamente no
-GitHub.
+<!-- -->
+
+- Como criar um arquivo Rmd R Markdown?
+  [link](https://rmarkdown.rstudio.com/)
+
+::: callout-warning
+Se você chegou até aqui, talvez queira ver as [engrenagens](coding.html)
+rodando. ⚙️
 :::
-
-::
-
-TESTING AREA
-
-::
-
-```{r generate-plot, echo=FALSE, include=FALSE}
-# Create and save plot if file doesn't exist
-# if (file.exists("my_plot.png")) {
-  png("html/my_plot.png", width = 800, height = 600, res = 100)
-  
-  # Your plotting code here
-  plot(cars, main = "My Cached Plot")
-  
-  dev.off()
-# }
-```
-
-```{r load-plot, echo=FALSE, out.width="80%"}
-if (file.exists("html/my_plot.png")) knitr::include_graphics("html/my_plot.png")
-```

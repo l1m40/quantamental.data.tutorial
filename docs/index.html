@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantamental</title>
+<title>index</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -49,7 +49,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#participantes-do-projeto" id="toc-participantes-do-projeto" class="nav-link active" data-scroll-target="#participantes-do-projeto">Participantes do projeto</a></li>
+  <li><a href="#quantamental" id="toc-quantamental" class="nav-link active" data-scroll-target="#quantamental">Quantamental</a>
+  <ul class="collapse">
+  <li><a href="#participantes-do-projeto" id="toc-participantes-do-projeto" class="nav-link" data-scroll-target="#participantes-do-projeto">Participantes do projeto</a></li>
   <li><a href="#setores" id="toc-setores" class="nav-link" data-scroll-target="#setores">Setores</a></li>
   <li><a href="#índices-b3" id="toc-índices-b3" class="nav-link" data-scroll-target="#índices-b3">Índices B3</a></li>
   <li><a href="#similaridade" id="toc-similaridade" class="nav-link" data-scroll-target="#similaridade">Similaridade</a></li>
@@ -57,31 +59,53 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#famílias-de-variáveis" id="toc-famílias-de-variáveis" class="nav-link" data-scroll-target="#famílias-de-variáveis">Famílias de variáveis</a></li>
   <li><a href="#próximos-passos-aprofundando-na-análise" id="toc-próximos-passos-aprofundando-na-análise" class="nav-link" data-scroll-target="#próximos-passos-aprofundando-na-análise">Próximos Passos: Aprofundando na Análise</a></li>
   <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências">Referências</a></li>
-  <li><a href="#rascunhos" id="toc-rascunhos" class="nav-link" data-scroll-target="#rascunhos">Rascunhos</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  </ul></li>
   </ul>
 </nav>
 </div>
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Quantamental</h1>
+
+
+
+<style>
+
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 16px;
+  max-width: 1400px;
+  margin: 30px auto;
+}
+
+.dashboard img {
+    background: #fafafa;
+    border: none;
+    width: 50px;      
+    height: 50px;
+    object-fit: contain;
+}
+
+.dashboard a {
+    text-align: center;
+    text-decoration: none;
+}
+
+</style>
+<div class="dashboard">
+<p><a href="#time_series"> <img src="html/icon_time_series.png"> </a></p>
+<p><a href="#similarity"> <img src="html/icon_similarity.png"> </a></p>
+<p><a href="#generic"> <img src="html/icon_generic.png"> </a></p>
+<p><a href="#generic"> <img src="html/icon_generic.png"> </a></p>
+<p><a href="#generic"> <img src="html/icon_generic.png"> </a></p>
+<p><a href="#generic"> <img src="html/icon_generic.png"> </a></p>
+<p><a href="#generic"> <img src="html/icon_generic.png"> </a></p>
+<p><a href="coding.html"> <img src="html/icon_rocket.png"> </a></p>
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
+<section id="quantamental" class="level1">
+<h1>Quantamental</h1>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -168,7 +192,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <p>Os participantes correspondem aos ativos cadastrados, empresas que serão analisadas nesse estudo. Aqui abaixo segue uma lista de amostragem com 8 ativos.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "CASH3" "CSMG3" "BEEF3" "YDUQ3" "ALPA4" "CPLE3" "GGBR4" "QUAL3"</code></pre>
+<pre><code>[1] "MOVI3"  "ECOR3"  "POMO4"  "EVEN3"  "JBSS32" "HYPE3"  "MDIA3"  "SYNE3" </code></pre>
 </div>
 </div>
 </section>
@@ -281,23 +305,23 @@ Note
 <p>A tabela a seguir ilustra, de forma simplificada, como diferentes empresas podem ser descritas por um conjunto de features.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="srintzolks" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#srintzolks table {
+<div id="hueejhjosa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hueejhjosa table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#srintzolks thead, #srintzolks tbody, #srintzolks tfoot, #srintzolks tr, #srintzolks td, #srintzolks th {
+#hueejhjosa thead, #hueejhjosa tbody, #hueejhjosa tfoot, #hueejhjosa tr, #hueejhjosa td, #hueejhjosa th {
   border-style: none;
 }
 
-#srintzolks p {
+#hueejhjosa p {
   margin: 0;
   padding: 0;
 }
 
-#srintzolks .gt_table {
+#hueejhjosa .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -323,12 +347,12 @@ Note
   border-left-color: #D3D3D3;
 }
 
-#srintzolks .gt_caption {
+#hueejhjosa .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#srintzolks .gt_title {
+#hueejhjosa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -340,7 +364,7 @@ Note
   border-bottom-width: 0;
 }
 
-#srintzolks .gt_subtitle {
+#hueejhjosa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -352,7 +376,7 @@ Note
   border-top-width: 0;
 }
 
-#srintzolks .gt_heading {
+#hueejhjosa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -364,13 +388,13 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#srintzolks .gt_bottom_border {
+#hueejhjosa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#srintzolks .gt_col_headings {
+#hueejhjosa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -385,7 +409,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#srintzolks .gt_col_heading {
+#hueejhjosa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -405,7 +429,7 @@ Note
   overflow-x: hidden;
 }
 
-#srintzolks .gt_column_spanner_outer {
+#hueejhjosa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -417,15 +441,15 @@ Note
   padding-right: 4px;
 }
 
-#srintzolks .gt_column_spanner_outer:first-child {
+#hueejhjosa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#srintzolks .gt_column_spanner_outer:last-child {
+#hueejhjosa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#srintzolks .gt_column_spanner {
+#hueejhjosa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -437,11 +461,11 @@ Note
   width: 100%;
 }
 
-#srintzolks .gt_spanner_row {
+#hueejhjosa .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#srintzolks .gt_group_heading {
+#hueejhjosa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -467,7 +491,7 @@ Note
   text-align: left;
 }
 
-#srintzolks .gt_empty_group_heading {
+#hueejhjosa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -482,15 +506,15 @@ Note
   vertical-align: middle;
 }
 
-#srintzolks .gt_from_md > :first-child {
+#hueejhjosa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#srintzolks .gt_from_md > :last-child {
+#hueejhjosa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#srintzolks .gt_row {
+#hueejhjosa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -509,7 +533,7 @@ Note
   overflow-x: hidden;
 }
 
-#srintzolks .gt_stub {
+#hueejhjosa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -522,7 +546,7 @@ Note
   padding-right: 5px;
 }
 
-#srintzolks .gt_stub_row_group {
+#hueejhjosa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -536,15 +560,15 @@ Note
   vertical-align: top;
 }
 
-#srintzolks .gt_row_group_first td {
+#hueejhjosa .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#srintzolks .gt_row_group_first th {
+#hueejhjosa .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#srintzolks .gt_summary_row {
+#hueejhjosa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -554,16 +578,16 @@ Note
   padding-right: 5px;
 }
 
-#srintzolks .gt_first_summary_row {
+#hueejhjosa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#srintzolks .gt_first_summary_row.thick {
+#hueejhjosa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#srintzolks .gt_last_summary_row {
+#hueejhjosa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -573,7 +597,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#srintzolks .gt_grand_summary_row {
+#hueejhjosa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -583,7 +607,7 @@ Note
   padding-right: 5px;
 }
 
-#srintzolks .gt_first_grand_summary_row {
+#hueejhjosa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -593,7 +617,7 @@ Note
   border-top-color: #D3D3D3;
 }
 
-#srintzolks .gt_last_grand_summary_row_top {
+#hueejhjosa .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -603,11 +627,11 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#srintzolks .gt_striped {
+#hueejhjosa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#srintzolks .gt_table_body {
+#hueejhjosa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -616,7 +640,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#srintzolks .gt_footnotes {
+#hueejhjosa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -630,7 +654,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#srintzolks .gt_footnote {
+#hueejhjosa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -639,7 +663,7 @@ Note
   padding-right: 5px;
 }
 
-#srintzolks .gt_sourcenotes {
+#hueejhjosa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -653,7 +677,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#srintzolks .gt_sourcenote {
+#hueejhjosa .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -661,72 +685,72 @@ Note
   padding-right: 5px;
 }
 
-#srintzolks .gt_left {
+#hueejhjosa .gt_left {
   text-align: left;
 }
 
-#srintzolks .gt_center {
+#hueejhjosa .gt_center {
   text-align: center;
 }
 
-#srintzolks .gt_right {
+#hueejhjosa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#srintzolks .gt_font_normal {
+#hueejhjosa .gt_font_normal {
   font-weight: normal;
 }
 
-#srintzolks .gt_font_bold {
+#hueejhjosa .gt_font_bold {
   font-weight: bold;
 }
 
-#srintzolks .gt_font_italic {
+#hueejhjosa .gt_font_italic {
   font-style: italic;
 }
 
-#srintzolks .gt_super {
+#hueejhjosa .gt_super {
   font-size: 65%;
 }
 
-#srintzolks .gt_footnote_marks {
+#hueejhjosa .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#srintzolks .gt_asterisk {
+#hueejhjosa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#srintzolks .gt_indent_1 {
+#hueejhjosa .gt_indent_1 {
   text-indent: 5px;
 }
 
-#srintzolks .gt_indent_2 {
+#hueejhjosa .gt_indent_2 {
   text-indent: 10px;
 }
 
-#srintzolks .gt_indent_3 {
+#hueejhjosa .gt_indent_3 {
   text-indent: 15px;
 }
 
-#srintzolks .gt_indent_4 {
+#hueejhjosa .gt_indent_4 {
   text-indent: 20px;
 }
 
-#srintzolks .gt_indent_5 {
+#hueejhjosa .gt_indent_5 {
   text-indent: 25px;
 }
 
-#srintzolks .katex-display {
+#hueejhjosa .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#srintzolks div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hueejhjosa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -854,23 +878,23 @@ Note
 <p>As principais famílias utilizadas no projeto são apresentadas a seguir.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ozskujnwmt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ozskujnwmt table {
+<div id="cuntgfruwo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cuntgfruwo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ozskujnwmt thead, #ozskujnwmt tbody, #ozskujnwmt tfoot, #ozskujnwmt tr, #ozskujnwmt td, #ozskujnwmt th {
+#cuntgfruwo thead, #cuntgfruwo tbody, #cuntgfruwo tfoot, #cuntgfruwo tr, #cuntgfruwo td, #cuntgfruwo th {
   border-style: none;
 }
 
-#ozskujnwmt p {
+#cuntgfruwo p {
   margin: 0;
   padding: 0;
 }
 
-#ozskujnwmt .gt_table {
+#cuntgfruwo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -896,12 +920,12 @@ Note
   border-left-color: #D3D3D3;
 }
 
-#ozskujnwmt .gt_caption {
+#cuntgfruwo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ozskujnwmt .gt_title {
+#cuntgfruwo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -913,7 +937,7 @@ Note
   border-bottom-width: 0;
 }
 
-#ozskujnwmt .gt_subtitle {
+#cuntgfruwo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -925,7 +949,7 @@ Note
   border-top-width: 0;
 }
 
-#ozskujnwmt .gt_heading {
+#cuntgfruwo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -937,13 +961,13 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#ozskujnwmt .gt_bottom_border {
+#cuntgfruwo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ozskujnwmt .gt_col_headings {
+#cuntgfruwo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -958,7 +982,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#ozskujnwmt .gt_col_heading {
+#cuntgfruwo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -978,7 +1002,7 @@ Note
   overflow-x: hidden;
 }
 
-#ozskujnwmt .gt_column_spanner_outer {
+#cuntgfruwo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -990,15 +1014,15 @@ Note
   padding-right: 4px;
 }
 
-#ozskujnwmt .gt_column_spanner_outer:first-child {
+#cuntgfruwo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ozskujnwmt .gt_column_spanner_outer:last-child {
+#cuntgfruwo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ozskujnwmt .gt_column_spanner {
+#cuntgfruwo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1010,11 +1034,11 @@ Note
   width: 100%;
 }
 
-#ozskujnwmt .gt_spanner_row {
+#cuntgfruwo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ozskujnwmt .gt_group_heading {
+#cuntgfruwo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1040,7 +1064,7 @@ Note
   text-align: left;
 }
 
-#ozskujnwmt .gt_empty_group_heading {
+#cuntgfruwo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1055,15 +1079,15 @@ Note
   vertical-align: middle;
 }
 
-#ozskujnwmt .gt_from_md > :first-child {
+#cuntgfruwo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ozskujnwmt .gt_from_md > :last-child {
+#cuntgfruwo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ozskujnwmt .gt_row {
+#cuntgfruwo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1082,7 +1106,7 @@ Note
   overflow-x: hidden;
 }
 
-#ozskujnwmt .gt_stub {
+#cuntgfruwo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1095,7 +1119,7 @@ Note
   padding-right: 5px;
 }
 
-#ozskujnwmt .gt_stub_row_group {
+#cuntgfruwo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1109,15 +1133,15 @@ Note
   vertical-align: top;
 }
 
-#ozskujnwmt .gt_row_group_first td {
+#cuntgfruwo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ozskujnwmt .gt_row_group_first th {
+#cuntgfruwo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ozskujnwmt .gt_summary_row {
+#cuntgfruwo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1127,16 +1151,16 @@ Note
   padding-right: 5px;
 }
 
-#ozskujnwmt .gt_first_summary_row {
+#cuntgfruwo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ozskujnwmt .gt_first_summary_row.thick {
+#cuntgfruwo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ozskujnwmt .gt_last_summary_row {
+#cuntgfruwo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1146,7 +1170,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#ozskujnwmt .gt_grand_summary_row {
+#cuntgfruwo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1156,7 +1180,7 @@ Note
   padding-right: 5px;
 }
 
-#ozskujnwmt .gt_first_grand_summary_row {
+#cuntgfruwo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1166,7 +1190,7 @@ Note
   border-top-color: #D3D3D3;
 }
 
-#ozskujnwmt .gt_last_grand_summary_row_top {
+#cuntgfruwo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1176,11 +1200,11 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#ozskujnwmt .gt_striped {
+#cuntgfruwo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ozskujnwmt .gt_table_body {
+#cuntgfruwo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1189,7 +1213,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#ozskujnwmt .gt_footnotes {
+#cuntgfruwo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1203,7 +1227,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#ozskujnwmt .gt_footnote {
+#cuntgfruwo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1212,7 +1236,7 @@ Note
   padding-right: 5px;
 }
 
-#ozskujnwmt .gt_sourcenotes {
+#cuntgfruwo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1226,7 +1250,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#ozskujnwmt .gt_sourcenote {
+#cuntgfruwo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1234,72 +1258,72 @@ Note
   padding-right: 5px;
 }
 
-#ozskujnwmt .gt_left {
+#cuntgfruwo .gt_left {
   text-align: left;
 }
 
-#ozskujnwmt .gt_center {
+#cuntgfruwo .gt_center {
   text-align: center;
 }
 
-#ozskujnwmt .gt_right {
+#cuntgfruwo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ozskujnwmt .gt_font_normal {
+#cuntgfruwo .gt_font_normal {
   font-weight: normal;
 }
 
-#ozskujnwmt .gt_font_bold {
+#cuntgfruwo .gt_font_bold {
   font-weight: bold;
 }
 
-#ozskujnwmt .gt_font_italic {
+#cuntgfruwo .gt_font_italic {
   font-style: italic;
 }
 
-#ozskujnwmt .gt_super {
+#cuntgfruwo .gt_super {
   font-size: 65%;
 }
 
-#ozskujnwmt .gt_footnote_marks {
+#cuntgfruwo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ozskujnwmt .gt_asterisk {
+#cuntgfruwo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ozskujnwmt .gt_indent_1 {
+#cuntgfruwo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ozskujnwmt .gt_indent_2 {
+#cuntgfruwo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ozskujnwmt .gt_indent_3 {
+#cuntgfruwo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ozskujnwmt .gt_indent_4 {
+#cuntgfruwo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ozskujnwmt .gt_indent_5 {
+#cuntgfruwo .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ozskujnwmt .katex-display {
+#cuntgfruwo .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ozskujnwmt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#cuntgfruwo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1405,35 +1429,22 @@ Market Analysis
 </section>
 <section id="próximos-passos-aprofundando-na-análise" class="level2">
 <h2 class="anchored" data-anchor-id="próximos-passos-aprofundando-na-análise">Próximos Passos: Aprofundando na Análise</h2>
-<p>Com a ontologia enriquecida por features (em séries temporais principalmente), você pode ir além dos exemplos básicos e explorar análises mais complexas: * <strong>Séries Temporais:</strong> Integre dados para visualizar a evolução dos ativos em comparação direta com seus pares mais similares identificados na ontologia. Utilize o cálculo de <strong>medianas</strong> para criar índices sintéticos de grupos de afinidade, servindo como um <em>benchmark</em> que mitiga o efeito de <em>outliers</em> e permite identificar desvios significativos de performance ou <em>valuation</em> dentro de um mesmo cluster ao longo do tempo.</p>
+<p>Com a ontologia enriquecida por features (em séries temporais principalmente), você pode ir além dos exemplos básicos e explorar análises mais complexas:</p>
 <ul>
-<li><strong>Estudo de Caso de Similaridade:</strong> Escolha um setor específico (ex: “Bancos”) e analise a matriz de similaridade para identificar empresas com características inesperadamente semelhantes ou diferentes. Compare os resultados com a classificação setorial tradicional.</li>
-<li><strong>Feature Engineering:</strong> Utilize as “famílias de variáveis” para construir fatores de investimento (ex: um fator de valor combinando P/L e FCF Yield) e teste sua performance histórica.</li>
-<li><strong>Integração com Dados de Preço:</strong> Combine a ontologia com dados históricos de preço para analisar o comportamento de portfólios baseados em similaridade ou fatores. Aqui está a sugestão para o novo item de <strong>Próximos Passos</strong>, focado em arbitragem estatística e modelos dinâmicos:</li>
-<li><strong>Estratégias de Pares e Cointegração:</strong> Utilize a matriz de similaridade para identificar ativos candidatos a estratégias de <em>Long &amp; Short</em>. Aplique testes de <strong>cointegração</strong> para verificar relações de equilíbrio de longo prazo e utilize o Filtro de Kalman para estimar parâmetros dinâmicos, permitindo a execução de operações de arbitragem estatística.</li>
-<li><strong>Visualização Avançada:</strong> Explore outras formas de visualizar a matriz de similaridade e as relações entre empresas, como grafos de rede.</li>
+<li><p><strong>Séries Temporais:</strong> Integre dados para visualizar a evolução dos ativos em comparação direta com seus pares mais similares identificados na ontologia. Utilize o cálculo de <strong>medianas</strong> para criar índices sintéticos de grupos de afinidade, servindo como um <em>benchmark</em> que mitiga o efeito de <em>outliers</em> e permite identificar desvios significativos de performance ou <em>valuation</em> dentro de um mesmo cluster ao longo do tempo.</p></li>
+<li><p><strong>Estudo de Caso de Similaridade:</strong> Escolha um setor específico (ex: “Bancos”) e analise a matriz de similaridade para identificar empresas com características inesperadamente semelhantes ou diferentes. Compare os resultados com a classificação setorial tradicional.</p></li>
+<li><p><strong>Feature Engineering:</strong> Utilize as “famílias de variáveis” para construir fatores de investimento (ex: um fator de valor combinando P/L e FCF Yield) e teste sua performance histórica.</p></li>
+<li><p><strong>Integração com Dados de Preço:</strong> Combine a ontologia com dados históricos de preço para analisar o comportamento de portfólios baseados em similaridade ou fataores. Aqui está a sugestão para o novo item de <strong>Próximos Passos</strong>, focado em arbitragem estatística e modelos dinâmicos:</p></li>
+<li><p><strong>Estratégias de Pares e Cointegração:</strong> Utilize a matriz de similaridade para identificar ativos candidatos a estratégias de <em>Long &amp; Short</em>. Aplique testes de <strong>cointegração</strong> para verificar relações de equilíbrio de longo prazo e utilize o Filtro de Kalman para estimar parâmetros dinâmicos, permitindo a execução de operações de arbitragem estatística.</p></li>
+<li><p><strong>Visualização Avançada:</strong> Explore outras formas de visualizar a matriz de similaridade e as relações entre empresas, como grafos de rede.</p></li>
 </ul>
 </section>
 <section id="referências" class="level2">
 <h2 class="anchored" data-anchor-id="referências">Referências</h2>
 <p>Este tutorial se baseia em conceitos de finanças quantitativas e análise fundamentalista. Para aprofundar nos temas abordados, sugerimos as seguintes leituras:</p>
 <ul>
-<li><p>Livros TBD</p></li>
-<li><p>Como criar um arquivo Rmd R Markdown? <a href="https://rmarkdown.rstudio.com/">link</a></p></li>
+<li>Livros TBD</li>
 </ul>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Caution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Se você chegou até aqui, talvez queira ver as <a href="coding.html">engrenagens</a> rodando. ⚙️</p>
-</div>
-</div>
 <p>…………….. SAMPLE ……………</p>
 <ol type="1">
 <li><strong>Fama, E. F., &amp; French, K. R. (1993). Common risk factors in the returns on stocks and bonds.</strong> <em>Journal of Financial Economics, 33</em>(1), 3-56. <a href="https://www.sciencedirect.com/science/article/abs/pii/0304405X93900235">Link para o artigo</a></li>
@@ -1441,39 +1452,32 @@ Caution
 <li><strong>Hadley Wickham (2017). <em>R for Data Science</em>.</strong> O’Reilly Media. <a href="https://r4ds.had.co.nz/">Link para o livro online</a></li>
 <li><strong>Documentação Oficial do Tidyverse:</strong> Para detalhes sobre a manipulação de dados em R. <a href="https://www.tidyverse.org/">Link para a documentação</a></li>
 </ol>
+<p>……………….. SAMPLE …………….</p>
 </section>
-<section id="rascunhos" class="level2">
-<h2 class="anchored" data-anchor-id="rascunhos">Rascunhos</h2>
-<p>Referências para outros arquivos scripts .R, .Rmd, tutoriais ou repositórios</p>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
 <ul>
 <li><p>Feature Engineering</p></li>
 <li><p>Uso avançado com o pacote quantamental.data</p></li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled">
+<!-- -->
+<ul>
+<li>Como criar um arquivo Rmd R Markdown? <a href="https://rmarkdown.rstudio.com/">link</a></li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Este tutorial possui caráter exploratório e educacional, tendo como objetivo apresentar os principais conceitos por meio de exemplos simples e intuitivos. As implementações e fluxos de trabalho foram simplificados para facilitar o aprendizado e não representam, necessariamente, a forma mais eficiente ou completa de utilização do framework. Para uma abordagem mais avançada, incluindo funções especializadas, abstrações e recursos voltados ao desenvolvimento de aplicações, recomenda-se a utilização do pacote quantamental.data, disponível publicamente no GitHub.</p>
+<p>Se você chegou até aqui, talvez queira ver as <a href="coding.html">engrenagens</a> rodando. ⚙️</p>
 </div>
 </div>
-<p>::</p>
-<p>TESTING AREA</p>
-<p>::</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="html/my_plot.png" class="img-fluid figure-img" style="width:80.0%"></p>
-</figure>
-</div>
-</div>
-</div>
+</section>
 </section>
 
 </main>
