@@ -504,8 +504,6 @@ seguintes leituras:
 
 .................... SAMPLE ................
 
-## 
-
 - Feature Engineering
 
 - Uso avançado com o pacote quantamental.data

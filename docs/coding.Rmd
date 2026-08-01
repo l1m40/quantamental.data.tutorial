@@ -8,7 +8,7 @@ format:
     code-summary: "code"
     theme: 
       light: cosmo # litera
-      dark: slate
+      dark: slate  #
 execute:
   echo: true
   warning: false
