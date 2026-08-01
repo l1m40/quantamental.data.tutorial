@@ -69,32 +69,27 @@ ul.task-list li input[type="checkbox"] {
 
 
 <style>
-
-
-.dashboard {
+.icon_menu {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   gap: 16px;
   max-width: 1400px;
   margin: 30px auto;
 }
-
-.dashboard img {
+.icon_menu img {
     background: #fafafa;
     border: none;
     width: 50px;      
     height: 50px;
     object-fit: contain;
 }
-
-.dashboard a {
+.icon_menu a {
     text-align: center;
     text-decoration: none;
 }
-
 </style>
-<div class="dashboard">
-<p><a href="#time_series"> <img src="html/icon_time_series.png"> </a></p>
+<div class="icon_menu">
+<p><a href="time_series.html"> <img src="html/icon_time_series.png"> </a></p>
 <p><a href="#similarity"> <img src="html/icon_similarity.png"> </a></p>
 <p><a href="#generic"> <img src="html/icon_generic.png"> </a></p>
 <p><a href="#generic"> <img src="html/icon_generic.png"> </a></p>
@@ -136,8 +131,10 @@ ul.task-list li input[type="checkbox"] {
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><em>Quanta.mental</em> <br></p>
-<p>- <strong>Quantitativo:</strong> refere-se à análise quantitativa — modelos matemáticos, algoritmos, estatística e processamento de dados.</p>
-<p>- <strong>Fundamental:</strong> refere-se à análise fundamentalista tradicional — avaliação de balanços patrimoniais, saúde do negócio, governança e contexto de mercado.</p>
+<ul>
+<li><p><strong>Quantitativo:</strong> refere-se à análise quantitativa — modelos matemáticos, algoritmos, estatística e processamento de dados.</p></li>
+<li><p><strong>Fundamental:</strong> refere-se à análise fundamentalista tradicional — avaliação de balanços patrimoniais, saúde do negócio, governança e contexto de mercado.</p></li>
+</ul>
 <section id="origem-e-contexto-histórico" class="level3">
 <h3 class="anchored" data-anchor-id="origem-e-contexto-histórico">Origem e Contexto Histórico</h3>
 <p>A palavra começou a ganhar forte tração em Wall Street por volta de 2015–2017, em resposta a uma mudança estrutural no mercado financeiro global:</p>
@@ -173,6 +170,7 @@ ul.task-list li input[type="checkbox"] {
 <li>empresas do mesmo setor tendem a possuir características semelhantes.</li>
 </ul>
 <p>Essa organização facilita análises exploratórias, construção de modelos quantitativos e geração de insights para investimento.</p>
+<p>Carregando os objetos para gerar os dados dessa página…</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>ontology healthcheck validation...
@@ -188,10 +186,10 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 </div>
 <section id="participantes-do-projeto" class="level2">
 <h2 class="anchored" data-anchor-id="participantes-do-projeto">Participantes do projeto</h2>
-<p>Os participantes correspondem aos ativos cadastrados, empresas que serão analisadas nesse estudo. Aqui abaixo segue uma lista de amostragem com 8 ativos.</p>
+<p>Os participantes correspondem aos ativos cadastrados, empresas que serão analisadas nesse estudo. Aqui abaixo segue uma lista de amostragem com 5 ativos.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "MGLU3"  "TFCO4"  "TAEE11" "BPAC11" "USIM5"  "LWSA3"  "ECOR3"  "ROXO34"</code></pre>
+<pre><code>[1] "MRVE3" "CEAB3" "CPLE3" "ABEV3" "PCAR3"</code></pre>
 </div>
 </div>
 </section>
@@ -304,23 +302,23 @@ Note
 <p>A tabela a seguir ilustra, de forma simplificada, como diferentes empresas podem ser descritas por um conjunto de features.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="apwkxzxqwz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#apwkxzxqwz table {
+<div id="dvbltquqpf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dvbltquqpf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#apwkxzxqwz thead, #apwkxzxqwz tbody, #apwkxzxqwz tfoot, #apwkxzxqwz tr, #apwkxzxqwz td, #apwkxzxqwz th {
+#dvbltquqpf thead, #dvbltquqpf tbody, #dvbltquqpf tfoot, #dvbltquqpf tr, #dvbltquqpf td, #dvbltquqpf th {
   border-style: none;
 }
 
-#apwkxzxqwz p {
+#dvbltquqpf p {
   margin: 0;
   padding: 0;
 }
 
-#apwkxzxqwz .gt_table {
+#dvbltquqpf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -346,12 +344,12 @@ Note
   border-left-color: #D3D3D3;
 }
 
-#apwkxzxqwz .gt_caption {
+#dvbltquqpf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#apwkxzxqwz .gt_title {
+#dvbltquqpf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -363,7 +361,7 @@ Note
   border-bottom-width: 0;
 }
 
-#apwkxzxqwz .gt_subtitle {
+#dvbltquqpf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -375,7 +373,7 @@ Note
   border-top-width: 0;
 }
 
-#apwkxzxqwz .gt_heading {
+#dvbltquqpf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -387,13 +385,13 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#apwkxzxqwz .gt_bottom_border {
+#dvbltquqpf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#apwkxzxqwz .gt_col_headings {
+#dvbltquqpf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -408,7 +406,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#apwkxzxqwz .gt_col_heading {
+#dvbltquqpf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -428,7 +426,7 @@ Note
   overflow-x: hidden;
 }
 
-#apwkxzxqwz .gt_column_spanner_outer {
+#dvbltquqpf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -440,15 +438,15 @@ Note
   padding-right: 4px;
 }
 
-#apwkxzxqwz .gt_column_spanner_outer:first-child {
+#dvbltquqpf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#apwkxzxqwz .gt_column_spanner_outer:last-child {
+#dvbltquqpf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#apwkxzxqwz .gt_column_spanner {
+#dvbltquqpf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -460,11 +458,11 @@ Note
   width: 100%;
 }
 
-#apwkxzxqwz .gt_spanner_row {
+#dvbltquqpf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#apwkxzxqwz .gt_group_heading {
+#dvbltquqpf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -490,7 +488,7 @@ Note
   text-align: left;
 }
 
-#apwkxzxqwz .gt_empty_group_heading {
+#dvbltquqpf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -505,15 +503,15 @@ Note
   vertical-align: middle;
 }
 
-#apwkxzxqwz .gt_from_md > :first-child {
+#dvbltquqpf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#apwkxzxqwz .gt_from_md > :last-child {
+#dvbltquqpf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#apwkxzxqwz .gt_row {
+#dvbltquqpf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -532,7 +530,7 @@ Note
   overflow-x: hidden;
 }
 
-#apwkxzxqwz .gt_stub {
+#dvbltquqpf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -545,7 +543,7 @@ Note
   padding-right: 5px;
 }
 
-#apwkxzxqwz .gt_stub_row_group {
+#dvbltquqpf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -559,15 +557,15 @@ Note
   vertical-align: top;
 }
 
-#apwkxzxqwz .gt_row_group_first td {
+#dvbltquqpf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#apwkxzxqwz .gt_row_group_first th {
+#dvbltquqpf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#apwkxzxqwz .gt_summary_row {
+#dvbltquqpf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -577,16 +575,16 @@ Note
   padding-right: 5px;
 }
 
-#apwkxzxqwz .gt_first_summary_row {
+#dvbltquqpf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#apwkxzxqwz .gt_first_summary_row.thick {
+#dvbltquqpf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#apwkxzxqwz .gt_last_summary_row {
+#dvbltquqpf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -596,7 +594,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#apwkxzxqwz .gt_grand_summary_row {
+#dvbltquqpf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -606,7 +604,7 @@ Note
   padding-right: 5px;
 }
 
-#apwkxzxqwz .gt_first_grand_summary_row {
+#dvbltquqpf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -616,7 +614,7 @@ Note
   border-top-color: #D3D3D3;
 }
 
-#apwkxzxqwz .gt_last_grand_summary_row_top {
+#dvbltquqpf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -626,11 +624,11 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#apwkxzxqwz .gt_striped {
+#dvbltquqpf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#apwkxzxqwz .gt_table_body {
+#dvbltquqpf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -639,7 +637,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#apwkxzxqwz .gt_footnotes {
+#dvbltquqpf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -653,7 +651,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#apwkxzxqwz .gt_footnote {
+#dvbltquqpf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -662,7 +660,7 @@ Note
   padding-right: 5px;
 }
 
-#apwkxzxqwz .gt_sourcenotes {
+#dvbltquqpf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -676,7 +674,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#apwkxzxqwz .gt_sourcenote {
+#dvbltquqpf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -684,72 +682,72 @@ Note
   padding-right: 5px;
 }
 
-#apwkxzxqwz .gt_left {
+#dvbltquqpf .gt_left {
   text-align: left;
 }
 
-#apwkxzxqwz .gt_center {
+#dvbltquqpf .gt_center {
   text-align: center;
 }
 
-#apwkxzxqwz .gt_right {
+#dvbltquqpf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#apwkxzxqwz .gt_font_normal {
+#dvbltquqpf .gt_font_normal {
   font-weight: normal;
 }
 
-#apwkxzxqwz .gt_font_bold {
+#dvbltquqpf .gt_font_bold {
   font-weight: bold;
 }
 
-#apwkxzxqwz .gt_font_italic {
+#dvbltquqpf .gt_font_italic {
   font-style: italic;
 }
 
-#apwkxzxqwz .gt_super {
+#dvbltquqpf .gt_super {
   font-size: 65%;
 }
 
-#apwkxzxqwz .gt_footnote_marks {
+#dvbltquqpf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#apwkxzxqwz .gt_asterisk {
+#dvbltquqpf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#apwkxzxqwz .gt_indent_1 {
+#dvbltquqpf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#apwkxzxqwz .gt_indent_2 {
+#dvbltquqpf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#apwkxzxqwz .gt_indent_3 {
+#dvbltquqpf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#apwkxzxqwz .gt_indent_4 {
+#dvbltquqpf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#apwkxzxqwz .gt_indent_5 {
+#dvbltquqpf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#apwkxzxqwz .katex-display {
+#dvbltquqpf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#apwkxzxqwz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dvbltquqpf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -877,23 +875,23 @@ Note
 <p>As principais famílias utilizadas no projeto são apresentadas a seguir.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="mextubfnpf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mextubfnpf table {
+<div id="kbhbmuvsxj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kbhbmuvsxj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mextubfnpf thead, #mextubfnpf tbody, #mextubfnpf tfoot, #mextubfnpf tr, #mextubfnpf td, #mextubfnpf th {
+#kbhbmuvsxj thead, #kbhbmuvsxj tbody, #kbhbmuvsxj tfoot, #kbhbmuvsxj tr, #kbhbmuvsxj td, #kbhbmuvsxj th {
   border-style: none;
 }
 
-#mextubfnpf p {
+#kbhbmuvsxj p {
   margin: 0;
   padding: 0;
 }
 
-#mextubfnpf .gt_table {
+#kbhbmuvsxj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -919,12 +917,12 @@ Note
   border-left-color: #D3D3D3;
 }
 
-#mextubfnpf .gt_caption {
+#kbhbmuvsxj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mextubfnpf .gt_title {
+#kbhbmuvsxj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -936,7 +934,7 @@ Note
   border-bottom-width: 0;
 }
 
-#mextubfnpf .gt_subtitle {
+#kbhbmuvsxj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -948,7 +946,7 @@ Note
   border-top-width: 0;
 }
 
-#mextubfnpf .gt_heading {
+#kbhbmuvsxj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -960,13 +958,13 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#mextubfnpf .gt_bottom_border {
+#kbhbmuvsxj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mextubfnpf .gt_col_headings {
+#kbhbmuvsxj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -981,7 +979,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#mextubfnpf .gt_col_heading {
+#kbhbmuvsxj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1001,7 +999,7 @@ Note
   overflow-x: hidden;
 }
 
-#mextubfnpf .gt_column_spanner_outer {
+#kbhbmuvsxj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1013,15 +1011,15 @@ Note
   padding-right: 4px;
 }
 
-#mextubfnpf .gt_column_spanner_outer:first-child {
+#kbhbmuvsxj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mextubfnpf .gt_column_spanner_outer:last-child {
+#kbhbmuvsxj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mextubfnpf .gt_column_spanner {
+#kbhbmuvsxj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1033,11 +1031,11 @@ Note
   width: 100%;
 }
 
-#mextubfnpf .gt_spanner_row {
+#kbhbmuvsxj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mextubfnpf .gt_group_heading {
+#kbhbmuvsxj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1063,7 +1061,7 @@ Note
   text-align: left;
 }
 
-#mextubfnpf .gt_empty_group_heading {
+#kbhbmuvsxj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1078,15 +1076,15 @@ Note
   vertical-align: middle;
 }
 
-#mextubfnpf .gt_from_md > :first-child {
+#kbhbmuvsxj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mextubfnpf .gt_from_md > :last-child {
+#kbhbmuvsxj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mextubfnpf .gt_row {
+#kbhbmuvsxj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1105,7 +1103,7 @@ Note
   overflow-x: hidden;
 }
 
-#mextubfnpf .gt_stub {
+#kbhbmuvsxj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1118,7 +1116,7 @@ Note
   padding-right: 5px;
 }
 
-#mextubfnpf .gt_stub_row_group {
+#kbhbmuvsxj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1132,15 +1130,15 @@ Note
   vertical-align: top;
 }
 
-#mextubfnpf .gt_row_group_first td {
+#kbhbmuvsxj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mextubfnpf .gt_row_group_first th {
+#kbhbmuvsxj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mextubfnpf .gt_summary_row {
+#kbhbmuvsxj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1150,16 +1148,16 @@ Note
   padding-right: 5px;
 }
 
-#mextubfnpf .gt_first_summary_row {
+#kbhbmuvsxj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mextubfnpf .gt_first_summary_row.thick {
+#kbhbmuvsxj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mextubfnpf .gt_last_summary_row {
+#kbhbmuvsxj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1169,7 +1167,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#mextubfnpf .gt_grand_summary_row {
+#kbhbmuvsxj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1179,7 +1177,7 @@ Note
   padding-right: 5px;
 }
 
-#mextubfnpf .gt_first_grand_summary_row {
+#kbhbmuvsxj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1189,7 +1187,7 @@ Note
   border-top-color: #D3D3D3;
 }
 
-#mextubfnpf .gt_last_grand_summary_row_top {
+#kbhbmuvsxj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1199,11 +1197,11 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#mextubfnpf .gt_striped {
+#kbhbmuvsxj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mextubfnpf .gt_table_body {
+#kbhbmuvsxj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1212,7 +1210,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#mextubfnpf .gt_footnotes {
+#kbhbmuvsxj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1226,7 +1224,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#mextubfnpf .gt_footnote {
+#kbhbmuvsxj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1235,7 +1233,7 @@ Note
   padding-right: 5px;
 }
 
-#mextubfnpf .gt_sourcenotes {
+#kbhbmuvsxj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1249,7 +1247,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#mextubfnpf .gt_sourcenote {
+#kbhbmuvsxj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1257,72 +1255,72 @@ Note
   padding-right: 5px;
 }
 
-#mextubfnpf .gt_left {
+#kbhbmuvsxj .gt_left {
   text-align: left;
 }
 
-#mextubfnpf .gt_center {
+#kbhbmuvsxj .gt_center {
   text-align: center;
 }
 
-#mextubfnpf .gt_right {
+#kbhbmuvsxj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mextubfnpf .gt_font_normal {
+#kbhbmuvsxj .gt_font_normal {
   font-weight: normal;
 }
 
-#mextubfnpf .gt_font_bold {
+#kbhbmuvsxj .gt_font_bold {
   font-weight: bold;
 }
 
-#mextubfnpf .gt_font_italic {
+#kbhbmuvsxj .gt_font_italic {
   font-style: italic;
 }
 
-#mextubfnpf .gt_super {
+#kbhbmuvsxj .gt_super {
   font-size: 65%;
 }
 
-#mextubfnpf .gt_footnote_marks {
+#kbhbmuvsxj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mextubfnpf .gt_asterisk {
+#kbhbmuvsxj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mextubfnpf .gt_indent_1 {
+#kbhbmuvsxj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mextubfnpf .gt_indent_2 {
+#kbhbmuvsxj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mextubfnpf .gt_indent_3 {
+#kbhbmuvsxj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mextubfnpf .gt_indent_4 {
+#kbhbmuvsxj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mextubfnpf .gt_indent_5 {
+#kbhbmuvsxj .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mextubfnpf .katex-display {
+#kbhbmuvsxj .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mextubfnpf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#kbhbmuvsxj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1430,6 +1428,7 @@ Market Analysis
 <h2 class="anchored" data-anchor-id="próximos-passos-aprofundando-na-análise">Próximos Passos: Aprofundando na Análise</h2>
 <p>Com a ontologia enriquecida por features (em séries temporais principalmente), você pode ir além dos exemplos básicos e explorar análises mais complexas:</p>
 <ul>
+<li><p><strong>Fundamentos Teóricos e Evolução Histórica:</strong> Aprofunde-se na gênese da análise fundamentalista, explorando desde a abordagem clássica de <strong>Benjamin Graham</strong> e <strong>David Dodd</strong> em “Security Analysis” (1934), que introduziu o conceito de valor intrínseco, até a evolução para o Growth Investing e a moderna Quality Analysis. Pesquise a transição histórica dos relatórios físicos para os dados digitais estruturados e como as teses de <strong>Warren Buffett</strong> e <strong>Charlie Munger</strong> foram adaptadas para modelos quantitativos. Para uma base sólida, recomenda-se a leitura de artigos seminais sobre a Hipótese de Mercados Eficientes e suas críticas, além de explorar recursos online como o <a href="https://www.investopedia.com/terms/f/fundamentalanalysis.asp">Investopedia</a> e bibliotecas acadêmicas como o <a href="https://www.ssrn.com/ssrn/">SSRN</a> para encontrar os estudos mais recentes sobre anomalias de mercado e fatores fundamentalistas.</p></li>
 <li><p><strong>Séries Temporais:</strong> Integre dados para visualizar a evolução dos ativos em comparação direta com seus pares mais similares identificados na ontologia. Utilize o cálculo de <strong>medianas</strong> para criar índices sintéticos de grupos de afinidade, servindo como um <em>benchmark</em> que mitiga o efeito de <em>outliers</em> e permite identificar desvios significativos de performance ou <em>valuation</em> dentro de um mesmo cluster ao longo do tempo.</p></li>
 <li><p><strong>Estudo de Caso de Similaridade:</strong> Escolha um setor específico (ex: “Bancos”) e analise a matriz de similaridade para identificar empresas com características inesperadamente semelhantes ou diferentes. Compare os resultados com a classificação setorial tradicional.</p></li>
 <li><p><strong>Feature Engineering:</strong> Utilize as “famílias de variáveis” para construir fatores de investimento (ex: um fator de valor combinando P/L e FCF Yield) e teste sua performance histórica.</p></li>

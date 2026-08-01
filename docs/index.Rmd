@@ -15,34 +15,29 @@ execute:
 
 ```{=html}
 <style>
-
-
-.dashboard {
+.icon_menu {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   gap: 16px;
   max-width: 1400px;
   margin: 30px auto;
 }
-
-.dashboard img {
+.icon_menu img {
     background: #fafafa;
     border: none;
     width: 50px;      
     height: 50px;
     object-fit: contain;
 }
-
-.dashboard a {
+.icon_menu a {
     text-align: center;
     text-decoration: none;
 }
-
 </style>
 ```
 
-::: dashboard
-<a href="#time_series"> <img src="html/icon_time_series.png"/> </a>
+::: icon_menu
+<a href="time_series.html"> <img src="html/icon_time_series.png"/> </a>
 
 <a href="#similarity"> <img src="html/icon_similarity.png"/> </a>
 
@@ -80,10 +75,10 @@ Tidyverse package é suficiente para execuções básicas -
 
 *Quanta.mental* <br>
 
-\- **Quantitativo:** refere-se à análise quantitativa — modelos
+ - **Quantitativo:** refere-se à análise quantitativa — modelos
 matemáticos, algoritmos, estatística e processamento de dados.
 
-\- **Fundamental:** refere-se à análise fundamentalista tradicional —
+ - **Fundamental:** refere-se à análise fundamentalista tradicional —
 avaliação de balanços patrimoniais, saúde do negócio, governança e
 contexto de mercado.
 
@@ -136,11 +131,13 @@ Por exemplo:
 Essa organização facilita análises exploratórias, construção de modelos
 quantitativos e geração de insights para investimento.
 
+Carregando os objetos para gerar os dados dessa página...
+
 ```{r}
 #| echo: false
 data_mart_path <- file.path("..","data","mart")
 healthcheck_validation <- F
-purrr::walk(list.files("../R/dal",full.names=TRUE),source)
+purrr::walk(list.files(file.path("..","R","dal"),full.names=TRUE),source)
 ontology <- DAL_Ontology$new()
 quantamental <- DAL_Quantamental$new()
 ```
@@ -150,7 +147,7 @@ quantamental <- DAL_Quantamental$new()
 
 ```{r}
 #| echo: false
-n_sample_assets <- 8
+n_sample_assets <- 5
 ```
 
 Os participantes correspondem aos ativos cadastrados, empresas que serão
@@ -444,6 +441,8 @@ objetiva de cada empresa.
 Com a ontologia enriquecida por features (em séries temporais
 principalmente), você pode ir além dos exemplos básicos e explorar
 análises mais complexas:
+
+- **Fundamentos Teóricos e Evolução Histórica:** Aprofunde-se na gênese da análise fundamentalista, explorando desde a abordagem clássica de **Benjamin Graham** e **David Dodd** em "Security Analysis" (1934), que introduziu o conceito de valor intrínseco, até a evolução para o Growth Investing e a moderna Quality Analysis. Pesquise a transição histórica dos relatórios físicos para os dados digitais estruturados e como as teses de **Warren Buffett** e **Charlie Munger** foram adaptadas para modelos quantitativos. Para uma base sólida, recomenda-se a leitura de artigos seminais sobre a Hipótese de Mercados Eficientes e suas críticas, além de explorar recursos online como o [Investopedia](https://www.investopedia.com/terms/f/fundamentalanalysis.asp) e bibliotecas acadêmicas como o [SSRN](https://www.ssrn.com/ssrn/) para encontrar os estudos mais recentes sobre anomalias de mercado e fatores fundamentalistas.
 
 - **Séries Temporais:** Integre dados para visualizar a evolução dos
   ativos em comparação direta com seus pares mais similares
