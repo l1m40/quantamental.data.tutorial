@@ -396,6 +396,10 @@ indicador Preço/Lucro (P/L) sob a ótica temporal, tanto para uma empresa
 individual quanto para um índice de mercado como o IBOV.</p>
 <div id="loading-objects" class="section level4 callout-note" collapse="true">
 <h4>Loading objects…</h4>
+<pre><code>## ontology healthcheck validation...
+## 23 sectors and 171 assets 
+## indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) 
+## quantamental healthcheck validation...</code></pre>
 <pre class="r"><code>ontology &lt;- DAL_Ontology$new()</code></pre>
 <pre><code>## ontology healthcheck validation...
 ## 23 sectors and 171 assets 
@@ -419,7 +423,7 @@ da empresa e compará-lo com o momento atual.</p>
 <h4>Código para gerar esse gráfico…</h4>
 <pre class="r"><code>  library(tidyverse)
   start_time=Sys.time() ; df &lt;- quantamental$asset(time_series_sample_1) ; d &lt;- difftime(Sys.time(), start_time, units = &quot;secs&quot;) ; cat(sprintf(paste0(&quot;Tempo para carregar os dados de &quot;,time_series_sample_1,&quot; : %.5f %s&quot;), as.numeric(d), attr(d, &quot;units&quot;)))</code></pre>
-<pre><code>## Tempo para carregar os dados de ITUB4 : 0.01362 secs</code></pre>
+<pre><code>## Tempo para carregar os dados de ITUB4 : 0.01661 secs</code></pre>
 <pre class="r"><code>  png(time_series_sample_1_png, width = 400, height = 300, res = 100)
   plot &lt;- df |&gt; #filter(year(date)&gt;=2025) |&gt; 
       ggplot(aes(date,pe))+
@@ -546,11 +550,60 @@ Kalman</strong> se torna o “chefe final”: * Em vez de um <span class="math i
 significa que você está fazendo <strong>Cointegração Dinâmica</strong>,
 que é o estado da arte para estratégias de <em>Pairs Trading</em>.</p>
 </div>
+<div id="mapa-da-jornada-do-básico-à-cointegração-dinâmica" class="section level2">
+<h2>Mapa da Jornada: Do Básico à Cointegração Dinâmica</h2>
+<p>Abaixo apresentamos a trilha de aprendizado sugerida para dominar a
+análise quantamental de séries temporais. Esta jornada é incremental:
+cada nível fornece as ferramentas matemáticas necessárias para o próximo
+passo.</p>
+<div id="visualização-da-jornada" class="section level3">
+<h3>Visualização da Jornada</h3>
+<pre class="mermaid"><code>graph TD
+    A[&lt;b&gt;Nível 1: Fundamentos&lt;/b&gt;&lt;br/&gt;Média, Mediana, Variância] --&gt; B[&lt;b&gt;Nível 2: Séries Temporais&lt;/b&gt;&lt;br/&gt;Estacionariedade, ACF/PACF]
+    B --&gt; C[&lt;b&gt;Nível 3: Modelagem Linear&lt;/b&gt;&lt;br/&gt;Regressão OLS, Beta, Resíduos]
+    C --&gt; D[&lt;b&gt;Nível 4: Cointegração Estática&lt;/b&gt;&lt;br/&gt;Teste Engle-Granger, Reversão à Média]
+    D --&gt; E[&lt;b&gt;Nível 5: Modelos Dinâmicos&lt;/b&gt;&lt;br/&gt;Filtro de Kalman, Beta Variante]
+    E --&gt; F[&lt;b&gt;Nível 6: Estratégia&lt;/b&gt;&lt;br/&gt;Pairs Trading, Arbitragem Estatística]
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style F fill:#00ff00,stroke:#333,stroke-width:4px
+    style D fill:#bbf,stroke:#333,stroke-width:2px
+    style E fill:#bbf,stroke:#333,stroke-width:2px</code></pre>
+</div>
+<div id="o-que-esperar-de-cada-nível" class="section level3">
+<h3>O que esperar de cada nível?</h3>
+<ol style="list-style-type: decimal">
+<li><strong>Fundamentos:</strong> Entender a distribuição dos dados e
+por que a mediana é mais robusta que a média em indicadores de
+valuation.</li>
+<li><strong>Séries Temporais:</strong> Aprender a identificar se uma
+série é “estacionária” (se comporta de forma previsível ao redor de uma
+média) ou se possui raiz unitária.</li>
+<li><strong>Modelagem Linear:</strong> Estimar a relação de dependência
+entre dois ativos (o famoso Beta do Hedge).</li>
+<li><strong>Cointegração Estática:</strong> O primeiro grande marco.
+Encontrar pares de ativos que, embora flutuem, mantêm uma relação de
+equilíbrio de longo prazo.</li>
+<li><strong>Modelos Dinâmicos (Filtro de Kalman):</strong> A
+sofisticação técnica. Permitir que o modelo aprenda que a relação entre
+os ativos muda com o tempo, ajustando o Beta dinamicamente.</li>
+<li><strong>Estratégia:</strong> A aplicação prática em portfólios
+reais, utilizando a arbitragem estatística para lucrar com desvios
+temporários do equilíbrio.</li>
+</ol>
+<blockquote>
+<p><strong>Dica Quantamental:</strong> A cointegração não é apenas
+matemática; ela deve ser validada pela <strong>Ontologia</strong>. Um
+par cointegrado estatisticamente só é confiável se houver uma razão
+fundamentalista (mesmo setor, mesma cadeia de suprimentos) para eles
+caminharem juntos.</p>
+</blockquote>
+</div>
+</div>
 </div>
 <ul>
-<li><strong>Integração com a Ontologia:</strong> Conecte os dados de P/L
-e outros múltiplos diretamente da ontologia do projeto para gerar
-gráficos dinâmicos e atualizados.</li>
+<li><strong>Integração com os grupos de ativos:</strong> Conecte os
+dados de P/L e outros múltiplos com entre ativos similares.</li>
 </ul>
 <div id="conexão-com-a-ontologia" class="section level4 callout-tip" collapse="true">
 <h4>Conexão com a Ontologia</h4>
@@ -559,11 +612,14 @@ gráficos dinâmicos e atualizados.</li>
 discutimos antes) dão o “alvo”. A estatística diz <em>como</em> operar,
 e a ontologia diz <em>quem</em> operar (escolhendo pares que fazem
 sentido fundamentalista).</p>
+<ul>
+<li><p>Análise de grupos de índices</p></li>
+<li><p><strong>Análise de Setores:</strong> Compare a evolução do P/L
+mediano de diferentes setores da B3 para identificar quais estão mais
+“caros” ou “baratos” historicamente.</p></li>
+</ul>
 </div>
 <ul>
-<li><strong>Análise de Setores:</strong> Compare a evolução do P/L
-mediano de diferentes setores da B3 para identificar quais estão mais
-“caros” ou “baratos” historicamente.</li>
 <li><strong>Bandas de Valuation:</strong> Crie bandas de
 <em>valuation</em> (ex: P/L +/- 1 desvio padrão) para identificar quando
 um ativo ou índice está em patamares extremos de

@@ -233,11 +233,43 @@ final": \* Em vez de um $\beta$ fixo, o Filtro de Kalman permite um
 $\beta$ variante no tempo. \* Isso significa que você está fazendo
 **Cointegração Dinâmica**, que é o estado da arte para estratégias de
 *Pairs Trading*.
+
+## Mapa da Jornada: Do Básico à Cointegração Dinâmica
+
+Abaixo apresentamos a trilha de aprendizado sugerida para dominar a análise quantamental de séries temporais. Esta jornada é incremental: cada nível fornece as ferramentas matemáticas necessárias para o próximo passo.
+
+### Visualização da Jornada
+
+```mermaid
+graph TD
+    A[<b>Nível 1: Fundamentos</b><br/>Média, Mediana, Variância] --> B[<b>Nível 2: Séries Temporais</b><br/>Estacionariedade, ACF/PACF]
+    B --> C[<b>Nível 3: Modelagem Linear</b><br/>Regressão OLS, Beta, Resíduos]
+    C --> D[<b>Nível 4: Cointegração Estática</b><br/>Teste Engle-Granger, Reversão à Média]
+    D --> E[<b>Nível 5: Modelos Dinâmicos</b><br/>Filtro de Kalman, Beta Variante]
+    E --> F[<b>Nível 6: Estratégia</b><br/>Pairs Trading, Arbitragem Estatística]
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style F fill:#00ff00,stroke:#333,stroke-width:4px
+    style D fill:#bbf,stroke:#333,stroke-width:2px
+    style E fill:#bbf,stroke:#333,stroke-width:2px
+```
+
+### O que esperar de cada nível?
+
+1.  **Fundamentos:** Entender a distribuição dos dados e por que a mediana é mais robusta que a média em indicadores de valuation.
+2.  **Séries Temporais:** Aprender a identificar se uma série é "estacionária" (se comporta de forma previsível ao redor de uma média) ou se possui raiz unitária.
+3.  **Modelagem Linear:** Estimar a relação de dependência entre dois ativos (o famoso Beta do Hedge).
+4.  **Cointegração Estática:** O primeiro grande marco. Encontrar pares de ativos que, embora flutuem, mantêm uma relação de equilíbrio de longo prazo.
+5.  **Modelos Dinâmicos (Filtro de Kalman):** A sofisticação técnica. Permitir que o modelo aprenda que a relação entre os ativos muda com o tempo, ajustando o Beta dinamicamente.
+6.  **Estratégia:** A aplicação prática em portfólios reais, utilizando a arbitragem estatística para lucrar com desvios temporários do equilíbrio.
+
+> **Dica Quantamental:** A cointegração não é apenas matemática; ela deve ser validada pela **Ontologia**. Um par cointegrado estatisticamente só é confiável se houver uma razão fundamentalista (mesmo setor, mesma cadeia de suprimentos) para eles caminharem juntos.
+
+
 :::
 
-- **Integração com a Ontologia:** Conecte os dados de P/L e outros
-  múltiplos diretamente da ontologia do projeto para gerar gráficos
-  dinâmicos e atualizados.
+- **Integração com os grupos de ativos:** Conecte os dados de P/L e outros
+  múltiplos com entre ativos similares.
 
 ::: {.callout-tip collapse="true"}
 #### Conexão com a Ontologia
@@ -245,11 +277,14 @@ O caminho estatístico dá a "ferramenta", mas a **Ontologia** e a
 **Similaridade** (que discutimos antes) dão o "alvo". A estatística diz
 *como* operar, e a ontologia diz *quem* operar (escolhendo pares que
 fazem sentido fundamentalista).
-:::
+
+- Análise de grupos de índices
 
 - **Análise de Setores:** Compare a evolução do P/L mediano de
   diferentes setores da B3 para identificar quais estão mais "caros" ou
   "baratos" historicamente.
+:::
+
 - **Bandas de Valuation:** Crie bandas de *valuation* (ex: P/L +/- 1
   desvio padrão) para identificar quando um ativo ou índice está em
   patamares extremos de *valuation*.

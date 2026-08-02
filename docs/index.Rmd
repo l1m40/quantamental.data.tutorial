@@ -66,8 +66,15 @@ Instalar o R versão posterior a
 E a IDE RStudio <br>
 <https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads>
 
-Tidyverse package é suficiente para execuções básicas -
-[link](https://tidyverse.org)- <br> \> `install.packages("tidyverse")`
+Os pacotes de R são obrigatórios para execução correta dos código mais básicos **renv** (ajuda com a criação do ambiente de execução), **here** (acesso a diretórios), **pacman** (instalar os pacotes e dependencias), **tidyverse** é excelente para execuções básicas - [link](https://tidyverse.org) -
+
+``` R
+if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+# 1. Install base packages
+renv::install(c("here","pacman"))
+# 2. Install with pacman (auto dependencies install)
+pacman::p_load("gm","tidyverse")
+```
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -75,12 +82,12 @@ Tidyverse package é suficiente para execuções básicas -
 
 *Quanta.mental* <br>
 
- - **Quantitativo:** refere-se à análise quantitativa — modelos
-matemáticos, algoritmos, estatística e processamento de dados.
+- **Quantitativo:** refere-se à análise quantitativa — modelos
+  matemáticos, algoritmos, estatística e processamento de dados.
 
- - **Fundamental:** refere-se à análise fundamentalista tradicional —
-avaliação de balanços patrimoniais, saúde do negócio, governança e
-contexto de mercado.
+- **Fundamental:** refere-se à análise fundamentalista tradicional —
+  avaliação de balanços patrimoniais, saúde do negócio, governança e
+  contexto de mercado.
 
 ### Origem e Contexto Histórico
 
@@ -135,9 +142,9 @@ Carregando os objetos para gerar os dados dessa página...
 
 ```{r}
 #| echo: false
-data_mart_path <- file.path("..","data","mart")
+data_mart_path <- here::here("data","mart")
 healthcheck_validation <- F
-purrr::walk(list.files(file.path("..","R","dal"),full.names=TRUE),source)
+purrr::walk(list.files(here::here("R","dal"),full.names=TRUE),source)
 ontology <- DAL_Ontology$new()
 quantamental <- DAL_Quantamental$new()
 ```
@@ -443,7 +450,21 @@ Com a ontologia enriquecida por features (em séries temporais
 principalmente), você pode ir além dos exemplos básicos e explorar
 análises mais complexas:
 
-- **Fundamentos Teóricos e Evolução Histórica:** Aprofunde-se na gênese da análise fundamentalista, explorando desde a abordagem clássica de **Benjamin Graham** e **David Dodd** em "Security Analysis" (1934), que introduziu o conceito de valor intrínseco, até a evolução para o Growth Investing e a moderna Quality Analysis. Pesquise a transição histórica dos relatórios físicos para os dados digitais estruturados e como as teses de **Warren Buffett** e **Charlie Munger** foram adaptadas para modelos quantitativos. Para uma base sólida, recomenda-se a leitura de artigos seminais sobre a Hipótese de Mercados Eficientes e suas críticas, além de explorar recursos online como o [Investopedia](https://www.investopedia.com/terms/f/fundamentalanalysis.asp) e bibliotecas acadêmicas como o [SSRN](https://www.ssrn.com/ssrn/) para encontrar os estudos mais recentes sobre anomalias de mercado e fatores fundamentalistas.
+- **Fundamentos Teóricos e Evolução Histórica:** Aprofunde-se na gênese
+  da análise fundamentalista, explorando desde a abordagem clássica de
+  **Benjamin Graham** e **David Dodd** em "Security Analysis" (1934),
+  que introduziu o conceito de valor intrínseco, até a evolução para o
+  Growth Investing e a moderna Quality Analysis. Pesquise a transição
+  histórica dos relatórios físicos para os dados digitais estruturados e
+  como as teses de **Warren Buffett** e **Charlie Munger** foram
+  adaptadas para modelos quantitativos. Para uma base sólida,
+  recomenda-se a leitura de artigos seminais sobre a Hipótese de
+  Mercados Eficientes e suas críticas, além de explorar recursos online
+  como o
+  [Investopedia](https://www.investopedia.com/terms/f/fundamentalanalysis.asp)
+  e bibliotecas acadêmicas como o [SSRN](https://www.ssrn.com/ssrn/)
+  para encontrar os estudos mais recentes sobre anomalias de mercado e
+  fatores fundamentalistas.
 
 - **Séries Temporais:** Integre dados para visualizar a evolução dos
   ativos em comparação direta com seus pares mais similares
@@ -484,6 +505,8 @@ análises mais complexas:
 Este tutorial se baseia em conceitos de finanças quantitativas e análise
 fundamentalista. Para aprofundar nos temas abordados, sugerimos as
 seguintes leituras:
+
+- Time Series Notebook <a href="time_series_nb.html"> link </a>
 
 - Livros TBD
 

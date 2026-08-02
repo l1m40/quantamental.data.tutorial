@@ -1,0 +1,51 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+#### Loading objects...
+
+<details>
+
+```{r}
+library(tidyverse)
+library(here)
+data_mart_path <- here("data","mart")
+healthcheck_validation <- T
+purrr::walk(list.files(here("R","dal"),full.names=TRUE),source)
+
+ontology <- DAL_Ontology$new()
+quantamental <- DAL_Quantamental$new()
+```
+</details>
+
+```{r echo=FALSE}
+time_series_sample_1 <- "LREN3"
+```
+
+## Preço e Lucro: O Caso `r time_series_sample_1`
+
+``` {r warning=FALSE}
+start_time=Sys.time() ; df <- quantamental$asset(time_series_sample_1) ; d <- difftime(Sys.time(), start_time, units = "secs") ; cat(sprintf(paste0("Tempo para carregar os dados de ",time_series_sample_1," : %.5f %s"), as.numeric(d), attr(d, "units")))
+
+df |> #filter(year(date)>=2025) |> 
+  ggplot(aes(date,pe))+
+  geom_hline(yintercept=0,linetype=2,color="tomato",alpha=.5)+
+  geom_line()+ylab("P/L")+xlab(df$asset[1])+
+  theme_minimal()
+```
+
+
+### P/L e Lucro no mesmo gráfico
+
+```{r warning=FALSE}
+df |> #filter(year(date)>=2025) |> 
+  ggplot(aes(date,pe))+
+  geom_hline(yintercept=0,linetype=2,color="tomato",alpha=.5)+
+  geom_line()+ylab("P/L")+xlab(df$asset[1])+
+  geom_line(aes(y=Net_Profit_12M/max(Net_Profit_12M,na.rm=T)*max(pe,na.rm=T)),color="gold4",alpha=.3)+
+  theme_minimal()
+```
+

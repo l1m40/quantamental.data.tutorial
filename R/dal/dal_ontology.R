@@ -23,8 +23,8 @@ library(R6)
 library(dplyr)
 library(tidyr)
 
-if(!exists("data_mart_path")) data_mart_path <- file.path("data","mart")
-data_ontology_path = file.path(data_mart_path,"ontology.rds")
+if(!exists("data_mart_path")) data_mart_path <- here::here("data","mart")
+data_ontology_path = here::here(data_mart_path,"ontology.rds")
 
 # Ontology Data Access Layer Class #########################################
 DAL_Ontology <- R6::R6Class(

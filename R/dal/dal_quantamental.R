@@ -30,8 +30,8 @@ library(R6)
 library(arrow)
 library(dplyr)
 
-if(!exists("data_mart_path")) data_mart_path <- file.path("data","mart")
-data_quantamental_path = file.path(data_mart_path,"quantamental")
+if(!exists("data_mart_path")) data_mart_path <- here::here("data","mart")
+data_quantamental_path = here::here(data_mart_path,"quantamental")
 
 # Quantamental Data Access Layer Class #########################################
 DAL_Quantamental <- R6::R6Class(
