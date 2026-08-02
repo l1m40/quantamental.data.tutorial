@@ -37,21 +37,21 @@ execute:
 ```
 
 ::: icon_menu
-<a href="time_series.html"> <img src="html/icon_time_series.png"/> </a>
+<a href="time_series.html"> <img src="png/icon_time_series.png"/> </a>
 
-<a href="#similarity"> <img src="html/icon_similarity.png"/> </a>
+<a href="#similarity"> <img src="png/icon_similarity.png"/> </a>
 
-<a href="#generic"> <img src="html/icon_generic.png"/> </a>
+<a href="#generic"> <img src="png/icon_generic.png"/> </a>
 
-<a href="#generic"> <img src="html/icon_generic.png"/> </a>
+<a href="#generic"> <img src="png/icon_generic.png"/> </a>
 
-<a href="#generic"> <img src="html/icon_generic.png"/> </a>
+<a href="#generic"> <img src="png/icon_generic.png"/> </a>
 
-<a href="#generic"> <img src="html/icon_generic.png"/> </a>
+<a href="#generic"> <img src="png/icon_generic.png"/> </a>
 
-<a href="#generic"> <img src="html/icon_generic.png"/> </a>
+<a href="#generic"> <img src="png/icon_generic.png"/> </a>
 
-<a href="coding.html"> <img src="html/icon_rocket.png"/> </a>
+<a href="coding.html"> <img src="png/icon_rocket.png"/> </a>
 :::
 
 # Quantamental
@@ -229,7 +229,8 @@ não ser percebidas apenas pela classificação setorial tradicional.
 # Create and save plot if file doesn't exist
 # if (file.exists("my_plot.png")) {
   library(tidyverse)
-  png("html/similarity_heatmap.png", width = 800, height = 600, res = 100)
+  similarity_heatmap_file <- file.path("plots","similarity_heatmap.png")
+  png(similarity_heatmap_file, width = 800, height = 600, res = 100)
   midpoint_data <- quantile(ontology$similarity()$matrix$score,.5)
   plot <- ontology$similarity()$sector_matrix_df |> 
     ggplot(aes(x = sector1, y = sector2, fill = avg_score)) +
@@ -250,7 +251,7 @@ não ser percebidas apenas pela classificação setorial tradicional.
 ```
 
 ```{r load-similarity-heatmap-plot, echo=FALSE, out.width="80%"}
-if (file.exists("html/similarity_heatmap.png")) knitr::include_graphics("html/similarity_heatmap.png")
+if (file.exists(similarity_heatmap_file)) knitr::include_graphics(similarity_heatmap_file)
 ```
 
 ::: {.callout-tip collapse="true"}

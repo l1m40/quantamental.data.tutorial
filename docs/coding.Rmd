@@ -54,10 +54,10 @@ execute:
     &#10094;
 </a>
 
+
 <h2>As Engrenagens</h2>
 
 </div>
-
 
 ::: {.callout-note collapse="true"}
 #### Ferramentas
@@ -70,9 +70,10 @@ o [Tidyverse Help](https://www.tidyverse.org/help/).
 
 ```{r}
 #| echo: false
-data_mart_path <- file.path("..","data","mart")
-healthcheck_validation <- F
-purrr::walk(list.files(file.path("..","R","dal"),full.names=TRUE),source)
+library(here)
+data_mart_path <- here("data","mart")
+healthcheck_validation <- T
+purrr::walk(list.files(here("R","dal"),full.names=TRUE),source)
 ```
 :::
 

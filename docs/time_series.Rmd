@@ -13,6 +13,7 @@ execute:
   message: false
 ---
 
+```{=html}
 <style>
 
 .page-header {
@@ -44,23 +45,24 @@ execute:
 }
 
 </style>
+```
 
-<div class="page-header">
-
-<a class="back-button" href="index.html" title="Back to Home">
-    &#10094;
-</a>
+::: page-header
+<a class="back-button" href="index.html" title="Back to Home"> ❮ </a>
 
 <h2>Análise de Séries Temporais</h2>
+:::
 
-</div>
-
-No universo quantamental, a análise de dados não se limita a um único ponto no tempo. Acompanhar a evolução de indicadores ao longo do tempo, ou séries temporais, é fundamental para entender tendências, ciclos e a resiliência de empresas e mercados.
+No universo quantamental, a análise de dados não se limita a um único
+ponto no tempo. Acompanhar a evolução de indicadores ao longo do tempo,
+ou séries temporais, é fundamental para entender tendências, ciclos e a
+resiliência de empresas e mercados.
 
 ## Indicadores
 
-Neste capítulo, exploraremos como visualizar e interpretar o indicador Preço/Lucro (P/L) sob a ótica temporal, tanto para uma empresa individual quanto para um índice de mercado como o IBOV.
-
+Neste capítulo, exploraremos como visualizar e interpretar o indicador
+Preço/Lucro (P/L) sob a ótica temporal, tanto para uma empresa
+individual quanto para um índice de mercado como o IBOV.
 
 ::: {.callout-note collapse="true"}
 #### Loading objects...
@@ -71,6 +73,7 @@ data_mart_path <- file.path("..","data","mart")
 healthcheck_validation <- F
 purrr::walk(list.files(file.path("..","R","dal"),full.names=TRUE),source)
 ```
+
 ```{r}
 ontology <- DAL_Ontology$new()
 quantamental <- DAL_Quantamental$new()
@@ -83,12 +86,18 @@ time_series_sample_1 <- "ITUB4"
 
 ## Preço e Lucro: O Caso `r time_series_sample_1`
 
-O Preço/Lucro (P/L) é um dos múltiplos de *valuation* mais utilizados, indicando quantos anos de lucro a empresa levaria para "pagar" seu preço de mercado. Para setores mais estáveis, como o bancário ou serviços públicos no Brasil, o P/L tende a apresentar uma volatilidade menor, refletindo a previsibilidade de seus resultados.
+O Preço/Lucro (P/L) é um dos múltiplos de *valuation* mais utilizados,
+indicando quantos anos de lucro a empresa levaria para "pagar" seu preço
+de mercado. Para setores mais estáveis, como o bancário ou serviços
+públicos no Brasil, o P/L tende a apresentar uma volatilidade menor,
+refletindo a previsibilidade de seus resultados.
 
-Vamos observar a evolução do P/L de `r time_series_sample_1` ao longo dos últimos anos. Isso nos permite identificar o patamar histórico de *valuation* da empresa e compará-lo com o momento atual.
+Vamos observar a evolução do P/L de `r time_series_sample_1` ao longo
+dos últimos anos. Isso nos permite identificar o patamar histórico de
+*valuation* da empresa e compará-lo com o momento atual.
 
 ```{r load-pe_itub4-plot, echo=FALSE, out.width="80%"}
-  time_series_sample_1_png <- file.path("html",paste0("pe_",time_series_sample_1,".png"))
+  time_series_sample_1_png <- file.path("plots",paste0("pe_",time_series_sample_1,".png"))
   if (file.exists(time_series_sample_1_png))
     knitr::include_graphics(time_series_sample_1_png)
 ```
@@ -110,22 +119,35 @@ Vamos observar a evolução do P/L de `r time_series_sample_1` ao longo dos últ
   plot(plot)
   dev.off()
 ```
-
 :::
 
 ::: {.callout-tip collapse="true"}
 #### Interpretação do P/L
 
-Um P/L em patamares historicamente baixos pode indicar que a ação está subvalorizada, enquanto um P/L elevado pode sugerir que o mercado tem altas expectativas de crescimento futuro ou que a ação está sobrevalorizada. A estabilidade do P/L em setores mais defensivos reflete a natureza mais previsível de seus lucros e a menor sensibilidade a ciclos econômicos extremos, em comparação com setores mais cíclicos.
+Um P/L em patamares historicamente baixos pode indicar que a ação está
+subvalorizada, enquanto um P/L elevado pode sugerir que o mercado tem
+altas expectativas de crescimento futuro ou que a ação está
+sobrevalorizada. A estabilidade do P/L em setores mais defensivos
+reflete a natureza mais previsível de seus lucros e a menor
+sensibilidade a ciclos econômicos extremos, em comparação com setores
+mais cíclicos.
 :::
 
 ## P/L do IBOV: Por que a Mediana Importa?
 
-Analisar o P/L de um índice como o IBOV é mais complexo do que para uma única empresa. O IBOV é composto por dezenas de empresas, e a média simples do P/L pode ser facilmente distorcida por *outliers* – empresas com lucros muito baixos (P/L altíssimo) ou até prejuízo (P/L negativo, que não faz sentido para a média).
+Analisar o P/L de um índice como o IBOV é mais complexo do que para uma
+única empresa. O IBOV é composto por dezenas de empresas, e a média
+simples do P/L pode ser facilmente distorcida por *outliers* – empresas
+com lucros muito baixos (P/L altíssimo) ou até prejuízo (P/L negativo,
+que não faz sentido para a média).
 
-É aqui que a **mediana** se torna uma ferramenta poderosa. A mediana representa o valor central de uma distribuição, sendo menos sensível a valores extremos. Ao calcular o P/L mediano do IBOV, obtemos uma visão mais realista do *valuation* geral do mercado, sem as distorções causadas por empresas atípicas.
+É aqui que a **mediana** se torna uma ferramenta poderosa. A mediana
+representa o valor central de uma distribuição, sendo menos sensível a
+valores extremos. Ao calcular o P/L mediano do IBOV, obtemos uma visão
+mais realista do *valuation* geral do mercado, sem as distorções
+causadas por empresas atípicas.
 
-```R
+``` r
 # Carregamento de dados hipotéticos de P/L para componentes do IBOV
 # Em um cenário real, estes dados viriam da ontologia, com P/L de cada ativo.
 
@@ -163,12 +185,71 @@ ibov_pl_summary %>%
 
 Note **Vantagens da Mediana para Índices**
 
-Em mercados voláteis ou com empresas em diferentes estágios de maturidade, a mediana oferece uma medida de tendência central mais estável e representativa. Ela evita que uma única empresa com um P/L extremamente alto ou baixo distorça a percepção do *valuation* do índice como um todo, fornecendo um *benchmark* mais confiável para comparação.
+Em mercados voláteis ou com empresas em diferentes estágios de
+maturidade, a mediana oferece uma medida de tendência central mais
+estável e representativa. Ela evita que uma única empresa com um P/L
+extremamente alto ou baixo distorça a percepção do *valuation* do índice
+como um todo, fornecendo um *benchmark* mais confiável para comparação.
 
 ## Próximos Passos
 
-*   **Integração com a Ontologia:** Conecte os dados de P/L e outros múltiplos diretamente da ontologia do projeto para gerar gráficos dinâmicos e atualizados.
-*   **Análise de Setores:** Compare a evolução do P/L mediano de diferentes setores da B3 para identificar quais estão mais "caros" ou "baratos" historicamente.
-*   **Bandas de Valuation:** Crie bandas de *valuation* (ex: P/L +/\- 1 desvio padrão) para identificar quando um ativo ou índice está em patamares extremos de *valuation*.
+- **Jornada Estatística em Séries Temporais**: Evolua da análise
+  descritiva básica para a modelagem preditiva avançada. Comece
+  dominando **conceitos de estacionariedade** e autocorrelação (funções
+  ACF/PACF), avance para regressões lineares simples aplicadas ao tempo
+  e, em seguida, explore regressões dinâmicas que incorporam variáveis
+  externas (ex: impacto da Selic no P/L). O estágio final desta jornada
+  é a implementação de Modelos de Espaço de Estados, utilizando o
+  **Filtro de Kalman** para estimar parâmetros que mudam ao longo do
+  tempo, permitindo que o seu modelo quantamental se adapte
+  automaticamente a novas condições de mercado sem a necessidade de
+  janelas fixas de rolagem (rolling windows).
 
-```
+::: {.callout-tip collapse="true"}
+#### Cointegração
+Podemos afirmar que essa jornada estatística é o **alicerce
+indispensável** para entender a cointegração de forma profunda e não
+apenas como uma "fórmula pronta".
+
+### 1. A Escada da Cointegração
+
+Para entender a cointegração (que é, simplificadamente, quando dois
+ativos "caminham juntos" no longo prazo, apesar de flutuações curtas),
+você precisa obrigatoriamente passar por esses degraus: \*
+**Estacionariedade:** Você não consegue entender cointegração sem saber
+o que é uma série estacionária. A cointegração é, por definição, a busca
+por uma combinação linear de duas séries não-estacionárias que resulte
+em uma **série estacionária**. \* **Regressão Linear:** O "Hedge Ratio"
+(a proporção de um ativo em relação ao outro) é o coeficiente $\beta$ de
+uma regressão. Se você não domina a regressão, não entende como o modelo
+tenta equilibrar os dois ativos.
+
+### 2. O Salto para a Cointegração Dinâmica
+
+A maioria dos tutoriais para em testes estáticos (como Engle-Granger).
+Porém, no mercado real, a relação entre duas empresas (ex: Itaú e
+Bradesco) muda. É aqui que o **Filtro de Kalman** se torna o "chefe
+final": \* Em vez de um $\beta$ fixo, o Filtro de Kalman permite um
+$\beta$ variante no tempo. \* Isso significa que você está fazendo
+**Cointegração Dinâmica**, que é o estado da arte para estratégias de
+*Pairs Trading*.
+:::
+
+- **Integração com a Ontologia:** Conecte os dados de P/L e outros
+  múltiplos diretamente da ontologia do projeto para gerar gráficos
+  dinâmicos e atualizados.
+
+::: {.callout-tip collapse="true"}
+#### Conexão com a Ontologia
+O caminho estatístico dá a "ferramenta", mas a **Ontologia** e a
+**Similaridade** (que discutimos antes) dão o "alvo". A estatística diz
+*como* operar, e a ontologia diz *quem* operar (escolhendo pares que
+fazem sentido fundamentalista).
+:::
+
+- **Análise de Setores:** Compare a evolução do P/L mediano de
+  diferentes setores da B3 para identificar quais estão mais "caros" ou
+  "baratos" historicamente.
+- **Bandas de Valuation:** Crie bandas de *valuation* (ex: P/L +/- 1
+  desvio padrão) para identificar quando um ativo ou índice está em
+  patamares extremos de *valuation*.
