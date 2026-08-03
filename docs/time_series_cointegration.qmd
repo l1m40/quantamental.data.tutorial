@@ -74,8 +74,11 @@ quantamental <- DAL_Quantamental$new()
 
 ```{r}
 time_series_sample_1 <- sample(ontology$get_b3_index()$IBOV$asset,1)
-time_series_sample_1_similar_assets <- unique(sample(intersect((ontology$get_similarity_asset_df(time_series_sample_1,n=8) |> filter(relationship=="Within Same Sector"))$asset2,ontology$get_b3_index()$IBOV$asset),3,replace=T))
-if(length(time_series_sample_1_similar_assets)<2) time_series_sample_1_similar_assets <- c("ITUB4","VALE3")
+time_series_sample_1_similar_assets <- intersect((ontology$get_similarity_asset_df(time_series_sample_1,n=8) |> filter(relationship=="Within Same Sector"))$asset2,ontology$get_b3_index()$IBOV$asset)
+
+if(length(time_series_sample_1_similar_assets)==0) time_series_sample_1_similar_assets <- c("ITUB4","VALE3","PETR4")
+time_series_sample_1_similar_assets <- unique(sample(time_series_sample_1_similar_assets,3,replace=T))
+if(length(time_series_sample_1_similar_assets)<2) time_series_sample_1_similar_assets <- c("ITUB4","VALE3","PETR4")
 library(tidyverse)
 start_time=Sys.time() ; similar_assets_df <- quantamental$assets(c(time_series_sample_1,time_series_sample_1_similar_assets)) |> filter(date>=max(date)-365) ; d <- difftime(Sys.time(), start_time, units = "secs") ; cat(sprintf(paste0("Tempo para carregar os dados de ",paste(c(time_series_sample_1,time_series_sample_1_similar_assets),collapse=" | ")," : %.5f %s"), as.numeric(d), attr(d, "units")))
 if(!time_series_sample_1 %in% unique(similar_assets_df$asset)) {
@@ -150,21 +153,21 @@ ggplot(df, aes(asset.x, asset.y)) +
   geom_abline(
     intercept = 0,
     slope = 2,
-    color = "red",
+    color = "dodgerblue",
     linetype = "dashed",
     linewidth = 1
   ) +
   # Hedge ratio = 0.75
   geom_abline(
     intercept = 0,
-    slope = 0.75,
-    color = "forestgreen",
+    slope = 0.5,
+    color = "seagreen",
     linetype = "dashed",
     linewidth = 1
   ) +
-  annotate("label", x = 80, y = 160, label = "HR = 2"  , color="white", fill = "red") +
+  annotate("label", x = 60, y = 130, label = "HR = 2"  , color="white", fill = "dodgerblue") +
   annotate("label", x = 85, y = 85 , label = "HR = 1"  , color="white", fill = "black") +
-  annotate("label", x = 85, y = 64 , label = "HR = .75", color="white", fill = "forestgreen") +
+  annotate("label", x = 90, y = 34 , label = "HR = 0.5", color="white", fill = "seagreen") +
   # coord_equal() +
   labs(
     title = "3 diferentes Hedge Ratios",
