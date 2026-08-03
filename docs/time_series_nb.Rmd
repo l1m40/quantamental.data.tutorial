@@ -1,9 +1,9 @@
 ---
+title: "Time Series Notebook"
 output: html_document
 editor_options: 
   chunk_output_type: inline
 ---
-
 
 #### Loading objects...
 
@@ -19,15 +19,18 @@ purrr::walk(list.files(here("R","dal"),full.names=TRUE),source)
 ontology <- DAL_Ontology$new()
 quantamental <- DAL_Quantamental$new()
 ```
+
 </details>
 
 ```{r echo=FALSE}
-time_series_sample_1 <- "LREN3"
+# time_series_sample_1 <- "LREN3"
+time_series_sample_1 <- sample(ontology$get_IBOV_90_df()$asset)[1]
+
 ```
 
 ## Preço e Lucro: O Caso `r time_series_sample_1`
 
-``` {r warning=FALSE}
+```{r warning=FALSE}
 start_time=Sys.time() ; df <- quantamental$asset(time_series_sample_1) ; d <- difftime(Sys.time(), start_time, units = "secs") ; cat(sprintf(paste0("Tempo para carregar os dados de ",time_series_sample_1," : %.5f %s"), as.numeric(d), attr(d, "units")))
 
 df |> #filter(year(date)>=2025) |> 
@@ -37,7 +40,6 @@ df |> #filter(year(date)>=2025) |>
   theme_minimal()
 ```
 
-
 ### P/L e Lucro no mesmo gráfico
 
 ```{r warning=FALSE}
@@ -45,7 +47,104 @@ df |> #filter(year(date)>=2025) |>
   ggplot(aes(date,pe))+
   geom_hline(yintercept=0,linetype=2,color="tomato",alpha=.5)+
   geom_line()+ylab("P/L")+xlab(df$asset[1])+
-  geom_line(aes(y=Net_Profit_12M/max(Net_Profit_12M,na.rm=T)*max(pe,na.rm=T)),color="gold4",alpha=.3)+
+  geom_line(aes(y=Net_Profit_12M/max(Net_Profit_12M,na.rm=T)*max(pe,na.rm=T)),color="gold4",alpha=.3,linewidth=1.2)+
   theme_minimal()
 ```
+
+```{r}
+similar_assets <- sample((ontology$get_similarity_asset_df(time_series_sample_1,n=8))$asset2,1)
+similar_assets
+```
+
+### Comparar com empresas semelhantes... </br> `r similar_assets`
+
+```{r warning=FALSE}
+quantamental$query() |>  #
+  filter(asset %in% c(time_series_sample_1,similar_assets),year(date)>=2022) |>
+  select(asset,date,close,pe,Net_Profit_12M) |> 
+  collect() |> 
+  ggplot(aes(date,pe))+
+  geom_hline(yintercept=0,linetype=2,color="tomato",alpha=.5)+
+  geom_line()+ylab("P/L")+
+  geom_line(aes(y=Net_Profit_12M/max(Net_Profit_12M,na.rm=T)*max(pe,na.rm=T)),color="gold4",alpha=.3)+
+  facet_grid(cols=vars(asset))+
+  theme_minimal()
+```
+<details>
+
+```{r}
+time_series_sample_1_sector <- (ontology$get_assets_df() |> filter(asset==time_series_sample_1))$sector_screening
+assets_from_the_same_sector <- (ontology$get_assets_df() |> filter(sector_screening==time_series_sample_1_sector))$asset
+assets_from_the_same_sector
+```
+
+A **mediana** representa o valor central de uma distribuição, sendo menos sensível a valores extremos. Ao calcular o P/L mediano do setor de `r time_series_sample_1_sector`, obtemos uma visão mais realista do valuation geral, sem as distorções causadas por empresas atípicas.
+
+</details>
+
+### Mediana do setor... </br> `r time_series_sample_1_sector`
+
+```{r warning="false"}
+quantamental$query() |>  
+  filter(asset %in% assets_from_the_same_sector) |> 
+  collect() |> 
+  group_by(date) |> mutate(i=min_rank(desc(marketcap))) |> ungroup() |> 
+  mutate(asset_alpha=ifelse(asset %in% c(time_series_sample_1,similar_assets),.8,.2)) |> 
+  filter(year(date)>=2021) |> 
+  ggplot(aes(date,pe))+ylab("P/L")+geom_smooth(method="loess",formula='y ~ x')+geom_line(aes(color=reorder(asset,i),alpha=asset_alpha),linewidth=1.5)+scale_alpha_identity()+scale_color_viridis_d(option="viridis")
+```
+<details>
+
+```{r echo=FALSE}
+summary(ontology$get_b3_index())
+indices <- list(
+  IBOV_60 = ontology$get_b3_index()$IBOV_60$asset,
+  IBOV_90 = ontology$get_b3_index()$IBOV_90$asset,
+  IBOV    = ontology$get_b3_index()$IBOV$asset,
+  SMLL    = ontology$get_b3_index()$SMLL$asset
+)
+indices_description <- list(
+  IBOV_60 = "Bluechips",
+  IBOV_90 = "IBOV 90%",
+  IBOV    = "IBOV",
+  SMLL    = "Smallcaps"
+)
+time_series_sample_1_index <- names(indices)[
+  which(vapply(indices, function(v) time_series_sample_1 %in% v, logical(1)))[1]
+]
+time_series_sample_1_index_description <- indices_description[[time_series_sample_1_index]]
+assets_from_the_same_index <- indices[[time_series_sample_1_index]]
+assets_from_the_same_index
+```
+```{r}
+  start_time=Sys.time() ; cat("Load assets from the same index...\n ") ; assets_from_the_same_index_df <- quantamental$query() |>  
+    filter(asset %in% assets_from_the_same_index) |> 
+    collect() |> 
+    group_by(date) |> summarise(median_pe=median(pe,na.rm=T),N=n()) ; difftime(Sys.time(), start_time, units = "secs")
+  start_time=Sys.time() ; cat("Load IBOV historical standard deviations... \n ") ; IBOV_SD_df <- quantamental$query() |>  
+    filter(asset %in% indices[["IBOV"]]) |> 
+    collect() |> 
+    group_by(date) |> summarise(median_ibov=median(pe,na.rm=T)) ; difftime(Sys.time(), start_time, units = "secs")
+```
+</detail>
+
+### Tamanho semelhante...</br> `r time_series_sample_1_index_description`
+
+```{r}
+  assets_from_the_same_index_df |> 
+    left_join(IBOV_SD_df,by="date") |> mutate(mean_pe_ibov=mean(median_ibov,na.rm=T),sd_pe_ibov=sd(median_ibov,na.rm=T)) |> 
+    mutate(mean_pe=mean(median_pe,na.rm=T),sd_pe=sd(median_pe,na.rm=T)) |> 
+    filter(year(date)>=2022) |>
+    ggplot(aes(date,median_pe))+geom_line(aes(y=mean_pe),color="dodgerblue1",alpha=.5,linewidth=2)+
+    geom_line(aes(y=mean_pe_ibov),color="gray",alpha=.8,linewidth=3)+
+    geom_line(aes(y=mean_pe_ibov-sd_pe_ibov*1),color="gray",alpha=.5,linewidth=3)+
+    geom_line(aes(y=mean_pe_ibov+sd_pe_ibov*1),color="gray",alpha=.5,linewidth=3)+
+    geom_line(aes(y=mean_pe_ibov-sd_pe_ibov*2),color="gray",alpha=.3,linewidth=3)+
+    geom_line(aes(y=mean_pe_ibov+sd_pe_ibov*2),color="gray",alpha=.3,linewidth=3)+
+    geom_line(color="dodgerblue1")+ylab("P/L")+
+    theme_minimal()+scale_x_date(date_breaks="1 year",date_labels="%Y")+theme(axis.text.x=element_text(angle=90,vjust=.5,hjust=1))
+```
+
+
+
 

@@ -68,12 +68,10 @@ camada didática.
 Para detalhes sobre funções específicas do R, consulte
 o [Tidyverse Help](https://www.tidyverse.org/help/).
 
-```{r}
-#| echo: false
-library(here)
-data_mart_path <- here("data","mart")
+```{r echo=F}
+data_mart_path <- here::here("data","mart")
 healthcheck_validation <- T
-purrr::walk(list.files(here("R","dal"),full.names=TRUE),source)
+purrr::walk(list.files(here::here("R","dal"),full.names=TRUE),source)
 ```
 :::
 

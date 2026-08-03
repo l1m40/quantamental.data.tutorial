@@ -69,11 +69,14 @@ E a IDE RStudio <br>
 Os pacotes de R são obrigatórios para execução correta dos código mais básicos **renv** (ajuda com a criação do ambiente de execução), **here** (acesso a diretórios), **pacman** (instalar os pacotes e dependencias), **tidyverse** é excelente para execuções básicas - [link](https://tidyverse.org) -
 
 ``` R
+# 0. Install renv
 if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+renv::init()
 # 1. Install base packages
 renv::install(c("here","pacman"))
 # 2. Install with pacman (auto dependencies install)
 pacman::p_load("gm","tidyverse")
+renv::snapshot()
 ```
 :::
 

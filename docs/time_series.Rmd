@@ -69,9 +69,9 @@ individual quanto para um índice de mercado como o IBOV.
 
 ```{r}
 #| echo: false
-data_mart_path <- file.path("..","data","mart")
+data_mart_path <- here::here("data","mart")
 healthcheck_validation <- F
-purrr::walk(list.files(file.path("..","R","dal"),full.names=TRUE),source)
+purrr::walk(list.files(here::here("R","dal"),full.names=TRUE),source)
 ```
 
 ```{r}
@@ -147,53 +147,57 @@ valores extremos. Ao calcular o P/L mediano do IBOV, obtemos uma visão
 mais realista do *valuation* geral do mercado, sem as distorções
 causadas por empresas atípicas.
 
-``` r
-# Carregamento de dados hipotéticos de P/L para componentes do IBOV
-# Em um cenário real, estes dados viriam da ontologia, com P/L de cada ativo.
+::: {.callout-note collapse="true"}
+#### Código para gerar esse gráfico...
 
-# Dados de exemplo (substituir por dados reais da ontologia)
-ibov_pl_components_data <- tibble(
-  data = rep(seq(ymd('2016-01-01'), ymd('2026-01-01'), by = 'quarter'), each = 50), # 50 empresas por trimestre
-  ticker = paste0("EMP", rep(1:50, times = length(seq(ymd('2016-01-01'), ymd('2026-01-01'), by = 'quarter')))),
-  pl = runif(length(data), min = 5, max = 30) # P/L aleatório entre 5 e 30
-) %>%
-  # Adiciona alguns outliers para demonstrar a robustez da mediana
-  mutate(pl = ifelse(runif(n()) < 0.05, runif(n(), 50, 200), pl)) # 5% de chance de P/L alto
-
-ibov_pl_summary <- ibov_pl_components_data %>%
-  group_by(data) %>%
-  summarise(
-    pl_media = mean(pl, na.rm = TRUE),
-    pl_mediana = median(pl, na.rm = TRUE)
-  ) %>%
-  ungroup()
-
-ibov_pl_summary %>%
-  ggplot(aes(x = data)) +
-  geom_line(aes(y = pl_media, color = "Média"), size = 1) +
-  geom_line(aes(y = pl_mediana, color = "Mediana"), size = 1.2, linetype = "dashed") +
-  labs(
-    title = "P/L (Preço/Lucro) do IBOV: Média vs. Mediana",
-    x = "Data",
-    y = "P/L",
-    color = "Métrica"
-  ) +
-  scale_color_manual(values = c("Média" = "#D55E00", "Mediana" = "#009E73")) +
-  theme_minimal() +
-  theme(plot.title = element_text(hjust = 0.5, face = "bold"))
+```{r}
+  start_time=Sys.time() ; assets_from_IBOV_df <- quantamental$query() |>  
+    filter(asset %in% ontology$get_b3_index()$IBOV$asset) |> 
+    collect() |> 
+    group_by(date) |> summarise(median_pe=median(pe,na.rm=T),N=n()) ; d <- difftime(Sys.time(), start_time, units = "secs") ; cat(sprintf(paste0("Tempo para carregar os dados do índice IBOV : %.5f %s"), as.numeric(d), attr(d, "units")))
+  start_time=Sys.time() ; IBOV_SD_df <- quantamental$query() |>  
+    filter(asset %in% ontology$get_b3_index()$IBOV$asset) |> 
+    collect() |> 
+    group_by(date) |> summarise(median_ibov=median(pe,na.rm=T)) ; d <- difftime(Sys.time(), start_time, units = "secs") ; cat(sprintf(paste0("Tempo para carregar desvio-padrão histórico de IBOV: %.5f %s"), as.numeric(d), attr(d, "units")))
 ```
 
-Note **Vantagens da Mediana para Índices**
+```{r}
+time_series_sample_1_index_png <- file.path("plots",paste0("pe_",time_series_sample_1,"_index.png"))
+png(time_series_sample_1_index_png, width = 400, height = 300, res = 100)
+plot <- 
+  assets_from_IBOV_df |> 
+  left_join(IBOV_SD_df,by="date") |> mutate(mean_pe_ibov=mean(median_ibov,na.rm=T),sd_pe_ibov=sd(median_ibov,na.rm=T)) |> 
+  mutate(mean_pe=mean(median_pe,na.rm=T),sd_pe=sd(median_pe,na.rm=T)) |> 
+  filter(year(date)>=2022) |>
+  ggplot(aes(date,median_pe))+geom_line(aes(y=mean_pe),color="dodgerblue1",alpha=.5,linewidth=2)+
+  geom_line(aes(y=mean_pe_ibov),color="gray",alpha=.8,linewidth=3)+
+  geom_line(aes(y=mean_pe_ibov-sd_pe_ibov*1),color="gray",alpha=.5,linewidth=3)+
+  geom_line(aes(y=mean_pe_ibov+sd_pe_ibov*1),color="gray",alpha=.5,linewidth=3)+
+  geom_line(aes(y=mean_pe_ibov-sd_pe_ibov*2),color="gray",alpha=.3,linewidth=3)+
+  geom_line(aes(y=mean_pe_ibov+sd_pe_ibov*2),color="gray",alpha=.3,linewidth=3)+
+  geom_line(color="dodgerblue1")+ylab("P/L do Ibovespa")+
+  theme_minimal()+scale_x_date(date_breaks="1 year",date_labels="%Y")+theme(axis.text.x=element_text(angle=90,vjust=.5,hjust=1))
+plot(plot)
+dev.off()
+```
+
+#### Vantagens da Mediana para Índices
 
 Em mercados voláteis ou com empresas em diferentes estágios de
 maturidade, a mediana oferece uma medida de tendência central mais
 estável e representativa. Ela evita que uma única empresa com um P/L
 extremamente alto ou baixo distorça a percepção do *valuation* do índice
 como um todo, fornecendo um *benchmark* mais confiável para comparação.
+:::
+
+```{r load-pe-index-plot, echo=FALSE, out.width="80%"}
+if (file.exists(time_series_sample_1_index_png))
+  knitr::include_graphics(time_series_sample_1_index_png)
+```
 
 ## Próximos Passos
 
-- **Jornada Estatística em Séries Temporais**: Evolua da análise
+- <a href="time_series_cointegration.html"> **Cointegração** link </a>: Evolua da análise
   descritiva básica para a modelagem preditiva avançada. Comece
   dominando **conceitos de estacionariedade** e autocorrelação (funções
   ACF/PACF), avance para regressões lineares simples aplicadas ao tempo
@@ -207,6 +211,7 @@ como um todo, fornecendo um *benchmark* mais confiável para comparação.
 
 ::: {.callout-tip collapse="true"}
 #### Cointegração
+
 Podemos afirmar que essa jornada estatística é o **alicerce
 indispensável** para entender a cointegração de forma profunda e não
 apenas como uma "fórmula pronta".
@@ -236,11 +241,14 @@ $\beta$ variante no tempo. \* Isso significa que você está fazendo
 
 ## Mapa da Jornada: Do Básico à Cointegração Dinâmica
 
-Abaixo apresentamos a trilha de aprendizado sugerida para dominar a análise quantamental de séries temporais. Esta jornada é incremental: cada nível fornece as ferramentas matemáticas necessárias para o próximo passo.
+Abaixo apresentamos a trilha de aprendizado sugerida para dominar a
+análise quantamental de séries temporais. Esta jornada é incremental:
+cada nível fornece as ferramentas matemáticas necessárias para o próximo
+passo.
 
 ### Visualização da Jornada
 
-```mermaid
+``` mermaid
 graph TD
     A[<b>Nível 1: Fundamentos</b><br/>Média, Mediana, Variância] --> B[<b>Nível 2: Séries Temporais</b><br/>Estacionariedade, ACF/PACF]
     B --> C[<b>Nível 3: Modelagem Linear</b><br/>Regressão OLS, Beta, Resíduos]
@@ -256,23 +264,36 @@ graph TD
 
 ### O que esperar de cada nível?
 
-1.  **Fundamentos:** Entender a distribuição dos dados e por que a mediana é mais robusta que a média em indicadores de valuation.
-2.  **Séries Temporais:** Aprender a identificar se uma série é "estacionária" (se comporta de forma previsível ao redor de uma média) ou se possui raiz unitária.
-3.  **Modelagem Linear:** Estimar a relação de dependência entre dois ativos (o famoso Beta do Hedge).
-4.  **Cointegração Estática:** O primeiro grande marco. Encontrar pares de ativos que, embora flutuem, mantêm uma relação de equilíbrio de longo prazo.
-5.  **Modelos Dinâmicos (Filtro de Kalman):** A sofisticação técnica. Permitir que o modelo aprenda que a relação entre os ativos muda com o tempo, ajustando o Beta dinamicamente.
-6.  **Estratégia:** A aplicação prática em portfólios reais, utilizando a arbitragem estatística para lucrar com desvios temporários do equilíbrio.
+1.  **Fundamentos:** Entender a distribuição dos dados e por que a
+    mediana é mais robusta que a média em indicadores de valuation.
+2.  **Séries Temporais:** Aprender a identificar se uma série é
+    "estacionária" (se comporta de forma previsível ao redor de uma
+    média) ou se possui raiz unitária.
+3.  **Modelagem Linear:** Estimar a relação de dependência entre dois
+    ativos (o famoso Beta do Hedge).
+4.  **Cointegração Estática:** O primeiro grande marco. Encontrar pares
+    de ativos que, embora flutuem, mantêm uma relação de equilíbrio de
+    longo prazo.
+5.  **Modelos Dinâmicos (Filtro de Kalman):** A sofisticação técnica.
+    Permitir que o modelo aprenda que a relação entre os ativos muda com
+    o tempo, ajustando o Beta dinamicamente.
+6.  **Estratégia:** A aplicação prática em portfólios reais, utilizando
+    a arbitragem estatística para lucrar com desvios temporários do
+    equilíbrio.
 
-> **Dica Quantamental:** A cointegração não é apenas matemática; ela deve ser validada pela **Ontologia**. Um par cointegrado estatisticamente só é confiável se houver uma razão fundamentalista (mesmo setor, mesma cadeia de suprimentos) para eles caminharem juntos.
-
-
+> **Dica Quantamental:** A cointegração não é apenas matemática; ela
+> deve ser validada pela **Ontologia**. Um par cointegrado
+> estatisticamente só é confiável se houver uma razão fundamentalista
+> (mesmo setor, mesma cadeia de suprimentos) para eles caminharem
+> juntos.
 :::
 
-- **Integração com os grupos de ativos:** Conecte os dados de P/L e outros
-  múltiplos com entre ativos similares.
+- **Integração com os grupos de ativos:** Conecte os dados de P/L e
+  outros múltiplos com entre ativos similares.
 
 ::: {.callout-tip collapse="true"}
 #### Conexão com a Ontologia
+
 O caminho estatístico dá a "ferramenta", mas a **Ontologia** e a
 **Similaridade** (que discutimos antes) dão o "alvo". A estatística diz
 *como* operar, e a ontologia diz *quem* operar (escolhendo pares que
@@ -288,3 +309,13 @@ fazem sentido fundamentalista).
 - **Bandas de Valuation:** Crie bandas de *valuation* (ex: P/L +/- 1
   desvio padrão) para identificar quando um ativo ou índice está em
   patamares extremos de *valuation*.
+
+
+
+## Referências
+
+Este tutorial se baseia em conceitos de finanças quantitativas e análise
+fundamentalista. Para aprofundar nos temas abordados, sugerimos as
+seguintes leituras:
+
+- Time Series Notebook <a href="time_series_nb.html"> link </a>
