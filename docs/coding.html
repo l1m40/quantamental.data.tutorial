@@ -245,8 +245,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-  
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#features" id="toc-features" class="nav-link active" data-scroll-target="#features">Features:</a></li>
+  <li><a href="#plot-time-series" id="toc-plot-time-series" class="nav-link" data-scroll-target="#plot-time-series">Plot Time Series</a></li>
+  <li><a href="#telemetria-monitorando-a-saúde-dos-dados" id="toc-telemetria-monitorando-a-saúde-dos-dados" class="nav-link" data-scroll-target="#telemetria-monitorando-a-saúde-dos-dados">Telemetria: Monitorando a Saúde dos Dados</a></li>
+  </ul>
+</nav>
 </div>
 <main class="content" id="quarto-document-content">
 
@@ -340,8 +348,8 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ontology<span class="sc">$</span><span class="fu">get_assets</span>() <span class="sc">|&gt;</span> <span class="fu">sample</span>(<span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "MGLU3"  "MILS3"  "GMAT3"  "ITUB4"  "FLRY3"  "SUZB3"  "WEGE3"  "MOTV3" 
- [9] "USIM5"  "GGPS3"  "SANB11" "BHIA3"  "MBRF3"  "YDUQ3"  "PETR3" </code></pre>
+<pre><code> [1] "POSI3" "PLPL3" "TIMS3" "ALOS3" "MILS3" "BBSE3" "WEGE3" "RAIZ4" "MYPK3"
+[10] "AXIA3" "SLCE3" "FLRY3" "JSLG3" "RCSL3" "MLAS3"</code></pre>
 </div>
 </div>
 <p>Setores:</p>
@@ -393,7 +401,8 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 4    SMLL           110       Índice Small Caps</code></pre>
 </div>
 </div>
-<p>Features:</p>
+<section id="features" class="level2">
+<h2 class="anchored" data-anchor-id="features">Features:</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>code</summary>
@@ -416,33 +425,29 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(<span class="fu">c</span>(marketcap,Net_Profit_12M),<span class="at">decimals=</span><span class="dv">1</span>,<span class="at">suffixing=</span>T) <span class="sc">|&gt;</span> </span>
 <span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(pe,<span class="at">decimals=</span><span class="dv">2</span>) <span class="sc">|&gt;</span></span>
 <span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_percent</span>(<span class="fu">c</span>(roe,var_12M),<span class="at">decimals=</span><span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># opt_row_striping() |&gt;</span></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tab_source_note(</span></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># "Fonte: Data Lake Quantamental"</span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ) |&gt;</span></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Features disponíveis pelo modelo"</span>,</span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Cada linha representa uma empresa e cada coluna uma feature."</span></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Features disponíveis pelo modelo"</span>,</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Cada linha representa uma empresa e cada coluna uma feature."</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="scyyujgeyd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#scyyujgeyd table {
+<div id="eqfhjguiih" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#eqfhjguiih table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#scyyujgeyd thead, #scyyujgeyd tbody, #scyyujgeyd tfoot, #scyyujgeyd tr, #scyyujgeyd td, #scyyujgeyd th {
+#eqfhjguiih thead, #eqfhjguiih tbody, #eqfhjguiih tfoot, #eqfhjguiih tr, #eqfhjguiih td, #eqfhjguiih th {
   border-style: none;
 }
 
-#scyyujgeyd p {
+#eqfhjguiih p {
   margin: 0;
   padding: 0;
 }
 
-#scyyujgeyd .gt_table {
+#eqfhjguiih .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -468,12 +473,12 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-left-color: #D3D3D3;
 }
 
-#scyyujgeyd .gt_caption {
+#eqfhjguiih .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#scyyujgeyd .gt_title {
+#eqfhjguiih .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -485,7 +490,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-bottom-width: 0;
 }
 
-#scyyujgeyd .gt_subtitle {
+#eqfhjguiih .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -497,7 +502,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-top-width: 0;
 }
 
-#scyyujgeyd .gt_heading {
+#eqfhjguiih .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -509,13 +514,13 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-right-color: #D3D3D3;
 }
 
-#scyyujgeyd .gt_bottom_border {
+#eqfhjguiih .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#scyyujgeyd .gt_col_headings {
+#eqfhjguiih .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -530,7 +535,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-right-color: #D3D3D3;
 }
 
-#scyyujgeyd .gt_col_heading {
+#eqfhjguiih .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -550,7 +555,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   overflow-x: hidden;
 }
 
-#scyyujgeyd .gt_column_spanner_outer {
+#eqfhjguiih .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -562,15 +567,15 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   padding-right: 4px;
 }
 
-#scyyujgeyd .gt_column_spanner_outer:first-child {
+#eqfhjguiih .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#scyyujgeyd .gt_column_spanner_outer:last-child {
+#eqfhjguiih .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#scyyujgeyd .gt_column_spanner {
+#eqfhjguiih .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -582,11 +587,11 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   width: 100%;
 }
 
-#scyyujgeyd .gt_spanner_row {
+#eqfhjguiih .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#scyyujgeyd .gt_group_heading {
+#eqfhjguiih .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -612,7 +617,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   text-align: left;
 }
 
-#scyyujgeyd .gt_empty_group_heading {
+#eqfhjguiih .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -627,15 +632,15 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   vertical-align: middle;
 }
 
-#scyyujgeyd .gt_from_md > :first-child {
+#eqfhjguiih .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#scyyujgeyd .gt_from_md > :last-child {
+#eqfhjguiih .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#scyyujgeyd .gt_row {
+#eqfhjguiih .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -654,7 +659,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   overflow-x: hidden;
 }
 
-#scyyujgeyd .gt_stub {
+#eqfhjguiih .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -667,7 +672,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   padding-right: 5px;
 }
 
-#scyyujgeyd .gt_stub_row_group {
+#eqfhjguiih .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -681,15 +686,15 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   vertical-align: top;
 }
 
-#scyyujgeyd .gt_row_group_first td {
+#eqfhjguiih .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#scyyujgeyd .gt_row_group_first th {
+#eqfhjguiih .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#scyyujgeyd .gt_summary_row {
+#eqfhjguiih .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -699,16 +704,16 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   padding-right: 5px;
 }
 
-#scyyujgeyd .gt_first_summary_row {
+#eqfhjguiih .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#scyyujgeyd .gt_first_summary_row.thick {
+#eqfhjguiih .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#scyyujgeyd .gt_last_summary_row {
+#eqfhjguiih .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -718,7 +723,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-bottom-color: #D3D3D3;
 }
 
-#scyyujgeyd .gt_grand_summary_row {
+#eqfhjguiih .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -728,7 +733,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   padding-right: 5px;
 }
 
-#scyyujgeyd .gt_first_grand_summary_row {
+#eqfhjguiih .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -738,7 +743,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-top-color: #D3D3D3;
 }
 
-#scyyujgeyd .gt_last_grand_summary_row_top {
+#eqfhjguiih .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -748,11 +753,11 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-bottom-color: #D3D3D3;
 }
 
-#scyyujgeyd .gt_striped {
+#eqfhjguiih .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#scyyujgeyd .gt_table_body {
+#eqfhjguiih .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -761,7 +766,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-bottom-color: #D3D3D3;
 }
 
-#scyyujgeyd .gt_footnotes {
+#eqfhjguiih .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -775,7 +780,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-right-color: #D3D3D3;
 }
 
-#scyyujgeyd .gt_footnote {
+#eqfhjguiih .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -784,7 +789,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   padding-right: 5px;
 }
 
-#scyyujgeyd .gt_sourcenotes {
+#eqfhjguiih .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -798,7 +803,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-right-color: #D3D3D3;
 }
 
-#scyyujgeyd .gt_sourcenote {
+#eqfhjguiih .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -806,72 +811,72 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   padding-right: 5px;
 }
 
-#scyyujgeyd .gt_left {
+#eqfhjguiih .gt_left {
   text-align: left;
 }
 
-#scyyujgeyd .gt_center {
+#eqfhjguiih .gt_center {
   text-align: center;
 }
 
-#scyyujgeyd .gt_right {
+#eqfhjguiih .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#scyyujgeyd .gt_font_normal {
+#eqfhjguiih .gt_font_normal {
   font-weight: normal;
 }
 
-#scyyujgeyd .gt_font_bold {
+#eqfhjguiih .gt_font_bold {
   font-weight: bold;
 }
 
-#scyyujgeyd .gt_font_italic {
+#eqfhjguiih .gt_font_italic {
   font-style: italic;
 }
 
-#scyyujgeyd .gt_super {
+#eqfhjguiih .gt_super {
   font-size: 65%;
 }
 
-#scyyujgeyd .gt_footnote_marks {
+#eqfhjguiih .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#scyyujgeyd .gt_asterisk {
+#eqfhjguiih .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#scyyujgeyd .gt_indent_1 {
+#eqfhjguiih .gt_indent_1 {
   text-indent: 5px;
 }
 
-#scyyujgeyd .gt_indent_2 {
+#eqfhjguiih .gt_indent_2 {
   text-indent: 10px;
 }
 
-#scyyujgeyd .gt_indent_3 {
+#eqfhjguiih .gt_indent_3 {
   text-indent: 15px;
 }
 
-#scyyujgeyd .gt_indent_4 {
+#eqfhjguiih .gt_indent_4 {
   text-indent: 20px;
 }
 
-#scyyujgeyd .gt_indent_5 {
+#eqfhjguiih .gt_indent_5 {
   text-indent: 25px;
 }
 
-#scyyujgeyd .katex-display {
+#eqfhjguiih .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#scyyujgeyd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#eqfhjguiih div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -955,7 +960,29 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 </div>
 </div>
 </div>
+</section>
+<section id="plot-time-series" class="level2">
+<h2 class="anchored" data-anchor-id="plot-time-series">Plot Time Series</h2>
+</section>
+<section id="telemetria-monitorando-a-saúde-dos-dados" class="level2">
+<h2 class="anchored" data-anchor-id="telemetria-monitorando-a-saúde-dos-dados">Telemetria: Monitorando a Saúde dos Dados</h2>
+<p>Para um analista quantamental, o maior risco não é um modelo errado, mas um dado corrompido ou ausente. A seção de <strong>Telemetria</strong> atua como o painel de controle (dashboard) do nosso ecossistema, garantindo que a ontologia esteja íntegra antes de qualquer tomada de decisão.</p>
+<section id="disponibilidade-de-relatórios-trimestrais" class="level4">
+<h4 class="anchored" data-anchor-id="disponibilidade-de-relatórios-trimestrais">Disponibilidade de Relatórios Trimestrais</h4>
+<p>Uma das métricas vitais da nossa telemetria é a <strong>densidade de cobertura dos balanços</strong>. Como cada empresa listada deve, obrigatoriamente, publicar um relatório a cada trimestre, monitoramos a “pulsação” desses dados ao longo do tempo. Lacunas nesse mapa podem indicar desde atrasos na divulgação pela empresa até falhas no nosso processo de extração (scraping).</p>
+<p>O gráfico abaixo apresenta a matriz de disponibilidade de relatórios. Cada linha representa uma empresa e cada coluna um trimestre fiscal. O preenchimento indica que o dado foi capturado e integrado com sucesso à ontologia.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="plots/telemetry_report_availability.png" class="img-fluid figure-img"></p>
+<figcaption>Telemetria de Disponibilidade de Balanços</figcaption>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p><strong>Nota para Devs:</strong> No backend, essa telemetria é gerada cruzando o <code>get_assets()</code> com a contagem de entradas únicas na tabela de fundamentos. Se <code>count(reports) &lt; expected_quarters</code>, um alerta é disparado no log do sistema.</p>
+</blockquote>
 <p>Este espaço é destinado a quem deseja ver a implementação técnica sem a camada didática. Para detalhes sobre funções específicas do R, consulte o <a href="https://www.tidyverse.org/help/">Tidyverse Help</a>.</p>
+</section>
+</section>
 
 </main>
 <!-- /main column -->

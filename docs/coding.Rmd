@@ -1,5 +1,4 @@
 ---
-# title: "As Engrenagens"
 format:
   html:
     toc: true
@@ -113,7 +112,7 @@ data.frame(
 )
 ```
 
-Features:
+## Features:
 
 ```{r}
 library(gt)
@@ -135,15 +134,33 @@ df |> filter(date>=max(date)-365) |> group_by(asset) |> mutate(var_12M=(last(clo
   fmt_number(c(marketcap,Net_Profit_12M),decimals=1,suffixing=T) |> 
   fmt_number(pe,decimals=2) |>
   fmt_percent(c(roe,var_12M),decimals=1) |>
-  # opt_row_striping() |>
-  # tab_source_note(
-    # "Fonte: Data Lake Quantamental"
-  # ) |>
   tab_header(
     title = "Features disponíveis pelo modelo",
     subtitle = "Cada linha representa uma empresa e cada coluna uma feature."
   )
 ```
+
+
+## Plot Time Series
+
+
+## Telemetria: Monitorando a Saúde dos Dados
+
+Para um analista quantamental, o maior risco não é um modelo errado, mas um dado corrompido ou ausente. A seção de **Telemetria** atua como o painel de controle (dashboard) do nosso ecossistema, garantindo que a ontologia esteja íntegra antes de qualquer tomada de decisão.
+
+#### Disponibilidade de Relatórios Trimestrais
+
+Uma das métricas vitais da nossa telemetria é a **densidade de cobertura dos balanços**. Como cada empresa listada deve, obrigatoriamente, publicar um relatório a cada trimestre, monitoramos a "pulsação" desses dados ao longo do tempo. Lacunas nesse mapa podem indicar desde atrasos na divulgação pela empresa até falhas no nosso processo de extração (scraping).
+
+O gráfico abaixo apresenta a matriz de disponibilidade de relatórios. Cada linha representa uma empresa e cada coluna um trimestre fiscal. O preenchimento indica que o dado foi capturado e integrado com sucesso à ontologia.
+
+![Telemetria de Disponibilidade de Balanços](plots/telemetry_report_availability.png)
+
+> **Nota para Devs:** No backend, essa telemetria é gerada cruzando o `get_assets()` com a contagem de entradas únicas na tabela de fundamentos. Se `count(reports) < expected_quarters`, um alerta é disparado no log do sistema.
+
+
+
+
 
 Este espaço é destinado a quem deseja ver a implementação técnica sem a
 camada didática. Para detalhes sobre funções específicas do R, consulte
