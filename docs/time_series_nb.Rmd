@@ -9,7 +9,7 @@ editor_options:
 
 <details>
 
-```{r echo=FALSE}
+```{r echo=FALSE, warning=F, message=FALSE}
 library(tidyverse)
 data_mart_path <- here::here("data","mart")
 healthcheck_validation <- T

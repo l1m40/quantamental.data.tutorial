@@ -1,6 +1,10 @@
 ---
 # title: "Cointegração"
-format: html
+# format: html
+format:
+  html:
+    toc: true
+    toc-depth: 2
 editor: visual
 ---
 
@@ -52,19 +56,22 @@ cointegração, fundamental para estratégias de *pairs trading*.
 
 ## 1. Correlação de Pearson: A Medida da "Amizade"
 
-A **Correlação de Pearson** é uma das formas mais comuns de quantificar
-a relação linear entre dois ativos. Ela nos diz o quão forte e em que
-direção (positiva ou negativa) dois ativos se movem juntos. Um valor
-próximo de +1 indica uma forte correlação positiva, -1 uma forte
-correlação negativa, e 0 nenhuma correlação linear.
+A [**Correlação de
+Pearson**](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)
+é uma das formas mais comuns de quantificar a relação linear entre dois
+ativos. Ela nos diz o quão forte e em que direção (positiva ou negativa)
+dois ativos se movem juntos. Um valor próximo de +1 indica uma forte
+correlação positiva, -1 uma forte correlação negativa, e 0 nenhuma
+correlação linear.
 
 ::: {.callout-note collapse="true"}
 #### Loading objects...
 
-```{r echo=FALSE}
+```{r echo=FALSE, warning=F, message=FALSE}
 data_mart_path <- here::here("data","mart")
 healthcheck_validation <- F
 purrr::walk(list.files(here::here("R","dal"),full.names=TRUE),source)
+library(tidyverse)
 ```
 
 ```{r}
@@ -79,13 +86,12 @@ time_series_sample_1_similar_assets <- intersect((ontology$get_similarity_asset_
 if(length(time_series_sample_1_similar_assets)==0) time_series_sample_1_similar_assets <- c("ITUB4","VALE3","PETR4")
 time_series_sample_1_similar_assets <- unique(sample(time_series_sample_1_similar_assets,3,replace=T))
 if(length(time_series_sample_1_similar_assets)<2) time_series_sample_1_similar_assets <- c("ITUB4","VALE3","PETR4")
-library(tidyverse)
+
 start_time=Sys.time() ; similar_assets_df <- quantamental$assets(c(time_series_sample_1,time_series_sample_1_similar_assets)) |> filter(date>=max(date)-365) ; d <- difftime(Sys.time(), start_time, units = "secs") ; cat(sprintf(paste0("Tempo para carregar os dados de ",paste(c(time_series_sample_1,time_series_sample_1_similar_assets),collapse=" | ")," : %.5f %s"), as.numeric(d), attr(d, "units")))
 if(!time_series_sample_1 %in% unique(similar_assets_df$asset)) {
   time_series_sample_1 <- time_series_sample_1_similar_assets[1]
   time_series_sample_1_similar_assets <- setdiff(time_series_sample_1_similar_assets,time_series_sample_1)
 }
-# similar_assets <- split(similar_assets_df, similar_assets_df$asset)
 # Convert to wide format
 wide_df <- similar_assets_df %>%
   select(date, asset, close) %>%
@@ -94,8 +100,6 @@ wide_df <- similar_assets_df %>%
     values_from = close
   )
 # Names of the two assets
-# asset1 <- names(wide_df)[2]
-# asset2 <- names(wide_df)[3]
 asset1 <- time_series_sample_1
 asset2 <- time_series_sample_1_similar_assets[1]
 wide_df |> ggplot(aes(x=.data[["date"]],y=.data[[asset1]]))+geom_line()
@@ -118,12 +122,27 @@ pairs(wide_df[-1])
 ```
 
 ::: {.callout-important collapse="false"}
-#### **Limitações da Correlação**
+#### Limitações da Correlação
 
 A correlação mede apenas a relação *linear*. Dois ativos podem ter uma
 forte relação não-linear e apresentar uma correlação de Pearson baixa.
 Além disso, a correlação não implica causalidade e pode ser enganosa em
 períodos de crise ou alta volatilidade.
+:::
+
+::: callout-note
+#### Como calcular correlação em R?
+
+- Como usar a função cor() e cor.test(), além de como visualizar a
+  correlação de forma elegante. **STHDA.** *Correlation Test Between Two
+  Variables in R.* Disponível em:
+  [http://www.sthda.com/...](http://www.sthda.com/english/wiki/correlation-test-between-two-variables-in-r){target="_blank"}
+- **Para uma introdução rápida:** [Entenda o Coeficiente de Pearson e
+  seu uso para investidores
+  (Investopedia)](https://www.investopedia.com/terms/p/pearsoncoefficient.asp){target="_blank"}
+- **Para uma explicação visual e intuitiva:** [Revisão sobre Correlação
+  e Regressão Linear (Khan
+  Academy)](https://www.khanacademy.org/math/statistics-probability/describing-relationships-quantitative-data/introduction-to-trend-lines/a/linear-regression-review){target="_blank"}
 :::
 
 ## 2. Regressão Linear: Encontrando a Proporção de Equilíbrio (Hedge Ratio)

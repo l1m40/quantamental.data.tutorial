@@ -465,7 +465,7 @@ análises mais complexas:
   criar índices sintéticos de grupos de afinidade, servindo como um
   *benchmark* que mitiga o efeito de *outliers* e permite identificar
   desvios significativos de performance ou *valuation* dentro de um
-  mesmo cluster ao longo do tempo.
+  mesmo cluster ao longo do tempo. [link](time_series.html)
 
 - **Estudo de Caso de Similaridade:** Escolha um setor específico (ex:
   "Bancos") e analise a matriz de similaridade para identificar empresas
@@ -487,7 +487,7 @@ análises mais complexas:
   & Short*. Aplique testes de **cointegração** para verificar relações
   de equilíbrio de longo prazo e utilize o Filtro de Kalman para estimar
   parâmetros dinâmicos, permitindo a execução de operações de arbitragem
-  estatística.
+  estatística. [link](time_series_cointegration.html)
 
 - **Visualização Avançada:** Explore outras formas de visualizar a
   matriz de similaridade e as relações entre empresas, como grafos de
@@ -499,9 +499,20 @@ Este tutorial se baseia em conceitos de finanças quantitativas e análise
 fundamentalista. Para aprofundar nos temas abordados, sugerimos as
 seguintes leituras:
 
-- Time Series Notebook <a href="time_series_nb.html"> link </a>
+- Time Series Notebook [link](time_series_nb.html)
 
-- Livros TBD
+- Feature Engineering
+
+- Uso avançado com o pacote quantamental.data
+
+- Como criar um arquivo Rmd R Markdown?
+  [link](https://rmarkdown.rstudio.com/)
+
+- **Documentação Oficial do Tidyverse:** Para detalhes sobre a
+    manipulação de dados em R. [Link para a
+    documentação](https://www.tidyverse.org/)
+
+- Livros **TBD**
 
 ................. SAMPLE ...............
 
@@ -514,20 +525,8 @@ seguintes leituras:
     editora/livro](https://www.wiley.com/en-us/Modern+Investment+Management%3A+An+Equilibrium+Approach-p-9780471172221)
 3.  **Hadley Wickham (2017). *R for Data Science*.** O'Reilly Media.
     [Link para o livro online](https://r4ds.had.co.nz/)
-4.  **Documentação Oficial do Tidyverse:** Para detalhes sobre a
-    manipulação de dados em R. [Link para a
-    documentação](https://www.tidyverse.org/)
 
 .................... SAMPLE ................
-
-- Feature Engineering
-
-- Uso avançado com o pacote quantamental.data
-
-<!-- -->
-
-- Como criar um arquivo Rmd R Markdown?
-  [link](https://rmarkdown.rstudio.com/)
 
 ::: callout-warning
 Se você chegou até aqui, talvez queira ver as [engrenagens](coding.html)

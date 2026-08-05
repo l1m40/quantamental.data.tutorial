@@ -67,7 +67,7 @@ camada didática.
 Para detalhes sobre funções específicas do R, consulte
 o [Tidyverse Help](https://www.tidyverse.org/help/).
 
-```{r echo=F}
+```{r echo=FALSE, warning=F, message=FALSE}
 data_mart_path <- here::here("data","mart")
 healthcheck_validation <- T
 purrr::walk(list.files(here::here("R","dal"),full.names=TRUE),source)
@@ -150,9 +150,9 @@ Para um analista quantamental, o maior risco não é um modelo errado, mas um da
 
 #### Disponibilidade de Relatórios Trimestrais
 
-Uma das métricas vitais da nossa telemetria é a **densidade de cobertura dos balanços**. Como cada empresa listada deve, obrigatoriamente, publicar um relatório a cada trimestre, monitoramos a "pulsação" desses dados ao longo do tempo. Lacunas nesse mapa podem indicar desde atrasos na divulgação pela empresa até falhas no nosso processo de extração (scraping).
+Uma das métricas vitais da telemetria é a **densidade de cobertura dos balanços**. Como cada empresa listada deve, obrigatoriamente, publicar um relatório a cada trimestre. Lacunas nesse mapa podem indicar desde atrasos na divulgação pela empresa até falhas no processo de extração (scraping).
 
-O gráfico abaixo apresenta a matriz de disponibilidade de relatórios. Cada linha representa uma empresa e cada coluna um trimestre fiscal. O preenchimento indica que o dado foi capturado e integrado com sucesso à ontologia.
+O gráfico abaixo apresenta a matriz de disponibilidade de relatórios. Cada linha representa uma empresa e cada coluna um trimestre fiscal. O preenchimento em azul indica que o dado foi capturado e integrado com sucesso.
 
 ![Telemetria de Disponibilidade de Balanços](plots/telemetry_report_availability.png)
 

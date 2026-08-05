@@ -116,7 +116,7 @@ window.Quarto = {
   <li><a href="#indicadores" id="toc-indicadores" class="nav-link active" data-scroll-target="#indicadores">Indicadores</a></li>
   <li><a href="#preço-e-lucro-o-caso-itub4" id="toc-preço-e-lucro-o-caso-itub4" class="nav-link" data-scroll-target="#preço-e-lucro-o-caso-itub4">Preço e Lucro: O Caso ITUB4</a></li>
   <li><a href="#pl-do-ibov-por-que-a-mediana-importa" id="toc-pl-do-ibov-por-que-a-mediana-importa" class="nav-link" data-scroll-target="#pl-do-ibov-por-que-a-mediana-importa">P/L do IBOV: Por que a Mediana Importa?</a></li>
-  <li><a href="#próximos-passos" id="toc-próximos-passos" class="nav-link" data-scroll-target="#próximos-passos">Próximos Passos</a></li>
+  <li><a href="#conceitos-mais-avançados" id="toc-conceitos-mais-avançados" class="nav-link" data-scroll-target="#conceitos-mais-avançados">Conceitos mais avançados</a></li>
   <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências">Referências</a></li>
   </ul>
 </nav>
@@ -233,7 +233,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  start_time<span class="ot">=</span><span class="fu">Sys.time</span>() ; df <span class="ot">&lt;-</span> quantamental<span class="sc">$</span><span class="fu">asset</span>(time_series_sample_1) ; d <span class="ot">&lt;-</span> <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(), start_time, <span class="at">units =</span> <span class="st">"secs"</span>) ; <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="fu">paste0</span>(<span class="st">"Tempo para carregar os dados de "</span>,time_series_sample_1,<span class="st">" : %.5f %s"</span>), <span class="fu">as.numeric</span>(d), <span class="fu">attr</span>(d, <span class="st">"units"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tempo para carregar os dados de ITUB4 : 0.02566 secs</code></pre>
+<pre><code>Tempo para carregar os dados de ITUB4 : 0.02714 secs</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>code</summary>
@@ -298,7 +298,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(date) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">median_pe=</span><span class="fu">median</span>(pe,<span class="at">na.rm=</span>T),<span class="at">N=</span><span class="fu">n</span>()) ; d <span class="ot">&lt;-</span> <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(), start_time, <span class="at">units =</span> <span class="st">"secs"</span>) ; <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="fu">paste0</span>(<span class="st">"Tempo para carregar os dados do índice IBOV : %.5f %s"</span>), <span class="fu">as.numeric</span>(d), <span class="fu">attr</span>(d, <span class="st">"units"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tempo para carregar os dados do índice IBOV : 0.12795 secs</code></pre>
+<pre><code>Tempo para carregar os dados do índice IBOV : 0.12671 secs</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>code</summary>
@@ -308,7 +308,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(date) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">median_ibov=</span><span class="fu">median</span>(pe,<span class="at">na.rm=</span>T)) ; d <span class="ot">&lt;-</span> <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(), start_time, <span class="at">units =</span> <span class="st">"secs"</span>) ; <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="fu">paste0</span>(<span class="st">"Tempo para carregar desvio-padrão histórico de IBOV: %.5f %s"</span>), <span class="fu">as.numeric</span>(d), <span class="fu">attr</span>(d, <span class="st">"units"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tempo para carregar desvio-padrão histórico de IBOV: 0.10671 secs</code></pre>
+<pre><code>Tempo para carregar desvio-padrão histórico de IBOV: 0.10858 secs</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -354,8 +354,8 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 </div>
 </div>
 </section>
-<section id="próximos-passos" class="level2">
-<h2 class="anchored" data-anchor-id="próximos-passos">Próximos Passos</h2>
+<section id="conceitos-mais-avançados" class="level2">
+<h2 class="anchored" data-anchor-id="conceitos-mais-avançados">Conceitos mais avançados</h2>
 <ul>
 <li><a href="time_series_cointegration.html"> <strong>Cointegração</strong> link </a>: Evolua da análise descritiva básica para a modelagem preditiva avançada. Comece dominando <strong>conceitos de estacionariedade</strong> e autocorrelação (funções ACF/PACF), avance para regressões lineares simples aplicadas ao tempo e, em seguida, explore regressões dinâmicas que incorporam variáveis externas (ex: impacto da Selic no P/L). O estágio final desta jornada é a implementação de Modelos de Espaço de Estados, utilizando o <strong>Filtro de Kalman</strong> para estimar parâmetros que mudam ao longo do tempo, permitindo que o seu modelo quantamental se adapte automaticamente a novas condições de mercado sem a necessidade de janelas fixas de rolagem (rolling windows).</li>
 </ul>

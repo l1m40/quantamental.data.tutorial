@@ -67,8 +67,7 @@ individual quanto para um índice de mercado como o IBOV.
 ::: {.callout-note collapse="true"}
 #### Loading objects...
 
-```{r}
-#| echo: false
+```{r echo=FALSE, warning=F, message=FALSE}
 data_mart_path <- here::here("data","mart")
 healthcheck_validation <- F
 purrr::walk(list.files(here::here("R","dal"),full.names=TRUE),source)
@@ -195,7 +194,7 @@ if (file.exists(time_series_sample_1_index_png))
   knitr::include_graphics(time_series_sample_1_index_png)
 ```
 
-## Próximos Passos
+## Conceitos mais avançados
 
 - <a href="time_series_cointegration.html"> **Cointegração** link </a>: Evolua da análise
   descritiva básica para a modelagem preditiva avançada. Comece

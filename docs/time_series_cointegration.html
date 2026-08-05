@@ -105,10 +105,22 @@ window.Quarto = {
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#correlação-de-pearson-a-medida-da-amizade" id="toc-correlação-de-pearson-a-medida-da-amizade" class="nav-link active" data-scroll-target="#correlação-de-pearson-a-medida-da-amizade">1. Correlação de Pearson: A Medida da “Amizade”</a></li>
+  <li><a href="#regressão-linear-encontrando-a-proporção-de-equilíbrio-hedge-ratio" id="toc-regressão-linear-encontrando-a-proporção-de-equilíbrio-hedge-ratio" class="nav-link" data-scroll-target="#regressão-linear-encontrando-a-proporção-de-equilíbrio-hedge-ratio">2. Regressão Linear: Encontrando a Proporção de Equilíbrio (Hedge Ratio)</a></li>
+  <li><a href="#resíduos-e-z-score-o-desvio-do-equilíbrio" id="toc-resíduos-e-z-score-o-desvio-do-equilíbrio" class="nav-link" data-scroll-target="#resíduos-e-z-score-o-desvio-do-equilíbrio">3. Resíduos e Z-Score: O Desvio do Equilíbrio</a></li>
+  <li><a href="#cointegração-o-equilíbrio-de-longo-prazo-engle-granger" id="toc-cointegração-o-equilíbrio-de-longo-prazo-engle-granger" class="nav-link" data-scroll-target="#cointegração-o-equilíbrio-de-longo-prazo-engle-granger">4. Cointegração: O Equilíbrio de Longo Prazo (Engle-Granger)</a></li>
+  <li><a href="#próximos-passos" id="toc-próximos-passos" class="nav-link" data-scroll-target="#próximos-passos">Próximos Passos</a></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 
@@ -154,7 +166,7 @@ Cointegração
 <p>Neste notebook, embarcaremos em uma jornada estatística para entender como ativos financeiros se movem em conjunto. Começaremos com medidas simples de associação e progrediremos até o conceito avançado de cointegração, fundamental para estratégias de <em>pairs trading</em>.</p>
 <section id="correlação-de-pearson-a-medida-da-amizade" class="level2">
 <h2 class="anchored" data-anchor-id="correlação-de-pearson-a-medida-da-amizade">1. Correlação de Pearson: A Medida da “Amizade”</h2>
-<p>A <strong>Correlação de Pearson</strong> é uma das formas mais comuns de quantificar a relação linear entre dois ativos. Ela nos diz o quão forte e em que direção (positiva ou negativa) dois ativos se movem juntos. Um valor próximo de +1 indica uma forte correlação positiva, -1 uma forte correlação negativa, e 0 nenhuma correlação linear.</p>
+<p>A <a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient"><strong>Correlação de Pearson</strong></a> é uma das formas mais comuns de quantificar a relação linear entre dois ativos. Ela nos diz o quão forte e em que direção (positiva ou negativa) dois ativos se movem juntos. Um valor próximo de +1 indica uma forte correlação positiva, -1 uma forte correlação negativa, e 0 nenhuma correlação linear.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -168,84 +180,44 @@ Cointegração
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'arrow'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:utils':
-
-    timestamp</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ontology <span class="ot">&lt;-</span> DAL_Ontology<span class="sc">$</span><span class="fu">new</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ontology <span class="ot">&lt;-</span> DAL_Ontology<span class="sc">$</span><span class="fu">new</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ontology healthcheck validation...
 23 sectors and 171 assets 
 indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>quantamental <span class="ot">&lt;-</span> DAL_Quantamental<span class="sc">$</span><span class="fu">new</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>quantamental <span class="ot">&lt;-</span> DAL_Quantamental<span class="sc">$</span><span class="fu">new</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>quantamental healthcheck validation...</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>time_series_sample_1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(ontology<span class="sc">$</span><span class="fu">get_b3_index</span>()<span class="sc">$</span>IBOV<span class="sc">$</span>asset,<span class="dv">1</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>time_series_sample_1_similar_assets <span class="ot">&lt;-</span> <span class="fu">intersect</span>((ontology<span class="sc">$</span><span class="fu">get_similarity_asset_df</span>(time_series_sample_1,<span class="at">n=</span><span class="dv">8</span>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(relationship<span class="sc">==</span><span class="st">"Within Same Sector"</span>))<span class="sc">$</span>asset2,ontology<span class="sc">$</span><span class="fu">get_b3_index</span>()<span class="sc">$</span>IBOV<span class="sc">$</span>asset)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">length</span>(time_series_sample_1_similar_assets)<span class="sc">==</span><span class="dv">0</span>) time_series_sample_1_similar_assets <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ITUB4"</span>,<span class="st">"VALE3"</span>,<span class="st">"PETR4"</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>time_series_sample_1_similar_assets <span class="ot">&lt;-</span> <span class="fu">unique</span>(<span class="fu">sample</span>(time_series_sample_1_similar_assets,<span class="dv">3</span>,<span class="at">replace=</span>T))</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">length</span>(time_series_sample_1_similar_assets)<span class="sc">&lt;</span><span class="dv">2</span>) time_series_sample_1_similar_assets <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ITUB4"</span>,<span class="st">"VALE3"</span>,<span class="st">"PETR4"</span>)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ forcats   1.0.1     ✔ readr     2.1.6
-✔ ggplot2   4.0.1     ✔ stringr   1.6.0
-✔ lubridate 1.9.4     ✔ tibble    3.3.0
-✔ purrr     1.2.0     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ lubridate::duration() masks arrow::duration()
-✖ dplyr::filter()       masks stats::filter()
-✖ dplyr::lag()          masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>start_time<span class="ot">=</span><span class="fu">Sys.time</span>() ; similar_assets_df <span class="ot">&lt;-</span> quantamental<span class="sc">$</span><span class="fu">assets</span>(<span class="fu">c</span>(time_series_sample_1,time_series_sample_1_similar_assets)) <span class="sc">|&gt;</span> <span class="fu">filter</span>(date<span class="sc">&gt;=</span><span class="fu">max</span>(date)<span class="sc">-</span><span class="dv">365</span>) ; d <span class="ot">&lt;-</span> <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(), start_time, <span class="at">units =</span> <span class="st">"secs"</span>) ; <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="fu">paste0</span>(<span class="st">"Tempo para carregar os dados de "</span>,<span class="fu">paste</span>(<span class="fu">c</span>(time_series_sample_1,time_series_sample_1_similar_assets),<span class="at">collapse=</span><span class="st">" | "</span>),<span class="st">" : %.5f %s"</span>), <span class="fu">as.numeric</span>(d), <span class="fu">attr</span>(d, <span class="st">"units"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>time_series_sample_1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(ontology<span class="sc">$</span><span class="fu">get_b3_index</span>()<span class="sc">$</span>IBOV<span class="sc">$</span>asset,<span class="dv">1</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>time_series_sample_1_similar_assets <span class="ot">&lt;-</span> <span class="fu">intersect</span>((ontology<span class="sc">$</span><span class="fu">get_similarity_asset_df</span>(time_series_sample_1,<span class="at">n=</span><span class="dv">8</span>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(relationship<span class="sc">==</span><span class="st">"Within Same Sector"</span>))<span class="sc">$</span>asset2,ontology<span class="sc">$</span><span class="fu">get_b3_index</span>()<span class="sc">$</span>IBOV<span class="sc">$</span>asset)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">length</span>(time_series_sample_1_similar_assets)<span class="sc">==</span><span class="dv">0</span>) time_series_sample_1_similar_assets <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ITUB4"</span>,<span class="st">"VALE3"</span>,<span class="st">"PETR4"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>time_series_sample_1_similar_assets <span class="ot">&lt;-</span> <span class="fu">unique</span>(<span class="fu">sample</span>(time_series_sample_1_similar_assets,<span class="dv">3</span>,<span class="at">replace=</span>T))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">length</span>(time_series_sample_1_similar_assets)<span class="sc">&lt;</span><span class="dv">2</span>) time_series_sample_1_similar_assets <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ITUB4"</span>,<span class="st">"VALE3"</span>,<span class="st">"PETR4"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>start_time<span class="ot">=</span><span class="fu">Sys.time</span>() ; similar_assets_df <span class="ot">&lt;-</span> quantamental<span class="sc">$</span><span class="fu">assets</span>(<span class="fu">c</span>(time_series_sample_1,time_series_sample_1_similar_assets)) <span class="sc">|&gt;</span> <span class="fu">filter</span>(date<span class="sc">&gt;=</span><span class="fu">max</span>(date)<span class="sc">-</span><span class="dv">365</span>) ; d <span class="ot">&lt;-</span> <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(), start_time, <span class="at">units =</span> <span class="st">"secs"</span>) ; <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="fu">paste0</span>(<span class="st">"Tempo para carregar os dados de "</span>,<span class="fu">paste</span>(<span class="fu">c</span>(time_series_sample_1,time_series_sample_1_similar_assets),<span class="at">collapse=</span><span class="st">" | "</span>),<span class="st">" : %.5f %s"</span>), <span class="fu">as.numeric</span>(d), <span class="fu">attr</span>(d, <span class="st">"units"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tempo para carregar os dados de IGTI11 | ALOS3 | MULT3 : 0.02901 secs</code></pre>
+<pre><code>Tempo para carregar os dados de UGPA3 | PETR3 | VBBR3 : 0.02944 secs</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span>time_series_sample_1 <span class="sc">%in%</span> <span class="fu">unique</span>(similar_assets_df<span class="sc">$</span>asset)) {</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  time_series_sample_1 <span class="ot">&lt;-</span> time_series_sample_1_similar_assets[<span class="dv">1</span>]</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  time_series_sample_1_similar_assets <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(time_series_sample_1_similar_assets,time_series_sample_1)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># similar_assets &lt;- split(similar_assets_df, similar_assets_df$asset)</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to wide format</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>wide_df <span class="ot">&lt;-</span> similar_assets_df <span class="sc">%&gt;%</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date, asset, close) <span class="sc">%&gt;%</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> asset,</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> close</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Names of the two assets</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># asset1 &lt;- names(wide_df)[2]</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co"># asset2 &lt;- names(wide_df)[3]</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>asset1 <span class="ot">&lt;-</span> time_series_sample_1</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>asset2 <span class="ot">&lt;-</span> time_series_sample_1_similar_assets[<span class="dv">1</span>]</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>wide_df <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.data[[<span class="st">"date"</span>]],<span class="at">y=</span>.data[[asset1]]))<span class="sc">+</span><span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span>time_series_sample_1 <span class="sc">%in%</span> <span class="fu">unique</span>(similar_assets_df<span class="sc">$</span>asset)) {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  time_series_sample_1 <span class="ot">&lt;-</span> time_series_sample_1_similar_assets[<span class="dv">1</span>]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  time_series_sample_1_similar_assets <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(time_series_sample_1_similar_assets,time_series_sample_1)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to wide format</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>wide_df <span class="ot">&lt;-</span> similar_assets_df <span class="sc">%&gt;%</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date, asset, close) <span class="sc">%&gt;%</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> asset,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> close</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Names of the two assets</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>asset1 <span class="ot">&lt;-</span> time_series_sample_1</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>asset2 <span class="ot">&lt;-</span> time_series_sample_1_similar_assets[<span class="dv">1</span>]</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>wide_df <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.data[[<span class="st">"date"</span>]],<span class="at">y=</span>.data[[asset1]]))<span class="sc">+</span><span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -253,7 +225,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>wide_df <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.data[[<span class="st">"date"</span>]],<span class="at">y=</span>.data[[asset2]]))<span class="sc">+</span><span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>wide_df <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.data[[<span class="st">"date"</span>]],<span class="at">y=</span>.data[[asset2]]))<span class="sc">+</span><span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -266,12 +238,12 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>wide_df <span class="sc">|&gt;</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.data[[asset1]],<span class="at">y=</span>.data[[asset2]])) <span class="sc">+</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span>.<span class="dv">6</span>)<span class="sc">+</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>,<span class="at">formula=</span><span class="st">'y ~ x'</span>,<span class="at">se=</span>F,<span class="at">color=</span><span class="st">"dodgerblue"</span>)<span class="sc">+</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="fu">sprintf</span>(<span class="st">"%s vs %s"</span>,asset1,asset2),<span class="at">x=</span>asset1,<span class="at">y=</span>asset2)<span class="sc">+</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>wide_df <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>.data[[asset1]],<span class="at">y=</span>.data[[asset2]])) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span>.<span class="dv">6</span>)<span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>,<span class="at">formula=</span><span class="st">'y ~ x'</span>,<span class="at">se=</span>F,<span class="at">color=</span><span class="st">"dodgerblue"</span>)<span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="fu">sprintf</span>(<span class="st">"%s vs %s"</span>,asset1,asset2),<span class="at">x=</span>asset1,<span class="at">y=</span>asset2)<span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -281,14 +253,14 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>wide_df <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>date) <span class="sc">%&gt;%</span> <span class="fu">cor</span>(<span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>wide_df <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>date) <span class="sc">%&gt;%</span> <span class="fu">cor</span>(<span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>           ALOS3    IGTI11     MULT3
-ALOS3  1.0000000 0.9772955 0.9199145
-IGTI11 0.9772955 1.0000000 0.9535214
-MULT3  0.9199145 0.9535214 1.0000000</code></pre>
+<pre><code>          PETR3     UGPA3     VBBR3
+PETR3 1.0000000 0.8613333 0.8707732
+UGPA3 0.8613333 1.0000000 0.9828499
+VBBR3 0.8707732 0.9828499 1.0000000</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(wide_df[<span class="sc">-</span><span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(wide_df[<span class="sc">-</span><span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -303,7 +275,7 @@ MULT3  0.9199145 0.9535214 1.0000000</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span><strong>Limitações da Correlação</strong>
+<span class="screen-reader-only">Important</span>Limitações da Correlação
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -311,6 +283,23 @@ MULT3  0.9199145 0.9535214 1.0000000</code></pre>
 <div class="callout-body-container callout-body">
 <p>A correlação mede apenas a relação <em>linear</em>. Dois ativos podem ter uma forte relação não-linear e apresentar uma correlação de Pearson baixa. Além disso, a correlação não implica causalidade e pode ser enganosa em períodos de crise ou alta volatilidade.</p>
 </div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Como calcular correlação em R?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Como usar a função cor() e cor.test(), além de como visualizar a correlação de forma elegante. <strong>STHDA.</strong> <em>Correlation Test Between Two Variables in R.</em> Disponível em: <a href="http://www.sthda.com/english/wiki/correlation-test-between-two-variables-in-r" target="_blank">http://www.sthda.com/…</a></li>
+<li><strong>Para uma introdução rápida:</strong> <a href="https://www.investopedia.com/terms/p/pearsoncoefficient.asp" target="_blank">Entenda o Coeficiente de Pearson e seu uso para investidores (Investopedia)</a></li>
+<li><strong>Para uma explicação visual e intuitiva:</strong> <a href="https://www.khanacademy.org/math/statistics-probability/describing-relationships-quantitative-data/introduction-to-trend-lines/a/linear-regression-review" target="_blank">Revisão sobre Correlação e Regressão Linear (Khan Academy)</a></li>
+</ul>
 </div>
 </div>
 </section>
@@ -326,63 +315,63 @@ MULT3  0.9199145 0.9535214 1.0000000</code></pre>
 </div>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Dados de Exemplo (continuando com os mesmos dados simulados) ---</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizar a regressão linear: Ativo B ~ Ativo A</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>modelo_regressao <span class="ot">&lt;-</span> <span class="fu">lm</span>(ativo_b <span class="sc">~</span> ativo_a, <span class="at">data =</span> dados_ativos)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_regressao)</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extrair o Hedge Ratio (coeficiente do ativo_a)</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>hedge_ratio <span class="ot">&lt;-</span> <span class="fu">coef</span>(modelo_regressao)[<span class="st">"ativo_a"</span>]</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Hedge Ratio (Beta):"</span>, <span class="fu">round</span>(hedge_ratio, <span class="dv">4</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Dados de Exemplo (continuando com os mesmos dados simulados) ---</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizar a regressão linear: Ativo B ~ Ativo A</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>modelo_regressao <span class="ot">&lt;-</span> <span class="fu">lm</span>(ativo_b <span class="sc">~</span> ativo_a, <span class="at">data =</span> dados_ativos)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_regressao)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extrair o Hedge Ratio (coeficiente do ativo_a)</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>hedge_ratio <span class="ot">&lt;-</span> <span class="fu">coef</span>(modelo_regressao)[<span class="st">"ativo_a"</span>]</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Hedge Ratio (Beta):"</span>, <span class="fu">round</span>(hedge_ratio, <span class="dv">4</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="visualização-da-reta-de-regressão" class="level3">
 <h3 class="anchored" data-anchor-id="visualização-da-reta-de-regressão">Visualização da Reta de Regressão</h3>
 <p>Esta seção é para o seu plot da reta de regressão linear. Ele deve mostrar a nuvem de pontos dos dois ativos e a linha que melhor os representa, de acordo com o modelo de regressão.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SEU CÓDIGO PARA PLOTAR A RETA DE REGRESSÃO LINEAR AQUI</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Exemplo:</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dados_ativos %&gt;%</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggplot(aes(x = ativo_a, y = ativo_b)) +</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_point(alpha = 0.6) +</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_smooth(method = "lm", se = FALSE, color = "red") +</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   labs(</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co">#     title = "Regressão Linear: Ativo B vs. Ativo A com Hedge Ratio",</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co">#     x = "Preço Ativo A",</span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co">#     y = "Preço Ativo B"</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   ) +</span></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_minimal()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SEU CÓDIGO PARA PLOTAR A RETA DE REGRESSÃO LINEAR AQUI</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Exemplo:</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dados_ativos %&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggplot(aes(x = ativo_a, y = ativo_b)) +</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_point(alpha = 0.6) +</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_smooth(method = "lm", se = FALSE, color = "red") +</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   labs(</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#     title = "Regressão Linear: Ativo B vs. Ativo A com Hedge Ratio",</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#     x = "Preço Ativo A",</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#     y = "Preço Ativo B"</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   ) +</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_minimal()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="resíduos-e-z-score-o-desvio-do-equilíbrio" class="level2">
 <h2 class="anchored" data-anchor-id="resíduos-e-z-score-o-desvio-do-equilíbrio">3. Resíduos e Z-Score: O Desvio do Equilíbrio</h2>
 <p>Os <strong>resíduos</strong> da regressão representam a diferença entre o preço observado de um ativo e o preço previsto pelo modelo de regressão. Em outras palavras, eles mostram o quanto o par de ativos se desviou de sua relação histórica. Para padronizar esses desvios, calculamos o <strong>Z-Score</strong> dos resíduos.</p>
 <p>Um Z-Score positivo e alto indica que o ativo modelado está “caro” em relação ao outro (ou o par está esticado para cima), enquanto um Z-Score negativo e baixo sugere que está “barato” (ou o par está esticado para baixo). A ideia de <strong>Retorno à Média (Mean Reversion)</strong> é que esses desvios tendem a se corrigir ao longo do tempo.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Dados de Exemplo (continuando) ---</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular os resíduos do modelo de regressão</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>dados_ativos<span class="sc">$</span>residuos <span class="ot">&lt;-</span> <span class="fu">residuals</span>(modelo_regressao)</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular o Z-Score dos resíduos</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>dados_ativos<span class="sc">$</span>z_score <span class="ot">&lt;-</span> <span class="fu">scale</span>(dados_ativos<span class="sc">$</span>residuos)</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar os primeiros e últimos Z-Scores</span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dados_ativos<span class="sc">$</span>z_score)</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(dados_ativos<span class="sc">$</span>z_score)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Dados de Exemplo (continuando) ---</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular os resíduos do modelo de regressão</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>dados_ativos<span class="sc">$</span>residuos <span class="ot">&lt;-</span> <span class="fu">residuals</span>(modelo_regressao)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular o Z-Score dos resíduos</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>dados_ativos<span class="sc">$</span>z_score <span class="ot">&lt;-</span> <span class="fu">scale</span>(dados_ativos<span class="sc">$</span>residuos)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar os primeiros e últimos Z-Scores</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dados_ativos<span class="sc">$</span>z_score)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(dados_ativos<span class="sc">$</span>z_score)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="visualização-do-z-score-dos-resíduos-ao-longo-do-tempo" class="level3">
 <h3 class="anchored" data-anchor-id="visualização-do-z-score-dos-resíduos-ao-longo-do-tempo">Visualização do Z-Score dos Resíduos ao Longo do Tempo</h3>
 <p>Esta seção é para o seu plot do Z-Score dos resíduos. Ele deve mostrar a evolução do Z-Score, idealmente com linhas indicando os limites de desvio (ex: +/- 1 ou 2 desvios padrão) para identificar pontos de entrada/saída em estratégias de <em>pairs trading</em>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SEU CÓDIGO PARA PLOTAR O Z-SCORE DOS RESÍDUOS AO LONGO DO TEMPO AQUI</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Exemplo:</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dados_ativos %&gt;%</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggplot(aes(x = data, y = z_score)) +</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_line(color = "blue") +</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_hline(yintercept = 0, linetype = "dashed", color = "gray") +</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_hline(yintercept = c(-1.5, 1.5), linetype = "dotted", color = "red") +</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   labs(</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co">#     title = "Z-Score dos Resíduos (Desvio do Equilíbrio)",</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co">#     x = "Data",</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="co">#     y = "Z-Score"</span></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   ) +</span></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_minimal()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SEU CÓDIGO PARA PLOTAR O Z-SCORE DOS RESÍDUOS AO LONGO DO TEMPO AQUI</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Exemplo:</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dados_ativos %&gt;%</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggplot(aes(x = data, y = z_score)) +</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_line(color = "blue") +</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_hline(yintercept = 0, linetype = "dashed", color = "gray") +</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_hline(yintercept = c(-1.5, 1.5), linetype = "dotted", color = "red") +</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   labs(</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">#     title = "Z-Score dos Resíduos (Desvio do Equilíbrio)",</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">#     x = "Data",</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">#     y = "Z-Score"</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   ) +</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_minimal()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="cointegração-o-equilíbrio-de-longo-prazo-engle-granger" class="level2">
@@ -390,25 +379,25 @@ MULT3  0.9199145 0.9535214 1.0000000</code></pre>
 <p>Finalmente, chegamos à <strong>Cointegração</strong>. Dois ativos são cointegrados se eles não são estacionários individualmente (ou seja, seus preços tendem a “andar sem rumo”), mas uma combinação linear deles (o <em>spread</em> gerado pela regressão) é estacionária. Isso significa que, apesar de flutuações de curto prazo, eles mantêm uma relação de equilíbrio de longo prazo.</p>
 <p>O teste de <strong>Engle-Granger</strong> é um método comum para verificar a cointegração. Ele envolve: 1. Realizar a regressão linear de um ativo sobre o outro para obter os resíduos. 2. Testar se esses resíduos são estacionários (geralmente usando um teste de Dickey-Fuller Aumentado - ADF).</p>
 <p>Se os resíduos forem estacionários, o par é considerado cointegrado, e o <em>spread</em> (os resíduos) tende a retornar à sua média.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Dados de Exemplo (continuando) ---</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar e carregar o pacote para teste de cointegração (se necessário)</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tseries") # Contém adf.test</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tseries)</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste de estacionariedade dos resíduos (Teste ADF)</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>adf_test_result <span class="ot">&lt;-</span> <span class="fu">adf.test</span>(dados_ativos<span class="sc">$</span>residuos, <span class="at">alternative =</span> <span class="st">"stationary"</span>)</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(adf_test_result)</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Interpretação:</span></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Se o p-value for baixo (ex: &lt; 0.05), rejeitamos a hipótese nula de não-estacionariedade,</span></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co"># indicando que os resíduos são estacionários e o par é cointegrado.</span></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (adf_test_result<span class="sc">$</span>p.value <span class="sc">&lt;</span> <span class="fl">0.05</span>) {</span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Os resíduos são estacionários: o par Ativo A e Ativo B é cointegrado."</span>)</span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Os resíduos NÃO são estacionários: o par Ativo A e Ativo B NÃO é cointegrado."</span>)</span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Dados de Exemplo (continuando) ---</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar e carregar o pacote para teste de cointegração (se necessário)</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tseries") # Contém adf.test</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tseries)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste de estacionariedade dos resíduos (Teste ADF)</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>adf_test_result <span class="ot">&lt;-</span> <span class="fu">adf.test</span>(dados_ativos<span class="sc">$</span>residuos, <span class="at">alternative =</span> <span class="st">"stationary"</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(adf_test_result)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Interpretação:</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Se o p-value for baixo (ex: &lt; 0.05), rejeitamos a hipótese nula de não-estacionariedade,</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># indicando que os resíduos são estacionários e o par é cointegrado.</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (adf_test_result<span class="sc">$</span>p.value <span class="sc">&lt;</span> <span class="fl">0.05</span>) {</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Os resíduos são estacionários: o par Ativo A e Ativo B é cointegrado."</span>)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Os resíduos NÃO são estacionários: o par Ativo A e Ativo B NÃO é cointegrado."</span>)</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Note <strong>A Importância da Cointegração</strong></p>
 <p>Para estratégias de <em>pairs trading</em>, a cointegração é crucial. Ela garante que, quando o <em>spread</em> entre dois ativos se desvia de sua média, há uma força econômica subjacente que tende a puxá-lo de volta. Sem cointegração, um <em>spread</em> pode se afastar indefinidamente, transformando uma estratégia de <em>mean reversion</em> em uma aposta direcional.</p>
 </section>
