@@ -135,6 +135,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="quantamental" class="level1">
 <h1>Quantamental</h1>
+<p><em>Estatística aplicada ao mercado financeiro</em></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -232,7 +233,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <p>Os participantes correspondem aos ativos cadastrados, empresas que serão analisadas nesse estudo. Aqui abaixo segue uma lista de amostragem com 5 ativos.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "WEGE3"  "STOC34" "CURY3"  "TAEE11" "ISAE4" </code></pre>
+<pre><code>[1] "CAML3" "LAVV3" "CEAB3" "IRBR3" "HBSA3"</code></pre>
 </div>
 </div>
 </section>
@@ -338,30 +339,30 @@ Note
 </section>
 <section id="features-descrevendo-empresas-por-meio-de-dados" class="level2">
 <h2 class="anchored" data-anchor-id="features-descrevendo-empresas-por-meio-de-dados">Features: descrevendo empresas por meio de dados</h2>
-<p>Até este ponto, vimos como a ontologia organiza o universo de ativos e como a matriz de similaridade permite identificar relações entre empresas e setores. O próximo passo é compreender como cada empresa é representada dentro de um modelo.</p>
-<p>Uma <strong>feature</strong> é uma característica mensurável de uma empresa. Ela representa um aspecto específico do negócio, do mercado ou do comportamento do ativo e é utilizada como informação de entrada para análises quantitativas.</p>
+<p>Vimos como a ontologia organiza o universo de ativos e como a matriz de similaridade permite identificar relações entre empresas e setores. O próximo passo é compreender como cada empresa é representada dentro de um modelo.</p>
+<p>Uma feature é uma característica mensurável de uma empresa. Ela representa um aspecto específico do negócio, do mercado ou do comportamento do ativo e é utilizada como informação de entrada para análises quantitativas.</p>
 <p>Exemplos de features incluem indicadores fundamentalistas, como Preço/Lucro (P/L), Retorno sobre Patrimônio (ROE) e Margem EBITDA, além de métricas de mercado, como volatilidade, liquidez, retorno acumulado e beta.</p>
 <p>Individualmente, cada feature oferece uma perspectiva limitada sobre uma empresa. Em conjunto, porém, elas formam uma representação multidimensional do ativo, permitindo que empresas sejam comparadas, agrupadas e avaliadas de forma objetiva. Em vez de responder se uma empresa é “boa” ou “ruim” com base em um único indicador, um modelo Quantamental considera simultaneamente centenas de features para construir uma visão mais abrangente de suas características.</p>
 <p>A tabela a seguir ilustra, de forma simplificada, como diferentes empresas podem ser descritas por um conjunto de features.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="iknsbwwdzw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#iknsbwwdzw table {
+<div id="nkdyqhofpi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nkdyqhofpi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#iknsbwwdzw thead, #iknsbwwdzw tbody, #iknsbwwdzw tfoot, #iknsbwwdzw tr, #iknsbwwdzw td, #iknsbwwdzw th {
+#nkdyqhofpi thead, #nkdyqhofpi tbody, #nkdyqhofpi tfoot, #nkdyqhofpi tr, #nkdyqhofpi td, #nkdyqhofpi th {
   border-style: none;
 }
 
-#iknsbwwdzw p {
+#nkdyqhofpi p {
   margin: 0;
   padding: 0;
 }
 
-#iknsbwwdzw .gt_table {
+#nkdyqhofpi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -387,12 +388,12 @@ Note
   border-left-color: #D3D3D3;
 }
 
-#iknsbwwdzw .gt_caption {
+#nkdyqhofpi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#iknsbwwdzw .gt_title {
+#nkdyqhofpi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -404,7 +405,7 @@ Note
   border-bottom-width: 0;
 }
 
-#iknsbwwdzw .gt_subtitle {
+#nkdyqhofpi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -416,7 +417,7 @@ Note
   border-top-width: 0;
 }
 
-#iknsbwwdzw .gt_heading {
+#nkdyqhofpi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -428,13 +429,13 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#iknsbwwdzw .gt_bottom_border {
+#nkdyqhofpi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#iknsbwwdzw .gt_col_headings {
+#nkdyqhofpi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -449,7 +450,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#iknsbwwdzw .gt_col_heading {
+#nkdyqhofpi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -469,7 +470,7 @@ Note
   overflow-x: hidden;
 }
 
-#iknsbwwdzw .gt_column_spanner_outer {
+#nkdyqhofpi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -481,15 +482,15 @@ Note
   padding-right: 4px;
 }
 
-#iknsbwwdzw .gt_column_spanner_outer:first-child {
+#nkdyqhofpi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#iknsbwwdzw .gt_column_spanner_outer:last-child {
+#nkdyqhofpi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#iknsbwwdzw .gt_column_spanner {
+#nkdyqhofpi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -501,11 +502,11 @@ Note
   width: 100%;
 }
 
-#iknsbwwdzw .gt_spanner_row {
+#nkdyqhofpi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#iknsbwwdzw .gt_group_heading {
+#nkdyqhofpi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -531,7 +532,7 @@ Note
   text-align: left;
 }
 
-#iknsbwwdzw .gt_empty_group_heading {
+#nkdyqhofpi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -546,15 +547,15 @@ Note
   vertical-align: middle;
 }
 
-#iknsbwwdzw .gt_from_md > :first-child {
+#nkdyqhofpi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#iknsbwwdzw .gt_from_md > :last-child {
+#nkdyqhofpi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#iknsbwwdzw .gt_row {
+#nkdyqhofpi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -573,7 +574,7 @@ Note
   overflow-x: hidden;
 }
 
-#iknsbwwdzw .gt_stub {
+#nkdyqhofpi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -586,7 +587,7 @@ Note
   padding-right: 5px;
 }
 
-#iknsbwwdzw .gt_stub_row_group {
+#nkdyqhofpi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -600,15 +601,15 @@ Note
   vertical-align: top;
 }
 
-#iknsbwwdzw .gt_row_group_first td {
+#nkdyqhofpi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#iknsbwwdzw .gt_row_group_first th {
+#nkdyqhofpi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#iknsbwwdzw .gt_summary_row {
+#nkdyqhofpi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -618,16 +619,16 @@ Note
   padding-right: 5px;
 }
 
-#iknsbwwdzw .gt_first_summary_row {
+#nkdyqhofpi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#iknsbwwdzw .gt_first_summary_row.thick {
+#nkdyqhofpi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#iknsbwwdzw .gt_last_summary_row {
+#nkdyqhofpi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -637,7 +638,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#iknsbwwdzw .gt_grand_summary_row {
+#nkdyqhofpi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -647,7 +648,7 @@ Note
   padding-right: 5px;
 }
 
-#iknsbwwdzw .gt_first_grand_summary_row {
+#nkdyqhofpi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -657,7 +658,7 @@ Note
   border-top-color: #D3D3D3;
 }
 
-#iknsbwwdzw .gt_last_grand_summary_row_top {
+#nkdyqhofpi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -667,11 +668,11 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#iknsbwwdzw .gt_striped {
+#nkdyqhofpi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#iknsbwwdzw .gt_table_body {
+#nkdyqhofpi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -680,7 +681,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#iknsbwwdzw .gt_footnotes {
+#nkdyqhofpi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -694,7 +695,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#iknsbwwdzw .gt_footnote {
+#nkdyqhofpi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -703,7 +704,7 @@ Note
   padding-right: 5px;
 }
 
-#iknsbwwdzw .gt_sourcenotes {
+#nkdyqhofpi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -717,7 +718,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#iknsbwwdzw .gt_sourcenote {
+#nkdyqhofpi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -725,72 +726,72 @@ Note
   padding-right: 5px;
 }
 
-#iknsbwwdzw .gt_left {
+#nkdyqhofpi .gt_left {
   text-align: left;
 }
 
-#iknsbwwdzw .gt_center {
+#nkdyqhofpi .gt_center {
   text-align: center;
 }
 
-#iknsbwwdzw .gt_right {
+#nkdyqhofpi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#iknsbwwdzw .gt_font_normal {
+#nkdyqhofpi .gt_font_normal {
   font-weight: normal;
 }
 
-#iknsbwwdzw .gt_font_bold {
+#nkdyqhofpi .gt_font_bold {
   font-weight: bold;
 }
 
-#iknsbwwdzw .gt_font_italic {
+#nkdyqhofpi .gt_font_italic {
   font-style: italic;
 }
 
-#iknsbwwdzw .gt_super {
+#nkdyqhofpi .gt_super {
   font-size: 65%;
 }
 
-#iknsbwwdzw .gt_footnote_marks {
+#nkdyqhofpi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#iknsbwwdzw .gt_asterisk {
+#nkdyqhofpi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#iknsbwwdzw .gt_indent_1 {
+#nkdyqhofpi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#iknsbwwdzw .gt_indent_2 {
+#nkdyqhofpi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#iknsbwwdzw .gt_indent_3 {
+#nkdyqhofpi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#iknsbwwdzw .gt_indent_4 {
+#nkdyqhofpi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#iknsbwwdzw .gt_indent_5 {
+#nkdyqhofpi .gt_indent_5 {
   text-indent: 25px;
 }
 
-#iknsbwwdzw .katex-display {
+#nkdyqhofpi .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#iknsbwwdzw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#nkdyqhofpi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -913,28 +914,28 @@ Note
 </section>
 <section id="famílias-de-variáveis" class="level2">
 <h2 class="anchored" data-anchor-id="famílias-de-variáveis">Famílias de variáveis</h2>
-<p>Até este ponto, vimos que cada empresa pode ser representada por centenas de <em>features</em>. Entretanto, essas variáveis não constituem apenas uma lista de indicadores independentes. Cada uma delas descreve um aspecto específico da empresa e, por esse motivo, podem ser organizadas em <strong>famílias de variáveis</strong>.</p>
+<p>Cada empresa pode ser representada por centenas de <em>features</em>. Entretanto, essas variáveis não constituem apenas uma lista de indicadores independentes. Cada uma delas descreve um aspecto específico da empresa e, por esse motivo, podem ser organizadas em <strong>famílias de variáveis</strong>.</p>
 <p>Essa organização facilita a interpretação dos dados e introduz, de forma natural, os principais conceitos da análise fundamentalista. Em vez de memorizar indicadores isolados, o investidor passa a compreender qual dimensão da empresa cada variável procura representar.</p>
 <p>As principais famílias utilizadas no projeto são apresentadas a seguir.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ofvrpsyqdx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ofvrpsyqdx table {
+<div id="netzdfgxkt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#netzdfgxkt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ofvrpsyqdx thead, #ofvrpsyqdx tbody, #ofvrpsyqdx tfoot, #ofvrpsyqdx tr, #ofvrpsyqdx td, #ofvrpsyqdx th {
+#netzdfgxkt thead, #netzdfgxkt tbody, #netzdfgxkt tfoot, #netzdfgxkt tr, #netzdfgxkt td, #netzdfgxkt th {
   border-style: none;
 }
 
-#ofvrpsyqdx p {
+#netzdfgxkt p {
   margin: 0;
   padding: 0;
 }
 
-#ofvrpsyqdx .gt_table {
+#netzdfgxkt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -960,12 +961,12 @@ Note
   border-left-color: #D3D3D3;
 }
 
-#ofvrpsyqdx .gt_caption {
+#netzdfgxkt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ofvrpsyqdx .gt_title {
+#netzdfgxkt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -977,7 +978,7 @@ Note
   border-bottom-width: 0;
 }
 
-#ofvrpsyqdx .gt_subtitle {
+#netzdfgxkt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -989,7 +990,7 @@ Note
   border-top-width: 0;
 }
 
-#ofvrpsyqdx .gt_heading {
+#netzdfgxkt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1001,13 +1002,13 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#ofvrpsyqdx .gt_bottom_border {
+#netzdfgxkt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ofvrpsyqdx .gt_col_headings {
+#netzdfgxkt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1022,7 +1023,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#ofvrpsyqdx .gt_col_heading {
+#netzdfgxkt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1042,7 +1043,7 @@ Note
   overflow-x: hidden;
 }
 
-#ofvrpsyqdx .gt_column_spanner_outer {
+#netzdfgxkt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1054,15 +1055,15 @@ Note
   padding-right: 4px;
 }
 
-#ofvrpsyqdx .gt_column_spanner_outer:first-child {
+#netzdfgxkt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ofvrpsyqdx .gt_column_spanner_outer:last-child {
+#netzdfgxkt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ofvrpsyqdx .gt_column_spanner {
+#netzdfgxkt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1074,11 +1075,11 @@ Note
   width: 100%;
 }
 
-#ofvrpsyqdx .gt_spanner_row {
+#netzdfgxkt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ofvrpsyqdx .gt_group_heading {
+#netzdfgxkt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1104,7 +1105,7 @@ Note
   text-align: left;
 }
 
-#ofvrpsyqdx .gt_empty_group_heading {
+#netzdfgxkt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1119,15 +1120,15 @@ Note
   vertical-align: middle;
 }
 
-#ofvrpsyqdx .gt_from_md > :first-child {
+#netzdfgxkt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ofvrpsyqdx .gt_from_md > :last-child {
+#netzdfgxkt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ofvrpsyqdx .gt_row {
+#netzdfgxkt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1146,7 +1147,7 @@ Note
   overflow-x: hidden;
 }
 
-#ofvrpsyqdx .gt_stub {
+#netzdfgxkt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1159,7 +1160,7 @@ Note
   padding-right: 5px;
 }
 
-#ofvrpsyqdx .gt_stub_row_group {
+#netzdfgxkt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1173,15 +1174,15 @@ Note
   vertical-align: top;
 }
 
-#ofvrpsyqdx .gt_row_group_first td {
+#netzdfgxkt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ofvrpsyqdx .gt_row_group_first th {
+#netzdfgxkt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ofvrpsyqdx .gt_summary_row {
+#netzdfgxkt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1191,16 +1192,16 @@ Note
   padding-right: 5px;
 }
 
-#ofvrpsyqdx .gt_first_summary_row {
+#netzdfgxkt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ofvrpsyqdx .gt_first_summary_row.thick {
+#netzdfgxkt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ofvrpsyqdx .gt_last_summary_row {
+#netzdfgxkt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1210,7 +1211,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#ofvrpsyqdx .gt_grand_summary_row {
+#netzdfgxkt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1220,7 +1221,7 @@ Note
   padding-right: 5px;
 }
 
-#ofvrpsyqdx .gt_first_grand_summary_row {
+#netzdfgxkt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1230,7 +1231,7 @@ Note
   border-top-color: #D3D3D3;
 }
 
-#ofvrpsyqdx .gt_last_grand_summary_row_top {
+#netzdfgxkt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1240,11 +1241,11 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#ofvrpsyqdx .gt_striped {
+#netzdfgxkt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ofvrpsyqdx .gt_table_body {
+#netzdfgxkt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1253,7 +1254,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#ofvrpsyqdx .gt_footnotes {
+#netzdfgxkt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1267,7 +1268,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#ofvrpsyqdx .gt_footnote {
+#netzdfgxkt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1276,7 +1277,7 @@ Note
   padding-right: 5px;
 }
 
-#ofvrpsyqdx .gt_sourcenotes {
+#netzdfgxkt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1290,7 +1291,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#ofvrpsyqdx .gt_sourcenote {
+#netzdfgxkt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1298,72 +1299,72 @@ Note
   padding-right: 5px;
 }
 
-#ofvrpsyqdx .gt_left {
+#netzdfgxkt .gt_left {
   text-align: left;
 }
 
-#ofvrpsyqdx .gt_center {
+#netzdfgxkt .gt_center {
   text-align: center;
 }
 
-#ofvrpsyqdx .gt_right {
+#netzdfgxkt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ofvrpsyqdx .gt_font_normal {
+#netzdfgxkt .gt_font_normal {
   font-weight: normal;
 }
 
-#ofvrpsyqdx .gt_font_bold {
+#netzdfgxkt .gt_font_bold {
   font-weight: bold;
 }
 
-#ofvrpsyqdx .gt_font_italic {
+#netzdfgxkt .gt_font_italic {
   font-style: italic;
 }
 
-#ofvrpsyqdx .gt_super {
+#netzdfgxkt .gt_super {
   font-size: 65%;
 }
 
-#ofvrpsyqdx .gt_footnote_marks {
+#netzdfgxkt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ofvrpsyqdx .gt_asterisk {
+#netzdfgxkt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ofvrpsyqdx .gt_indent_1 {
+#netzdfgxkt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ofvrpsyqdx .gt_indent_2 {
+#netzdfgxkt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ofvrpsyqdx .gt_indent_3 {
+#netzdfgxkt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ofvrpsyqdx .gt_indent_4 {
+#netzdfgxkt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ofvrpsyqdx .gt_indent_5 {
+#netzdfgxkt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ofvrpsyqdx .katex-display {
+#netzdfgxkt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ofvrpsyqdx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#netzdfgxkt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

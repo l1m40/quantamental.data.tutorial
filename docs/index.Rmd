@@ -56,6 +56,8 @@ execute:
 
 # Quantamental
 
+*Estatística aplicada ao mercado financeiro*
+
 ::: {.callout-note collapse="true"}
 ## Pré-requisitos
 
@@ -66,9 +68,13 @@ Instalar o R versão posterior a
 E a IDE RStudio <br>
 <https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads>
 
-Os pacotes de R são obrigatórios para execução correta dos código mais básicos **renv** (ajuda com a criação do ambiente de execução), **here** (acesso a diretórios), **pacman** (instalar os pacotes e dependencias), **tidyverse** é excelente para execuções básicas - [link](https://tidyverse.org) -
+Os pacotes de R são obrigatórios para execução correta dos código mais
+básicos **renv** (ajuda com a criação do ambiente de execução), **here**
+(acesso a diretórios), **pacman** (instalar os pacotes e dependencias),
+**tidyverse** é excelente para execuções básicas -
+[link](https://tidyverse.org) -
 
-``` R
+``` r
 # 0. Install renv
 if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
 renv::init()
@@ -312,31 +318,15 @@ empresas e setores podem auxiliar em análises financeiras.
 
 ## Features: descrevendo empresas por meio de dados
 
-Até este ponto, vimos como a ontologia organiza o universo de ativos e
-como a matriz de similaridade permite identificar relações entre
-empresas e setores. O próximo passo é compreender como cada empresa é
-representada dentro de um modelo.
+Vimos como a ontologia organiza o universo de ativos e como a matriz de similaridade permite identificar relações entre empresas e setores. O próximo passo é compreender como cada empresa é representada dentro de um modelo.
 
-Uma **feature** é uma característica mensurável de uma empresa. Ela
-representa um aspecto específico do negócio, do mercado ou do
-comportamento do ativo e é utilizada como informação de entrada para
-análises quantitativas.
+Uma feature é uma característica mensurável de uma empresa. Ela representa um aspecto específico do negócio, do mercado ou do comportamento do ativo e é utilizada como informação de entrada para análises quantitativas.
 
-Exemplos de features incluem indicadores fundamentalistas, como
-Preço/Lucro (P/L), Retorno sobre Patrimônio (ROE) e Margem EBITDA, além
-de métricas de mercado, como volatilidade, liquidez, retorno acumulado e
-beta.
+Exemplos de features incluem indicadores fundamentalistas, como Preço/Lucro (P/L), Retorno sobre Patrimônio (ROE) e Margem EBITDA, além de métricas de mercado, como volatilidade, liquidez, retorno acumulado e beta.
 
-Individualmente, cada feature oferece uma perspectiva limitada sobre uma
-empresa. Em conjunto, porém, elas formam uma representação
-multidimensional do ativo, permitindo que empresas sejam comparadas,
-agrupadas e avaliadas de forma objetiva. Em vez de responder se uma
-empresa é "boa" ou "ruim" com base em um único indicador, um modelo
-Quantamental considera simultaneamente centenas de features para
-construir uma visão mais abrangente de suas características.
+Individualmente, cada feature oferece uma perspectiva limitada sobre uma empresa. Em conjunto, porém, elas formam uma representação multidimensional do ativo, permitindo que empresas sejam comparadas, agrupadas e avaliadas de forma objetiva. Em vez de responder se uma empresa é "boa" ou "ruim" com base em um único indicador, um modelo Quantamental considera simultaneamente centenas de features para construir uma visão mais abrangente de suas características.
 
-A tabela a seguir ilustra, de forma simplificada, como diferentes
-empresas podem ser descritas por um conjunto de features.
+A tabela a seguir ilustra, de forma simplificada, como diferentes empresas podem ser descritas por um conjunto de features.
 
 ```{r}
 #| echo: false
@@ -380,7 +370,7 @@ df |>
 
 ## Famílias de variáveis
 
-Até este ponto, vimos que cada empresa pode ser representada por
+Cada empresa pode ser representada por
 centenas de *features*. Entretanto, essas variáveis não constituem
 apenas uma lista de indicadores independentes. Cada uma delas descreve
 um aspecto específico da empresa e, por esse motivo, podem ser
