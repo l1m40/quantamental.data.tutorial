@@ -1,5 +1,4 @@
 ---
-# title: "Quantamental"
 format:
   html:
     toc: true
@@ -60,6 +59,8 @@ execute:
 
 ::: {.callout-note collapse="true"}
 ## Pré-requisitos
+
+Explore e execute os códigos deste projeto via [Google Colab](https://colab.research.google.com/) ou configurando seu próprio computador com as orientações abaixo. Mais do que um simples tutorial, esta documentação oferece o embasamento conceitual necessário para dominar a jornada quantamental.
 
 Instalar o R versão posterior a
 `r paste0(R.version$major, ".", R.version$minor)` <br>
@@ -316,17 +317,33 @@ explorar os dados da ontologia e entender como as relações entre
 empresas e setores podem auxiliar em análises financeiras.
 :::
 
-## Features: descrevendo empresas por meio de dados
+## Features: descrevendo por meio de dados
 
-Vimos como a ontologia organiza o universo de ativos e como a matriz de similaridade permite identificar relações entre empresas e setores. O próximo passo é compreender como cada empresa é representada dentro de um modelo.
+Vimos como a ontologia organiza o universo de ativos e como a matriz de
+similaridade permite identificar relações entre empresas e setores. O
+próximo passo é compreender como cada empresa é representada dentro de
+um modelo.
 
-Uma feature é uma característica mensurável de uma empresa. Ela representa um aspecto específico do negócio, do mercado ou do comportamento do ativo e é utilizada como informação de entrada para análises quantitativas.
+Uma feature é uma característica mensurável de uma empresa. Ela
+representa um aspecto específico do negócio, do mercado ou do
+comportamento do ativo e é utilizada como informação de entrada para
+análises quantitativas.
 
-Exemplos de features incluem indicadores fundamentalistas, como Preço/Lucro (P/L), Retorno sobre Patrimônio (ROE) e Margem EBITDA, além de métricas de mercado, como volatilidade, liquidez, retorno acumulado e beta.
+Exemplos de features incluem indicadores fundamentalistas, como
+Preço/Lucro (P/L), Retorno sobre Patrimônio (ROE) e Margem EBITDA, além
+de métricas de mercado, como volatilidade, liquidez, retorno acumulado e
+beta.
 
-Individualmente, cada feature oferece uma perspectiva limitada sobre uma empresa. Em conjunto, porém, elas formam uma representação multidimensional do ativo, permitindo que empresas sejam comparadas, agrupadas e avaliadas de forma objetiva. Em vez de responder se uma empresa é "boa" ou "ruim" com base em um único indicador, um modelo Quantamental considera simultaneamente centenas de features para construir uma visão mais abrangente de suas características.
+Individualmente, cada feature oferece uma perspectiva limitada sobre uma
+empresa. Em conjunto, porém, elas formam uma representação
+multidimensional do ativo, permitindo que empresas sejam comparadas,
+agrupadas e avaliadas de forma objetiva. Em vez de responder se uma
+empresa é "boa" ou "ruim" com base em um único indicador, um modelo
+Quantamental considera simultaneamente centenas de features para
+construir uma visão mais abrangente de suas características.
 
-A tabela a seguir ilustra, de forma simplificada, como diferentes empresas podem ser descritas por um conjunto de features.
+A tabela a seguir ilustra, de forma simplificada, como diferentes
+empresas podem ser descritas por um conjunto de features.
 
 ```{r}
 #| echo: false
@@ -370,11 +387,11 @@ df |>
 
 ## Famílias de variáveis
 
-Cada empresa pode ser representada por
-centenas de *features*. Entretanto, essas variáveis não constituem
-apenas uma lista de indicadores independentes. Cada uma delas descreve
-um aspecto específico da empresa e, por esse motivo, podem ser
-organizadas em **famílias de variáveis**.
+Cada empresa pode ser representada por centenas de *features*.
+Entretanto, essas variáveis não constituem apenas uma lista de
+indicadores independentes. Cada uma delas descreve um aspecto específico
+da empresa e, por esse motivo, podem ser organizadas em **famílias de
+variáveis**.
 
 Essa organização facilita a interpretação dos dados e introduz, de forma
 natural, os principais conceitos da análise fundamentalista. Em vez de
@@ -501,18 +518,17 @@ seguintes leituras:
 
 - Time Series Notebook [link](time_series_nb.html)
 
-- Feature Engineering
+- Feature Engineering *TBD*
 
-- Uso avançado com o pacote quantamental.data
+- Uso avançado com o pacote quantamental.data *TBD*
 
 - Como criar um arquivo Rmd R Markdown?
   [link](https://rmarkdown.rstudio.com/)
 
-- **Documentação Oficial do Tidyverse:** Para detalhes sobre a
-    manipulação de dados em R. [Link para a
-    documentação](https://www.tidyverse.org/)
+- Pacote Tidyverse: Para detalhes sobre a manipulação de dados em R.
+  [Link para a documentação](https://www.tidyverse.org/)
 
-- Livros **TBD**
+- Livros *TBD*
 
 ................. SAMPLE ...............
 

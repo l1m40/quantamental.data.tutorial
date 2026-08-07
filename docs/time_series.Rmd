@@ -174,7 +174,7 @@ plot <-
   geom_line(aes(y=mean_pe_ibov+sd_pe_ibov*1),color="gray",alpha=.5,linewidth=3)+
   geom_line(aes(y=mean_pe_ibov-sd_pe_ibov*2),color="gray",alpha=.3,linewidth=3)+
   geom_line(aes(y=mean_pe_ibov+sd_pe_ibov*2),color="gray",alpha=.3,linewidth=3)+
-  geom_line(color="dodgerblue1")+ylab("P/L do Ibovespa")+
+  geom_line(color="dodgerblue1")+ylab("P/L do Ibovespa")+xlab("")+
   theme_minimal()+scale_x_date(date_breaks="1 year",date_labels="%Y")+theme(axis.text.x=element_text(angle=90,vjust=.5,hjust=1))
 plot(plot)
 dev.off()
@@ -196,7 +196,34 @@ if (file.exists(time_series_sample_1_index_png))
 
 ## Conceitos mais avançados
 
-- <a href="time_series_cointegration.html"> **Cointegração** link </a>: Evolua da análise
+- **Integração com os grupos de ativos:** Conecte os dados de P/L e
+  outros múltiplos com entre ativos similares.
+
+::: {.callout-tip collapse="true"}
+#### Conexão com a Ontologia
+
+O caminho estatístico dá a "ferramenta", mas a **Ontologia** e a
+**Similaridade** (que discutimos antes) dão o "alvo". A estatística diz
+*como* operar, e a ontologia diz *quem* operar (escolhendo pares que
+fazem sentido fundamentalista).
+
+- Análise de grupos de índices
+
+- **Análise de Setores:** Compare a evolução do P/L mediano de
+  diferentes setores da B3 para identificar quais estão mais "caros" ou
+  "baratos" historicamente.
+:::
+
+- **Bandas de Valuation:** Crie bandas de *valuation* (ex: P/L +/- 1
+  desvio padrão) para identificar quando um ativo ou índice está em
+  patamares extremos de *valuation*.
+  
+- **Price Action e Microestrutura:** Vá além dos indicadores técnicos convencionais e explore a dinâmica entre **Preço e Volume**. Utilize séries temporais de alta frequência para calcular indicadores de liquidez e pressão compradora/vendedora, como o VWAP (Volume Weighted Average Price) e a volatilidade realizada. No contexto quantamental, essas variáveis alimentam a família de **Momentum**, ajudando a identificar se o mercado está confirmando a tese fundamentalista ou se há uma divergência entre o valor intrínseco e o valor de tela.
+
+> **Dica de Fluxo:** O Price Action serve como o "filtro de realidade". Se a ontologia indica uma empresa excelente e barata (Valuation), mas o Price Action mostra uma tendência de queda com volume crescente, o modelo quantamental sinaliza um possível "Value Trap" ou um risco ainda não capturado nos balanços.
+
+  
+- **Cointegração**: Evolua da análise
   descritiva básica para a modelagem preditiva avançada. Comece
   dominando **conceitos de estacionariedade** e autocorrelação (funções
   ACF/PACF), avance para regressões lineares simples aplicadas ao tempo
@@ -280,34 +307,13 @@ graph TD
     a arbitragem estatística para lucrar com desvios temporários do
     equilíbrio.
 
-> **Dica Quantamental:** A cointegração não é apenas matemática; ela
-> deve ser validada pela **Ontologia**. Um par cointegrado
-> estatisticamente só é confiável se houver uma razão fundamentalista
-> (mesmo setor, mesma cadeia de suprimentos) para eles caminharem
-> juntos.
+ **Dica Quantamental:** A cointegração não é apenas matemática; ela
+ deve ser validada pela **Ontologia**. Um par cointegrado
+ estatisticamente só é confiável se houver uma razão fundamentalista
+ (mesmo setor, mesma cadeia de suprimentos) para eles caminharem
+ juntos.
 :::
 
-- **Integração com os grupos de ativos:** Conecte os dados de P/L e
-  outros múltiplos com entre ativos similares.
-
-::: {.callout-tip collapse="true"}
-#### Conexão com a Ontologia
-
-O caminho estatístico dá a "ferramenta", mas a **Ontologia** e a
-**Similaridade** (que discutimos antes) dão o "alvo". A estatística diz
-*como* operar, e a ontologia diz *quem* operar (escolhendo pares que
-fazem sentido fundamentalista).
-
-- Análise de grupos de índices
-
-- **Análise de Setores:** Compare a evolução do P/L mediano de
-  diferentes setores da B3 para identificar quais estão mais "caros" ou
-  "baratos" historicamente.
-:::
-
-- **Bandas de Valuation:** Crie bandas de *valuation* (ex: P/L +/- 1
-  desvio padrão) para identificar quando um ativo ou índice está em
-  patamares extremos de *valuation*.
 
 
 

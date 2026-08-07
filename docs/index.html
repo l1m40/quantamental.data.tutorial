@@ -90,7 +90,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#setores" id="toc-setores" class="nav-link" data-scroll-target="#setores">Setores</a></li>
   <li><a href="#índices-b3" id="toc-índices-b3" class="nav-link" data-scroll-target="#índices-b3">Índices B3</a></li>
   <li><a href="#similaridade" id="toc-similaridade" class="nav-link" data-scroll-target="#similaridade">Similaridade</a></li>
-  <li><a href="#features-descrevendo-empresas-por-meio-de-dados" id="toc-features-descrevendo-empresas-por-meio-de-dados" class="nav-link" data-scroll-target="#features-descrevendo-empresas-por-meio-de-dados">Features: descrevendo empresas por meio de dados</a></li>
+  <li><a href="#features-descrevendo-por-meio-de-dados" id="toc-features-descrevendo-por-meio-de-dados" class="nav-link" data-scroll-target="#features-descrevendo-por-meio-de-dados">Features: descrevendo por meio de dados</a></li>
   <li><a href="#famílias-de-variáveis" id="toc-famílias-de-variáveis" class="nav-link" data-scroll-target="#famílias-de-variáveis">Famílias de variáveis</a></li>
   <li><a href="#próximos-passos-aprofundando-na-análise" id="toc-próximos-passos-aprofundando-na-análise" class="nav-link" data-scroll-target="#próximos-passos-aprofundando-na-análise">Próximos Passos: Aprofundando na Análise</a></li>
   <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências">Referências</a></li>
@@ -148,6 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>Explore e execute os códigos deste projeto via <a href="https://colab.research.google.com/">Google Colab</a> ou configurando seu próprio computador com as orientações abaixo. Mais do que um simples tutorial, esta documentação oferece o embasamento conceitual necessário para dominar a jornada quantamental.</p>
 <p>Instalar o R versão posterior a 4.5.2 <br> <a href="https://cran.r-project.org/bin/windows/base/" class="uri">https://cran.r-project.org/bin/windows/base/</a></p>
 <p>E a IDE RStudio <br> <a href="https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads" class="uri">https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads</a></p>
 <p>Os pacotes de R são obrigatórios para execução correta dos código mais básicos <strong>renv</strong> (ajuda com a criação do ambiente de execução), <strong>here</strong> (acesso a diretórios), <strong>pacman</strong> (instalar os pacotes e dependencias), <strong>tidyverse</strong> é excelente para execuções básicas - <a href="https://tidyverse.org">link</a> -</p>
@@ -233,7 +234,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <p>Os participantes correspondem aos ativos cadastrados, empresas que serão analisadas nesse estudo. Aqui abaixo segue uma lista de amostragem com 5 ativos.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "MELI34" "SIMH3"  "ASAI3"  "ROXO34" "CBAV3" </code></pre>
+<pre><code>[1] "AXIA3" "FRAS3" "LWSA3" "BBDC3" "CPFE3"</code></pre>
 </div>
 </div>
 </section>
@@ -337,8 +338,8 @@ Note
 </div>
 </div>
 </section>
-<section id="features-descrevendo-empresas-por-meio-de-dados" class="level2">
-<h2 class="anchored" data-anchor-id="features-descrevendo-empresas-por-meio-de-dados">Features: descrevendo empresas por meio de dados</h2>
+<section id="features-descrevendo-por-meio-de-dados" class="level2">
+<h2 class="anchored" data-anchor-id="features-descrevendo-por-meio-de-dados">Features: descrevendo por meio de dados</h2>
 <p>Vimos como a ontologia organiza o universo de ativos e como a matriz de similaridade permite identificar relações entre empresas e setores. O próximo passo é compreender como cada empresa é representada dentro de um modelo.</p>
 <p>Uma feature é uma característica mensurável de uma empresa. Ela representa um aspecto específico do negócio, do mercado ou do comportamento do ativo e é utilizada como informação de entrada para análises quantitativas.</p>
 <p>Exemplos de features incluem indicadores fundamentalistas, como Preço/Lucro (P/L), Retorno sobre Patrimônio (ROE) e Margem EBITDA, além de métricas de mercado, como volatilidade, liquidez, retorno acumulado e beta.</p>
@@ -346,23 +347,23 @@ Note
 <p>A tabela a seguir ilustra, de forma simplificada, como diferentes empresas podem ser descritas por um conjunto de features.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="kqcxefdrtt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kqcxefdrtt table {
+<div id="gqlwatzccp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gqlwatzccp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#kqcxefdrtt thead, #kqcxefdrtt tbody, #kqcxefdrtt tfoot, #kqcxefdrtt tr, #kqcxefdrtt td, #kqcxefdrtt th {
+#gqlwatzccp thead, #gqlwatzccp tbody, #gqlwatzccp tfoot, #gqlwatzccp tr, #gqlwatzccp td, #gqlwatzccp th {
   border-style: none;
 }
 
-#kqcxefdrtt p {
+#gqlwatzccp p {
   margin: 0;
   padding: 0;
 }
 
-#kqcxefdrtt .gt_table {
+#gqlwatzccp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -388,12 +389,12 @@ Note
   border-left-color: #D3D3D3;
 }
 
-#kqcxefdrtt .gt_caption {
+#gqlwatzccp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#kqcxefdrtt .gt_title {
+#gqlwatzccp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -405,7 +406,7 @@ Note
   border-bottom-width: 0;
 }
 
-#kqcxefdrtt .gt_subtitle {
+#gqlwatzccp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -417,7 +418,7 @@ Note
   border-top-width: 0;
 }
 
-#kqcxefdrtt .gt_heading {
+#gqlwatzccp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -429,13 +430,13 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#kqcxefdrtt .gt_bottom_border {
+#gqlwatzccp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#kqcxefdrtt .gt_col_headings {
+#gqlwatzccp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -450,7 +451,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#kqcxefdrtt .gt_col_heading {
+#gqlwatzccp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -470,7 +471,7 @@ Note
   overflow-x: hidden;
 }
 
-#kqcxefdrtt .gt_column_spanner_outer {
+#gqlwatzccp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -482,15 +483,15 @@ Note
   padding-right: 4px;
 }
 
-#kqcxefdrtt .gt_column_spanner_outer:first-child {
+#gqlwatzccp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#kqcxefdrtt .gt_column_spanner_outer:last-child {
+#gqlwatzccp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#kqcxefdrtt .gt_column_spanner {
+#gqlwatzccp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -502,11 +503,11 @@ Note
   width: 100%;
 }
 
-#kqcxefdrtt .gt_spanner_row {
+#gqlwatzccp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#kqcxefdrtt .gt_group_heading {
+#gqlwatzccp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -532,7 +533,7 @@ Note
   text-align: left;
 }
 
-#kqcxefdrtt .gt_empty_group_heading {
+#gqlwatzccp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -547,15 +548,15 @@ Note
   vertical-align: middle;
 }
 
-#kqcxefdrtt .gt_from_md > :first-child {
+#gqlwatzccp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#kqcxefdrtt .gt_from_md > :last-child {
+#gqlwatzccp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#kqcxefdrtt .gt_row {
+#gqlwatzccp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -574,7 +575,7 @@ Note
   overflow-x: hidden;
 }
 
-#kqcxefdrtt .gt_stub {
+#gqlwatzccp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -587,7 +588,7 @@ Note
   padding-right: 5px;
 }
 
-#kqcxefdrtt .gt_stub_row_group {
+#gqlwatzccp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -601,15 +602,15 @@ Note
   vertical-align: top;
 }
 
-#kqcxefdrtt .gt_row_group_first td {
+#gqlwatzccp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#kqcxefdrtt .gt_row_group_first th {
+#gqlwatzccp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#kqcxefdrtt .gt_summary_row {
+#gqlwatzccp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -619,16 +620,16 @@ Note
   padding-right: 5px;
 }
 
-#kqcxefdrtt .gt_first_summary_row {
+#gqlwatzccp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#kqcxefdrtt .gt_first_summary_row.thick {
+#gqlwatzccp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#kqcxefdrtt .gt_last_summary_row {
+#gqlwatzccp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -638,7 +639,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#kqcxefdrtt .gt_grand_summary_row {
+#gqlwatzccp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -648,7 +649,7 @@ Note
   padding-right: 5px;
 }
 
-#kqcxefdrtt .gt_first_grand_summary_row {
+#gqlwatzccp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -658,7 +659,7 @@ Note
   border-top-color: #D3D3D3;
 }
 
-#kqcxefdrtt .gt_last_grand_summary_row_top {
+#gqlwatzccp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -668,11 +669,11 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#kqcxefdrtt .gt_striped {
+#gqlwatzccp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#kqcxefdrtt .gt_table_body {
+#gqlwatzccp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -681,7 +682,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#kqcxefdrtt .gt_footnotes {
+#gqlwatzccp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -695,7 +696,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#kqcxefdrtt .gt_footnote {
+#gqlwatzccp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -704,7 +705,7 @@ Note
   padding-right: 5px;
 }
 
-#kqcxefdrtt .gt_sourcenotes {
+#gqlwatzccp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -718,7 +719,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#kqcxefdrtt .gt_sourcenote {
+#gqlwatzccp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -726,72 +727,72 @@ Note
   padding-right: 5px;
 }
 
-#kqcxefdrtt .gt_left {
+#gqlwatzccp .gt_left {
   text-align: left;
 }
 
-#kqcxefdrtt .gt_center {
+#gqlwatzccp .gt_center {
   text-align: center;
 }
 
-#kqcxefdrtt .gt_right {
+#gqlwatzccp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#kqcxefdrtt .gt_font_normal {
+#gqlwatzccp .gt_font_normal {
   font-weight: normal;
 }
 
-#kqcxefdrtt .gt_font_bold {
+#gqlwatzccp .gt_font_bold {
   font-weight: bold;
 }
 
-#kqcxefdrtt .gt_font_italic {
+#gqlwatzccp .gt_font_italic {
   font-style: italic;
 }
 
-#kqcxefdrtt .gt_super {
+#gqlwatzccp .gt_super {
   font-size: 65%;
 }
 
-#kqcxefdrtt .gt_footnote_marks {
+#gqlwatzccp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#kqcxefdrtt .gt_asterisk {
+#gqlwatzccp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#kqcxefdrtt .gt_indent_1 {
+#gqlwatzccp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#kqcxefdrtt .gt_indent_2 {
+#gqlwatzccp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#kqcxefdrtt .gt_indent_3 {
+#gqlwatzccp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#kqcxefdrtt .gt_indent_4 {
+#gqlwatzccp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#kqcxefdrtt .gt_indent_5 {
+#gqlwatzccp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#kqcxefdrtt .katex-display {
+#gqlwatzccp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#kqcxefdrtt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#gqlwatzccp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -819,91 +820,91 @@ Note
 <td class="gt_row gt_left" headers="company_name">Petrobras</td>
 <td class="gt_row gt_left" headers="asset">PETR4</td>
 <td class="gt_row gt_right" headers="Report_Date">May 12</td>
-<td class="gt_row gt_right" headers="marketcap">495.8B</td>
-<td class="gt_row gt_right" headers="pe">4.59</td>
+<td class="gt_row gt_right" headers="marketcap">539.9B</td>
+<td class="gt_row gt_right" headers="pe">5.00</td>
 <td class="gt_row gt_right" headers="roe">24.2%</td>
-<td class="gt_row gt_right" headers="var_12M">23.3%</td>
+<td class="gt_row gt_right" headers="var_12M">29.7%</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="company_name">Itaú</td>
 <td class="gt_row gt_left" headers="asset">ITUB4</td>
 <td class="gt_row gt_right" headers="Report_Date">May 6</td>
-<td class="gt_row gt_right" headers="marketcap">461.1B</td>
-<td class="gt_row gt_right" headers="pe">9.81</td>
+<td class="gt_row gt_right" headers="marketcap">468.2B</td>
+<td class="gt_row gt_right" headers="pe">9.96</td>
 <td class="gt_row gt_right" headers="roe">21.4%</td>
-<td class="gt_row gt_right" headers="var_12M">14.4%</td>
+<td class="gt_row gt_right" headers="var_12M">19.0%</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="company_name">Vale</td>
 <td class="gt_row gt_left" headers="asset">VALE3</td>
-<td class="gt_row gt_right" headers="Report_Date">Apr 29</td>
-<td class="gt_row gt_right" headers="marketcap">321.6B</td>
-<td class="gt_row gt_right" headers="pe">23.24</td>
-<td class="gt_row gt_right" headers="roe">7.1%</td>
-<td class="gt_row gt_right" headers="var_12M">55.8%</td>
+<td class="gt_row gt_right" headers="Report_Date">Jul 31</td>
+<td class="gt_row gt_right" headers="marketcap">327.0B</td>
+<td class="gt_row gt_right" headers="pe">37.63</td>
+<td class="gt_row gt_right" headers="roe">4.3%</td>
+<td class="gt_row gt_right" headers="var_12M">42.0%</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="company_name">BTG</td>
 <td class="gt_row gt_left" headers="asset">BPAC11</td>
 <td class="gt_row gt_right" headers="Report_Date">May 11</td>
-<td class="gt_row gt_right" headers="marketcap">209.9B</td>
-<td class="gt_row gt_right" headers="pe">12.16</td>
+<td class="gt_row gt_right" headers="marketcap">219.4B</td>
+<td class="gt_row gt_right" headers="pe">12.72</td>
 <td class="gt_row gt_right" headers="roe">23.2%</td>
-<td class="gt_row gt_right" headers="var_12M">28.9%</td>
+<td class="gt_row gt_right" headers="var_12M">44.9%</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="company_name">Weg</td>
 <td class="gt_row gt_left" headers="asset">WEGE3</td>
-<td class="gt_row gt_right" headers="Report_Date">Apr 29</td>
-<td class="gt_row gt_right" headers="marketcap">195.1B</td>
-<td class="gt_row gt_right" headers="pe">29.04</td>
-<td class="gt_row gt_right" headers="roe">35.2%</td>
-<td class="gt_row gt_right" headers="var_12M">11.2%</td>
+<td class="gt_row gt_right" headers="Report_Date">Jul 22</td>
+<td class="gt_row gt_right" headers="marketcap">204.8B</td>
+<td class="gt_row gt_right" headers="pe">30.69</td>
+<td class="gt_row gt_right" headers="roe">33.0%</td>
+<td class="gt_row gt_right" headers="var_12M">31.4%</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="company_name">Bradesco</td>
 <td class="gt_row gt_left" headers="asset">BBDC4</td>
 <td class="gt_row gt_right" headers="Report_Date">May 7</td>
-<td class="gt_row gt_right" headers="marketcap">186.6B</td>
-<td class="gt_row gt_right" headers="pe">7.95</td>
+<td class="gt_row gt_right" headers="marketcap">191.4B</td>
+<td class="gt_row gt_right" headers="pe">8.15</td>
 <td class="gt_row gt_right" headers="roe">13.0%</td>
-<td class="gt_row gt_right" headers="var_12M">7.6%</td>
+<td class="gt_row gt_right" headers="var_12M">15.4%</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="company_name">Axia</td>
 <td class="gt_row gt_left" headers="asset">AXIA3</td>
 <td class="gt_row gt_right" headers="Report_Date">May 7</td>
-<td class="gt_row gt_right" headers="marketcap">156.4B</td>
-<td class="gt_row gt_right" headers="pe">16.39</td>
+<td class="gt_row gt_right" headers="marketcap">152.7B</td>
+<td class="gt_row gt_right" headers="pe">15.99</td>
 <td class="gt_row gt_right" headers="roe">7.9%</td>
-<td class="gt_row gt_right" headers="var_12M">44.3%</td>
+<td class="gt_row gt_right" headers="var_12M">NA</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="company_name">BB</td>
 <td class="gt_row gt_left" headers="asset">BBAS3</td>
 <td class="gt_row gt_right" headers="Report_Date">May 14</td>
-<td class="gt_row gt_right" headers="marketcap">114.6B</td>
-<td class="gt_row gt_right" headers="pe">7.29</td>
+<td class="gt_row gt_right" headers="marketcap">120.2B</td>
+<td class="gt_row gt_right" headers="pe">7.65</td>
 <td class="gt_row gt_right" headers="roe">8.0%</td>
-<td class="gt_row gt_right" headers="var_12M">−5.6%</td>
+<td class="gt_row gt_right" headers="var_12M">13.1%</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="company_name">Sabesp</td>
 <td class="gt_row gt_left" headers="asset">SBSP3</td>
 <td class="gt_row gt_right" headers="Report_Date">May 8</td>
-<td class="gt_row gt_right" headers="marketcap">102.2B</td>
-<td class="gt_row gt_right" headers="pe">11.70</td>
+<td class="gt_row gt_right" headers="marketcap">97.3B</td>
+<td class="gt_row gt_right" headers="pe">11.14</td>
 <td class="gt_row gt_right" headers="roe">19.9%</td>
-<td class="gt_row gt_right" headers="var_12M">−74.4%</td>
+<td class="gt_row gt_right" headers="var_12M">−74.2%</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="company_name">B3</td>
 <td class="gt_row gt_left" headers="asset">B3SA3</td>
 <td class="gt_row gt_right" headers="Report_Date">May 8</td>
-<td class="gt_row gt_right" headers="marketcap">73.5B</td>
-<td class="gt_row gt_right" headers="pe">14.82</td>
+<td class="gt_row gt_right" headers="marketcap">78.0B</td>
+<td class="gt_row gt_right" headers="pe">15.74</td>
 <td class="gt_row gt_right" headers="roe">27.1%</td>
-<td class="gt_row gt_right" headers="var_12M">7.7%</td>
+<td class="gt_row gt_right" headers="var_12M">23.8%</td>
 </tr>
 </tbody>
 </table>
@@ -919,23 +920,23 @@ Note
 <p>As principais famílias utilizadas no projeto são apresentadas a seguir.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fbexakyofx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fbexakyofx table {
+<div id="mtngnvcumw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mtngnvcumw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fbexakyofx thead, #fbexakyofx tbody, #fbexakyofx tfoot, #fbexakyofx tr, #fbexakyofx td, #fbexakyofx th {
+#mtngnvcumw thead, #mtngnvcumw tbody, #mtngnvcumw tfoot, #mtngnvcumw tr, #mtngnvcumw td, #mtngnvcumw th {
   border-style: none;
 }
 
-#fbexakyofx p {
+#mtngnvcumw p {
   margin: 0;
   padding: 0;
 }
 
-#fbexakyofx .gt_table {
+#mtngnvcumw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -961,12 +962,12 @@ Note
   border-left-color: #D3D3D3;
 }
 
-#fbexakyofx .gt_caption {
+#mtngnvcumw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fbexakyofx .gt_title {
+#mtngnvcumw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -978,7 +979,7 @@ Note
   border-bottom-width: 0;
 }
 
-#fbexakyofx .gt_subtitle {
+#mtngnvcumw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -990,7 +991,7 @@ Note
   border-top-width: 0;
 }
 
-#fbexakyofx .gt_heading {
+#mtngnvcumw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1002,13 +1003,13 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#fbexakyofx .gt_bottom_border {
+#mtngnvcumw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fbexakyofx .gt_col_headings {
+#mtngnvcumw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1023,7 +1024,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#fbexakyofx .gt_col_heading {
+#mtngnvcumw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1043,7 +1044,7 @@ Note
   overflow-x: hidden;
 }
 
-#fbexakyofx .gt_column_spanner_outer {
+#mtngnvcumw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1055,15 +1056,15 @@ Note
   padding-right: 4px;
 }
 
-#fbexakyofx .gt_column_spanner_outer:first-child {
+#mtngnvcumw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fbexakyofx .gt_column_spanner_outer:last-child {
+#mtngnvcumw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fbexakyofx .gt_column_spanner {
+#mtngnvcumw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1075,11 +1076,11 @@ Note
   width: 100%;
 }
 
-#fbexakyofx .gt_spanner_row {
+#mtngnvcumw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fbexakyofx .gt_group_heading {
+#mtngnvcumw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1105,7 +1106,7 @@ Note
   text-align: left;
 }
 
-#fbexakyofx .gt_empty_group_heading {
+#mtngnvcumw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1120,15 +1121,15 @@ Note
   vertical-align: middle;
 }
 
-#fbexakyofx .gt_from_md > :first-child {
+#mtngnvcumw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fbexakyofx .gt_from_md > :last-child {
+#mtngnvcumw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fbexakyofx .gt_row {
+#mtngnvcumw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1147,7 +1148,7 @@ Note
   overflow-x: hidden;
 }
 
-#fbexakyofx .gt_stub {
+#mtngnvcumw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1160,7 +1161,7 @@ Note
   padding-right: 5px;
 }
 
-#fbexakyofx .gt_stub_row_group {
+#mtngnvcumw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1174,15 +1175,15 @@ Note
   vertical-align: top;
 }
 
-#fbexakyofx .gt_row_group_first td {
+#mtngnvcumw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fbexakyofx .gt_row_group_first th {
+#mtngnvcumw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fbexakyofx .gt_summary_row {
+#mtngnvcumw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1192,16 +1193,16 @@ Note
   padding-right: 5px;
 }
 
-#fbexakyofx .gt_first_summary_row {
+#mtngnvcumw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fbexakyofx .gt_first_summary_row.thick {
+#mtngnvcumw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fbexakyofx .gt_last_summary_row {
+#mtngnvcumw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1211,7 +1212,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#fbexakyofx .gt_grand_summary_row {
+#mtngnvcumw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1221,7 +1222,7 @@ Note
   padding-right: 5px;
 }
 
-#fbexakyofx .gt_first_grand_summary_row {
+#mtngnvcumw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1231,7 +1232,7 @@ Note
   border-top-color: #D3D3D3;
 }
 
-#fbexakyofx .gt_last_grand_summary_row_top {
+#mtngnvcumw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1241,11 +1242,11 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#fbexakyofx .gt_striped {
+#mtngnvcumw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fbexakyofx .gt_table_body {
+#mtngnvcumw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1254,7 +1255,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#fbexakyofx .gt_footnotes {
+#mtngnvcumw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1268,7 +1269,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#fbexakyofx .gt_footnote {
+#mtngnvcumw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1277,7 +1278,7 @@ Note
   padding-right: 5px;
 }
 
-#fbexakyofx .gt_sourcenotes {
+#mtngnvcumw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1291,7 +1292,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#fbexakyofx .gt_sourcenote {
+#mtngnvcumw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1299,72 +1300,72 @@ Note
   padding-right: 5px;
 }
 
-#fbexakyofx .gt_left {
+#mtngnvcumw .gt_left {
   text-align: left;
 }
 
-#fbexakyofx .gt_center {
+#mtngnvcumw .gt_center {
   text-align: center;
 }
 
-#fbexakyofx .gt_right {
+#mtngnvcumw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fbexakyofx .gt_font_normal {
+#mtngnvcumw .gt_font_normal {
   font-weight: normal;
 }
 
-#fbexakyofx .gt_font_bold {
+#mtngnvcumw .gt_font_bold {
   font-weight: bold;
 }
 
-#fbexakyofx .gt_font_italic {
+#mtngnvcumw .gt_font_italic {
   font-style: italic;
 }
 
-#fbexakyofx .gt_super {
+#mtngnvcumw .gt_super {
   font-size: 65%;
 }
 
-#fbexakyofx .gt_footnote_marks {
+#mtngnvcumw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fbexakyofx .gt_asterisk {
+#mtngnvcumw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fbexakyofx .gt_indent_1 {
+#mtngnvcumw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fbexakyofx .gt_indent_2 {
+#mtngnvcumw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fbexakyofx .gt_indent_3 {
+#mtngnvcumw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fbexakyofx .gt_indent_4 {
+#mtngnvcumw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fbexakyofx .gt_indent_5 {
+#mtngnvcumw .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fbexakyofx .katex-display {
+#mtngnvcumw .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fbexakyofx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mtngnvcumw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1486,11 +1487,11 @@ Market Analysis
 <p>Este tutorial se baseia em conceitos de finanças quantitativas e análise fundamentalista. Para aprofundar nos temas abordados, sugerimos as seguintes leituras:</p>
 <ul>
 <li><p>Time Series Notebook <a href="time_series_nb.html">link</a></p></li>
-<li><p>Feature Engineering</p></li>
-<li><p>Uso avançado com o pacote quantamental.data</p></li>
+<li><p>Feature Engineering <em>TBD</em></p></li>
+<li><p>Uso avançado com o pacote quantamental.data <em>TBD</em></p></li>
 <li><p>Como criar um arquivo Rmd R Markdown? <a href="https://rmarkdown.rstudio.com/">link</a></p></li>
-<li><p><strong>Documentação Oficial do Tidyverse:</strong> Para detalhes sobre a manipulação de dados em R. <a href="https://www.tidyverse.org/">Link para a documentação</a></p></li>
-<li><p>Livros <strong>TBD</strong></p></li>
+<li><p>Pacote Tidyverse: Para detalhes sobre a manipulação de dados em R. <a href="https://www.tidyverse.org/">Link para a documentação</a></p></li>
+<li><p>Livros <em>TBD</em></p></li>
 </ul>
 <p>…………….. SAMPLE ……………</p>
 <ol type="1">

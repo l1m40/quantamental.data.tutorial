@@ -128,12 +128,12 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 </div>
 </details>
 </section>
-<section id="preço-e-lucro-o-caso-abev3" class="level2">
-<h2 class="anchored" data-anchor-id="preço-e-lucro-o-caso-abev3">Preço e Lucro: O Caso ABEV3</h2>
+<section id="preço-e-lucro-o-caso-lren3" class="level2">
+<h2 class="anchored" data-anchor-id="preço-e-lucro-o-caso-lren3">Preço e Lucro: O Caso LREN3</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>start_time<span class="ot">=</span><span class="fu">Sys.time</span>() ; df <span class="ot">&lt;-</span> quantamental<span class="sc">$</span><span class="fu">asset</span>(time_series_sample_1) ; d <span class="ot">&lt;-</span> <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(), start_time, <span class="at">units =</span> <span class="st">"secs"</span>) ; <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="fu">paste0</span>(<span class="st">"Tempo para carregar os dados de "</span>,time_series_sample_1,<span class="st">" : %.5f %s"</span>), <span class="fu">as.numeric</span>(d), <span class="fu">attr</span>(d, <span class="st">"units"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tempo para carregar os dados de ABEV3 : 0.03090 secs</code></pre>
+<pre><code>Tempo para carregar os dados de LREN3 : 0.03075 secs</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="co">#filter(year(date)&gt;=2025) |&gt; </span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(date,pe))<span class="sc">+</span></span>
@@ -169,12 +169,12 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>similar_assets <span class="ot">&lt;-</span> <span class="fu">sample</span>((ontology<span class="sc">$</span><span class="fu">get_similarity_asset_df</span>(time_series_sample_1,<span class="at">n=</span><span class="dv">8</span>))<span class="sc">$</span>asset2,<span class="dv">1</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>similar_assets</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "NATU3"</code></pre>
+<pre><code>[1] "AZZA3"</code></pre>
 </div>
 </div>
 </section>
-<section id="comparar-com-empresas-semelhantes-natu3" class="level3">
-<h3 class="anchored" data-anchor-id="comparar-com-empresas-semelhantes-natu3">Comparar com empresas semelhantes… <br> NATU3</h3>
+<section id="comparar-com-empresas-semelhantes-azza3" class="level3">
+<h3 class="anchored" data-anchor-id="comparar-com-empresas-semelhantes-azza3">Comparar com empresas semelhantes… <br> AZZA3</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>quantamental<span class="sc">$</span><span class="fu">query</span>() <span class="sc">|&gt;</span>  <span class="co">#</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(asset <span class="sc">%in%</span> <span class="fu">c</span>(time_series_sample_1,similar_assets),<span class="fu">year</span>(date)<span class="sc">&gt;=</span><span class="dv">2022</span>) <span class="sc">|&gt;</span></span>
@@ -200,15 +200,16 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>assets_from_the_same_sector <span class="ot">&lt;-</span> (ontology<span class="sc">$</span><span class="fu">get_assets_df</span>() <span class="sc">|&gt;</span> <span class="fu">filter</span>(sector_screening<span class="sc">==</span>time_series_sample_1_sector))<span class="sc">$</span>asset</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>assets_from_the_same_sector</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "ABEV3"  "ASAI3"  "BEEF3"  "CAML3"  "GMAT3"  "JBSS32" "MBRF3"  "MDIA3" 
-[9] "PCAR3" </code></pre>
+<pre><code> [1] "ALPA4"  "AMOB3"  "AZZA3"  "BHIA3"  "CEAB3"  "CVCB3"  "GRND3"  "GUAR3" 
+ [9] "LREN3"  "MELI34" "MGLU3"  "NATU3"  "AUAU3"  "SBFG3"  "SMFT3"  "TFCO4" 
+[17] "VIVA3"  "VULC3" </code></pre>
 </div>
 </div>
-<p>A <strong>mediana</strong> representa o valor central de uma distribuição, sendo menos sensível a valores extremos. Ao calcular o P/L mediano do setor de Alimentos e Bebidas, obtemos uma visão mais realista do valuation geral, sem as distorções causadas por empresas atípicas.</p>
+<p>A <strong>mediana</strong> representa o valor central de uma distribuição, sendo menos sensível a valores extremos. Ao calcular o P/L mediano do setor de Varejo, obtemos uma visão mais realista do valuation geral, sem as distorções causadas por empresas atípicas.</p>
 </details>
 </section>
-<section id="mediana-do-setor-alimentos-e-bebidas" class="level3">
-<h3 class="anchored" data-anchor-id="mediana-do-setor-alimentos-e-bebidas">Mediana do setor… <br> Alimentos e Bebidas</h3>
+<section id="mediana-do-setor-varejo" class="level3">
+<h3 class="anchored" data-anchor-id="mediana-do-setor-varejo">Mediana do setor… <br> Varejo</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>quantamental<span class="sc">$</span><span class="fu">query</span>() <span class="sc">|&gt;</span>  </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(asset <span class="sc">%in%</span> assets_from_the_same_sector) <span class="sc">|&gt;</span> </span>
@@ -247,11 +248,16 @@ Commodities  10     -none-     character
 Global        9     -none-     character</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "VALE3"  "PETR4"  "ITUB4"  "PETR3"  "AXIA3"  "BBDC4"  "SBSP3"  "B3SA3" 
- [9] "ITSA4"  "BPAC11" "WEGE3"  "BBAS3"  "ABEV3"  "EMBJ3"  "PRIO3"  "EQTL3" 
-[17] "ENEV3"  "CPLE3"  "RENT3"  "RDOR3"  "VBBR3"  "UGPA3"  "GGBR4"  "RADL3" 
-[25] "VIVT3"  "SUZB3"  "BBDC3"  "CMIG4"  "BBSE3"  "TIMS3"  "RAIL3"  "AXIA6" 
-[33] "TOTS3"  "ENGI11" "MOTV3"  "ALOS3"  "KLBN11" "MBRF3" </code></pre>
+<pre><code> [1] "ALOS3"  "ABEV3"  "ASAI3"  "AURE3"  "AXIA3"  "AXIA6"  "AZZA3"  "B3SA3" 
+ [9] "BBSE3"  "BBDC3"  "BBDC4"  "BRAP4"  "BBAS3"  "BRKM5"  "BRAV3"  "BPAC11"
+[17] "CXSE3"  "CEAB3"  "CMIG4"  "COGN3"  "CSMG3"  "CPLE3"  "CSAN3"  "CPFE3" 
+[25] "CMIN3"  "CURY3"  "CYRE3"  "DIRR3"  "EMBJ3"  "ENGI11" "ENEV3"  "EGIE3" 
+[33] "EQTL3"  "FLRY3"  "GGBR4"  "GOAU4"  "HAPV3"  "HYPE3"  "IGTI11" "ISAE4" 
+[41] "ITSA4"  "ITUB4"  "KLBN11" "RENT3"  "LREN3"  "MGLU3"  "POMO4"  "MBRF3" 
+[49] "BEEF3"  "MOTV3"  "MRVE3"  "MULT3"  "NATU3"  "PETR3"  "PETR4"  "RECV3" 
+[57] "PSSA3"  "PRIO3"  "RADL3"  "RDOR3"  "RAIL3"  "SBSP3"  "SANB11" "CSNA3" 
+[65] "SLCE3"  "SMFT3"  "SUZB3"  "TAEE11" "VIVT3"  "TIMS3"  "TOTS3"  "UGPA3" 
+[73] "USIM5"  "VALE3"  "VAMO3"  "VBBR3"  "VIVA3"  "WEGE3"  "YDUQ3" </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -264,7 +270,7 @@ Global        9     -none-     character</code></pre>
  </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 0.09445596 secs</code></pre>
+<pre><code>Time difference of 0.127347 secs</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>  start_time<span class="ot">=</span><span class="fu">Sys.time</span>() ; <span class="fu">cat</span>(<span class="st">"Load IBOV historical standard deviations... </span><span class="sc">\n</span><span class="st"> "</span>) ; IBOV_SD_df <span class="ot">&lt;-</span> quantamental<span class="sc">$</span><span class="fu">query</span>() <span class="sc">|&gt;</span>  </span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(asset <span class="sc">%in%</span> indices[[<span class="st">"IBOV"</span>]]) <span class="sc">|&gt;</span> </span>
@@ -275,13 +281,13 @@ Global        9     -none-     character</code></pre>
  </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 0.1095641 secs</code></pre>
+<pre><code>Time difference of 0.1129029 secs</code></pre>
 </div>
 </div>
 <p></p>
 </details></section>
-<section id="tamanho-semelhante-ibov-90" class="level3">
-<h3 class="anchored" data-anchor-id="tamanho-semelhante-ibov-90">Tamanho semelhante…<br> IBOV 90%</h3>
+<section id="tamanho-semelhante-ibov" class="level3">
+<h3 class="anchored" data-anchor-id="tamanho-semelhante-ibov">Tamanho semelhante…<br> IBOV</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>  assets_from_the_same_index_df <span class="sc">|&gt;</span> </span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(IBOV_SD_df,<span class="at">by=</span><span class="st">"date"</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">mean_pe_ibov=</span><span class="fu">mean</span>(median_ibov,<span class="at">na.rm=</span>T),<span class="at">sd_pe_ibov=</span><span class="fu">sd</span>(median_ibov,<span class="at">na.rm=</span>T)) <span class="sc">|&gt;</span> </span>

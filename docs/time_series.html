@@ -233,7 +233,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  start_time<span class="ot">=</span><span class="fu">Sys.time</span>() ; df <span class="ot">&lt;-</span> quantamental<span class="sc">$</span><span class="fu">asset</span>(time_series_sample_1) ; d <span class="ot">&lt;-</span> <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(), start_time, <span class="at">units =</span> <span class="st">"secs"</span>) ; <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="fu">paste0</span>(<span class="st">"Tempo para carregar os dados de "</span>,time_series_sample_1,<span class="st">" : %.5f %s"</span>), <span class="fu">as.numeric</span>(d), <span class="fu">attr</span>(d, <span class="st">"units"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tempo para carregar os dados de ITUB4 : 0.02714 secs</code></pre>
+<pre><code>Tempo para carregar os dados de ITUB4 : 0.02661 secs</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>code</summary>
@@ -298,7 +298,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(date) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">median_pe=</span><span class="fu">median</span>(pe,<span class="at">na.rm=</span>T),<span class="at">N=</span><span class="fu">n</span>()) ; d <span class="ot">&lt;-</span> <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(), start_time, <span class="at">units =</span> <span class="st">"secs"</span>) ; <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="fu">paste0</span>(<span class="st">"Tempo para carregar os dados do índice IBOV : %.5f %s"</span>), <span class="fu">as.numeric</span>(d), <span class="fu">attr</span>(d, <span class="st">"units"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tempo para carregar os dados do índice IBOV : 0.12671 secs</code></pre>
+<pre><code>Tempo para carregar os dados do índice IBOV : 0.12468 secs</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>code</summary>
@@ -308,7 +308,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(date) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">median_ibov=</span><span class="fu">median</span>(pe,<span class="at">na.rm=</span>T)) ; d <span class="ot">&lt;-</span> <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(), start_time, <span class="at">units =</span> <span class="st">"secs"</span>) ; <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="fu">paste0</span>(<span class="st">"Tempo para carregar desvio-padrão histórico de IBOV: %.5f %s"</span>), <span class="fu">as.numeric</span>(d), <span class="fu">attr</span>(d, <span class="st">"units"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tempo para carregar desvio-padrão histórico de IBOV: 0.10858 secs</code></pre>
+<pre><code>Tempo para carregar desvio-padrão histórico de IBOV: 0.10754 secs</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -327,7 +327,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>mean_pe_ibov<span class="sc">+</span>sd_pe_ibov<span class="sc">*</span><span class="dv">1</span>),<span class="at">color=</span><span class="st">"gray"</span>,<span class="at">alpha=</span>.<span class="dv">5</span>,<span class="at">linewidth=</span><span class="dv">3</span>)<span class="sc">+</span></span>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>mean_pe_ibov<span class="sc">-</span>sd_pe_ibov<span class="sc">*</span><span class="dv">2</span>),<span class="at">color=</span><span class="st">"gray"</span>,<span class="at">alpha=</span>.<span class="dv">3</span>,<span class="at">linewidth=</span><span class="dv">3</span>)<span class="sc">+</span></span>
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>mean_pe_ibov<span class="sc">+</span>sd_pe_ibov<span class="sc">*</span><span class="dv">2</span>),<span class="at">color=</span><span class="st">"gray"</span>,<span class="at">alpha=</span>.<span class="dv">3</span>,<span class="at">linewidth=</span><span class="dv">3</span>)<span class="sc">+</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color=</span><span class="st">"dodgerblue1"</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"P/L do Ibovespa"</span>)<span class="sc">+</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color=</span><span class="st">"dodgerblue1"</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"P/L do Ibovespa"</span>)<span class="sc">+</span><span class="fu">xlab</span>(<span class="st">""</span>)<span class="sc">+</span></span>
 <span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span><span class="fu">scale_x_date</span>(<span class="at">date_breaks=</span><span class="st">"1 year"</span>,<span class="at">date_labels=</span><span class="st">"%Y"</span>)<span class="sc">+</span><span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>,<span class="at">vjust=</span>.<span class="dv">5</span>,<span class="at">hjust=</span><span class="dv">1</span>))</span>
 <span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(plot)</span>
 <span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -357,10 +357,40 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <section id="conceitos-mais-avançados" class="level2">
 <h2 class="anchored" data-anchor-id="conceitos-mais-avançados">Conceitos mais avançados</h2>
 <ul>
-<li><a href="time_series_cointegration.html"> <strong>Cointegração</strong> link </a>: Evolua da análise descritiva básica para a modelagem preditiva avançada. Comece dominando <strong>conceitos de estacionariedade</strong> e autocorrelação (funções ACF/PACF), avance para regressões lineares simples aplicadas ao tempo e, em seguida, explore regressões dinâmicas que incorporam variáveis externas (ex: impacto da Selic no P/L). O estágio final desta jornada é a implementação de Modelos de Espaço de Estados, utilizando o <strong>Filtro de Kalman</strong> para estimar parâmetros que mudam ao longo do tempo, permitindo que o seu modelo quantamental se adapte automaticamente a novas condições de mercado sem a necessidade de janelas fixas de rolagem (rolling windows).</li>
+<li><strong>Integração com os grupos de ativos:</strong> Conecte os dados de P/L e outros múltiplos com entre ativos similares.</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Conexão com a Ontologia
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>O caminho estatístico dá a “ferramenta”, mas a <strong>Ontologia</strong> e a <strong>Similaridade</strong> (que discutimos antes) dão o “alvo”. A estatística diz <em>como</em> operar, e a ontologia diz <em>quem</em> operar (escolhendo pares que fazem sentido fundamentalista).</p>
+<ul>
+<li><p>Análise de grupos de índices</p></li>
+<li><p><strong>Análise de Setores:</strong> Compare a evolução do P/L mediano de diferentes setores da B3 para identificar quais estão mais “caros” ou “baratos” historicamente.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<ul>
+<li><p><strong>Bandas de Valuation:</strong> Crie bandas de <em>valuation</em> (ex: P/L +/- 1 desvio padrão) para identificar quando um ativo ou índice está em patamares extremos de <em>valuation</em>.</p></li>
+<li><p><strong>Price Action e Microestrutura:</strong> Vá além dos indicadores técnicos convencionais e explore a dinâmica entre <strong>Preço e Volume</strong>. Utilize séries temporais de alta frequência para calcular indicadores de liquidez e pressão compradora/vendedora, como o VWAP (Volume Weighted Average Price) e a volatilidade realizada. No contexto quantamental, essas variáveis alimentam a família de <strong>Momentum</strong>, ajudando a identificar se o mercado está confirmando a tese fundamentalista ou se há uma divergência entre o valor intrínseco e o valor de tela.</p></li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Dica de Fluxo:</strong> O Price Action serve como o “filtro de realidade”. Se a ontologia indica uma empresa excelente e barata (Valuation), mas o Price Action mostra uma tendência de queda com volume crescente, o modelo quantamental sinaliza um possível “Value Trap” ou um risco ainda não capturado nos balanços.</p>
+</blockquote>
+<ul>
+<li><strong>Cointegração</strong>: Evolua da análise descritiva básica para a modelagem preditiva avançada. Comece dominando <strong>conceitos de estacionariedade</strong> e autocorrelação (funções ACF/PACF), avance para regressões lineares simples aplicadas ao tempo e, em seguida, explore regressões dinâmicas que incorporam variáveis externas (ex: impacto da Selic no P/L). O estágio final desta jornada é a implementação de Modelos de Espaço de Estados, utilizando o <strong>Filtro de Kalman</strong> para estimar parâmetros que mudam ao longo do tempo, permitindo que o seu modelo quantamental se adapte automaticamente a novas condições de mercado sem a necessidade de janelas fixas de rolagem (rolling windows).</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -369,7 +399,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Podemos afirmar que essa jornada estatística é o <strong>alicerce indispensável</strong> para entender a cointegração de forma profunda e não apenas como uma “fórmula pronta”.</p>
 <section id="a-escada-da-cointegração" class="level3">
@@ -407,40 +437,12 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <li><strong>Modelos Dinâmicos (Filtro de Kalman):</strong> A sofisticação técnica. Permitir que o modelo aprenda que a relação entre os ativos muda com o tempo, ajustando o Beta dinamicamente.</li>
 <li><strong>Estratégia:</strong> A aplicação prática em portfólios reais, utilizando a arbitragem estatística para lucrar com desvios temporários do equilíbrio.</li>
 </ol>
-<blockquote class="blockquote">
 <p><strong>Dica Quantamental:</strong> A cointegração não é apenas matemática; ela deve ser validada pela <strong>Ontologia</strong>. Um par cointegrado estatisticamente só é confiável se houver uma razão fundamentalista (mesmo setor, mesma cadeia de suprimentos) para eles caminharem juntos.</p>
-</blockquote>
 </section>
 </section>
 </div>
 </div>
 </div>
-<ul>
-<li><strong>Integração com os grupos de ativos:</strong> Conecte os dados de P/L e outros múltiplos com entre ativos similares.</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Conexão com a Ontologia
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>O caminho estatístico dá a “ferramenta”, mas a <strong>Ontologia</strong> e a <strong>Similaridade</strong> (que discutimos antes) dão o “alvo”. A estatística diz <em>como</em> operar, e a ontologia diz <em>quem</em> operar (escolhendo pares que fazem sentido fundamentalista).</p>
-<ul>
-<li><p>Análise de grupos de índices</p></li>
-<li><p><strong>Análise de Setores:</strong> Compare a evolução do P/L mediano de diferentes setores da B3 para identificar quais estão mais “caros” ou “baratos” historicamente.</p></li>
-</ul>
-</div>
-</div>
-</div>
-<ul>
-<li><strong>Bandas de Valuation:</strong> Crie bandas de <em>valuation</em> (ex: P/L +/- 1 desvio padrão) para identificar quando um ativo ou índice está em patamares extremos de <em>valuation</em>.</li>
-</ul>
 </section>
 <section id="referências" class="level2">
 <h2 class="anchored" data-anchor-id="referências">Referências</h2>
