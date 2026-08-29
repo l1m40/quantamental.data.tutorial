@@ -38,17 +38,17 @@ execute:
 ::: icon_menu
 <a href="time_series.html"> <img src="png/icon_time_series.png"/> </a>
 
-<a href="#similarity"> <img src="png/icon_similarity.png"/> </a>
+<a href="#similaridade"> <img src="png/icon_similarity.png"/> </a>
 
-<a href="#generic"> <img src="png/icon_generic.png"/> </a>
+<!-- <a href=""> <img src="png/icon_generic.png"/> </a> -->
 
-<a href="#generic"> <img src="png/icon_generic.png"/> </a>
+<a href="#fundamentals"> <img src="png/icon_fundamentals.png"/> </a>
 
-<a href="#generic"> <img src="png/icon_generic.png"/> </a>
+<a href="#features-descrevendo-por-meio-de-dados"> <img src="png/icon_features.png"/> </a>
 
-<a href="#generic"> <img src="png/icon_generic.png"/> </a>
+<!-- <a href="#generic"> <img src="png/icon_generic.png"/> </a> -->
 
-<a href="#generic"> <img src="png/icon_generic.png"/> </a>
+<!-- <a href="#generic"> <img src="png/icon_generic.png"/> </a> -->
 
 <a href="coding.html"> <img src="png/icon_rocket.png"/> </a>
 :::
@@ -59,6 +59,17 @@ execute:
 
 ::: {.callout-note collapse="true"}
 ## Pré-requisitos
+
+<!-- Google Colab is a great tool for quick prototyping and reproducible setups, but it won't run continuously for 50 hours. -->
+<!-- On the free tier, Colab enforces strict session limits: -->
+<!-- * **Maximum Runtime:** Sessions are hard-capped at **12 hours max** before the virtual machine is recycled. -->
+<!-- * **Idle Timeout:** Inactivity (or closing the browser tab without an active keep-alive connection) will disconnect the session after **90 minutes**. -->
+<!-- * **Ephemeral Storage:** Any files or intermediate state stored on the Colab instance `/content` disk are erased once the runtime terminates. -->
+<!-- If you are planning a long-running calculation pipeline (like a multi-day or ~50-hour batch job), you'll need a different strategy: -->
+
+<!-- 1. **Local or Edge Hardware:** Run the code on dedicated local hardware (like a local server, desktop, or a throttled single-board computer) where you have full control over persistent runtime and power. -->
+<!-- 2. **Checkpointing via Google Drive:** If you do use Colab in chunks, mount Google Drive (`drive.mount('/content/drive')`) and save intermediate pipeline outputs so you can resume progress across multiple separate sessions. -->
+<!-- 3. **Cloud Instances:** Use a dedicated virtual machine on standard cloud providers (GCP, AWS, DigitalOcean) for uninterrupted background execution. -->
 
 Explore e execute os códigos deste projeto via [Google Colab](https://colab.research.google.com/) ou configurando seu próprio computador com as orientações abaixo. Mais do que um simples tutorial, esta documentação oferece o embasamento conceitual necessário para dominar a jornada quantamental.
 

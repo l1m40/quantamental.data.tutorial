@@ -1,0 +1,11 @@
+---
+# title: "Untitled"
+output: html_document
+---
+
+
+```{r load-similarity-heatmap-plot, echo=FALSE, out.width="100%"}
+# library(tidyverse)
+similarity_heatmap_file <- file.path("plots","similarity_heatmap.png")
+if (file.exists(similarity_heatmap_file)) knitr::include_graphics(similarity_heatmap_file)
+```
