@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -68,14 +71,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="coding_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="coding_files/libs/quarto-html/anchor.min.js"></script>
 <link href="coding_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="coding_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="coding_files/libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="coding_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="coding_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="coding_files/libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="coding_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="coding_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="coding_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="coding_files/libs/bootstrap/bootstrap-8ffd5f67044e5306d9846f29df41dda5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="coding_files/libs/bootstrap/bootstrap-dark-5c12797cb2492709e4e4b8ddb1566284.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="coding_files/libs/bootstrap/bootstrap-8ffd5f67044e5306d9846f29df41dda5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="coding_files/libs/bootstrap/bootstrap-c2e55264ed47ce3b2e0326a2269f9400.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="coding_files/libs/bootstrap/bootstrap-dark-f190540a42fd2f439ea2df7ef852099b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="coding_files/libs/bootstrap/bootstrap-c2e55264ed47ce3b2e0326a2269f9400.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -348,8 +351,8 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ontology<span class="sc">$</span><span class="fu">get_assets</span>() <span class="sc">|&gt;</span> <span class="fu">sample</span>(<span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "VVEO3"  "GMAT3"  "XPBR31" "BPAN4"  "POMO4"  "LOGG3"  "CAML3"  "AZZA3" 
- [9] "PETR4"  "LEVE3"  "SAPR11" "LAVV3"  "ECOR3"  "SYNE3"  "PCAR3" </code></pre>
+<pre><code> [1] "AZZA3"  "CVCB3"  "VALE3"  "YDUQ3"  "DESK3"  "PAGS34" "GRND3"  "CMIN3" 
+ [9] "PLPL3"  "EMBJ3"  "SUZB3"  "LWSA3"  "MILS3"  "GMAT3"  "MOVI3" </code></pre>
 </div>
 </div>
 <p>Setores:</p>
@@ -431,23 +434,23 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="rlbnzuwcue" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rlbnzuwcue table {
+<div id="vggtuwlzcp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vggtuwlzcp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rlbnzuwcue thead, #rlbnzuwcue tbody, #rlbnzuwcue tfoot, #rlbnzuwcue tr, #rlbnzuwcue td, #rlbnzuwcue th {
+#vggtuwlzcp thead, #vggtuwlzcp tbody, #vggtuwlzcp tfoot, #vggtuwlzcp tr, #vggtuwlzcp td, #vggtuwlzcp th {
   border-style: none;
 }
 
-#rlbnzuwcue p {
+#vggtuwlzcp p {
   margin: 0;
   padding: 0;
 }
 
-#rlbnzuwcue .gt_table {
+#vggtuwlzcp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -473,12 +476,12 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-left-color: #D3D3D3;
 }
 
-#rlbnzuwcue .gt_caption {
+#vggtuwlzcp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rlbnzuwcue .gt_title {
+#vggtuwlzcp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -490,7 +493,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-bottom-width: 0;
 }
 
-#rlbnzuwcue .gt_subtitle {
+#vggtuwlzcp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -502,7 +505,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-top-width: 0;
 }
 
-#rlbnzuwcue .gt_heading {
+#vggtuwlzcp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -514,13 +517,13 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-right-color: #D3D3D3;
 }
 
-#rlbnzuwcue .gt_bottom_border {
+#vggtuwlzcp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rlbnzuwcue .gt_col_headings {
+#vggtuwlzcp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -535,7 +538,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-right-color: #D3D3D3;
 }
 
-#rlbnzuwcue .gt_col_heading {
+#vggtuwlzcp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -555,7 +558,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   overflow-x: hidden;
 }
 
-#rlbnzuwcue .gt_column_spanner_outer {
+#vggtuwlzcp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -567,15 +570,15 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   padding-right: 4px;
 }
 
-#rlbnzuwcue .gt_column_spanner_outer:first-child {
+#vggtuwlzcp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rlbnzuwcue .gt_column_spanner_outer:last-child {
+#vggtuwlzcp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rlbnzuwcue .gt_column_spanner {
+#vggtuwlzcp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -587,11 +590,11 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   width: 100%;
 }
 
-#rlbnzuwcue .gt_spanner_row {
+#vggtuwlzcp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rlbnzuwcue .gt_group_heading {
+#vggtuwlzcp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -617,7 +620,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   text-align: left;
 }
 
-#rlbnzuwcue .gt_empty_group_heading {
+#vggtuwlzcp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -632,15 +635,15 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   vertical-align: middle;
 }
 
-#rlbnzuwcue .gt_from_md > :first-child {
+#vggtuwlzcp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rlbnzuwcue .gt_from_md > :last-child {
+#vggtuwlzcp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rlbnzuwcue .gt_row {
+#vggtuwlzcp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -659,7 +662,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   overflow-x: hidden;
 }
 
-#rlbnzuwcue .gt_stub {
+#vggtuwlzcp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -672,7 +675,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   padding-right: 5px;
 }
 
-#rlbnzuwcue .gt_stub_row_group {
+#vggtuwlzcp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -686,15 +689,15 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   vertical-align: top;
 }
 
-#rlbnzuwcue .gt_row_group_first td {
+#vggtuwlzcp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rlbnzuwcue .gt_row_group_first th {
+#vggtuwlzcp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rlbnzuwcue .gt_summary_row {
+#vggtuwlzcp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -704,16 +707,16 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   padding-right: 5px;
 }
 
-#rlbnzuwcue .gt_first_summary_row {
+#vggtuwlzcp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rlbnzuwcue .gt_first_summary_row.thick {
+#vggtuwlzcp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rlbnzuwcue .gt_last_summary_row {
+#vggtuwlzcp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -723,7 +726,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-bottom-color: #D3D3D3;
 }
 
-#rlbnzuwcue .gt_grand_summary_row {
+#vggtuwlzcp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -733,7 +736,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   padding-right: 5px;
 }
 
-#rlbnzuwcue .gt_first_grand_summary_row {
+#vggtuwlzcp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -743,7 +746,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-top-color: #D3D3D3;
 }
 
-#rlbnzuwcue .gt_last_grand_summary_row_top {
+#vggtuwlzcp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -753,11 +756,11 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-bottom-color: #D3D3D3;
 }
 
-#rlbnzuwcue .gt_striped {
+#vggtuwlzcp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rlbnzuwcue .gt_table_body {
+#vggtuwlzcp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -766,7 +769,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-bottom-color: #D3D3D3;
 }
 
-#rlbnzuwcue .gt_footnotes {
+#vggtuwlzcp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -780,7 +783,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-right-color: #D3D3D3;
 }
 
-#rlbnzuwcue .gt_footnote {
+#vggtuwlzcp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -789,7 +792,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   padding-right: 5px;
 }
 
-#rlbnzuwcue .gt_sourcenotes {
+#vggtuwlzcp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -803,7 +806,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   border-right-color: #D3D3D3;
 }
 
-#rlbnzuwcue .gt_sourcenote {
+#vggtuwlzcp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -811,72 +814,72 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
   padding-right: 5px;
 }
 
-#rlbnzuwcue .gt_left {
+#vggtuwlzcp .gt_left {
   text-align: left;
 }
 
-#rlbnzuwcue .gt_center {
+#vggtuwlzcp .gt_center {
   text-align: center;
 }
 
-#rlbnzuwcue .gt_right {
+#vggtuwlzcp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rlbnzuwcue .gt_font_normal {
+#vggtuwlzcp .gt_font_normal {
   font-weight: normal;
 }
 
-#rlbnzuwcue .gt_font_bold {
+#vggtuwlzcp .gt_font_bold {
   font-weight: bold;
 }
 
-#rlbnzuwcue .gt_font_italic {
+#vggtuwlzcp .gt_font_italic {
   font-style: italic;
 }
 
-#rlbnzuwcue .gt_super {
+#vggtuwlzcp .gt_super {
   font-size: 65%;
 }
 
-#rlbnzuwcue .gt_footnote_marks {
+#vggtuwlzcp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rlbnzuwcue .gt_asterisk {
+#vggtuwlzcp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rlbnzuwcue .gt_indent_1 {
+#vggtuwlzcp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rlbnzuwcue .gt_indent_2 {
+#vggtuwlzcp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rlbnzuwcue .gt_indent_3 {
+#vggtuwlzcp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rlbnzuwcue .gt_indent_4 {
+#vggtuwlzcp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rlbnzuwcue .gt_indent_5 {
+#vggtuwlzcp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rlbnzuwcue .katex-display {
+#vggtuwlzcp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rlbnzuwcue div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vggtuwlzcp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

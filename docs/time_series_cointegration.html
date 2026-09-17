@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -68,13 +71,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="time_series_cointegration_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="time_series_cointegration_files/libs/quarto-html/anchor.min.js"></script>
 <link href="time_series_cointegration_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="time_series_cointegration_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="time_series_cointegration_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="time_series_cointegration_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="time_series_cointegration_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="time_series_cointegration_files/libs/bootstrap/bootstrap-138a6193a3bd40baf1e627da441a4734.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="time_series_cointegration_files/libs/bootstrap/bootstrap-917079515d91bccb85b543faf8aa8bb6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -201,7 +204,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>start_time<span class="ot">=</span><span class="fu">Sys.time</span>() ; similar_assets_df <span class="ot">&lt;-</span> quantamental<span class="sc">$</span><span class="fu">assets</span>(<span class="fu">c</span>(time_series_sample_1,time_series_sample_1_similar_assets)) <span class="sc">|&gt;</span> <span class="fu">filter</span>(date<span class="sc">&gt;=</span><span class="fu">max</span>(date)<span class="sc">-</span><span class="dv">365</span>) ; d <span class="ot">&lt;-</span> <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(), start_time, <span class="at">units =</span> <span class="st">"secs"</span>) ; <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="fu">paste0</span>(<span class="st">"Tempo para carregar os dados de "</span>,<span class="fu">paste</span>(<span class="fu">c</span>(time_series_sample_1,time_series_sample_1_similar_assets),<span class="at">collapse=</span><span class="st">" | "</span>),<span class="st">" : %.5f %s"</span>), <span class="fu">as.numeric</span>(d), <span class="fu">attr</span>(d, <span class="st">"units"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tempo para carregar os dados de NATU3 | ITUB4 | VALE3 | PETR4 : 0.03118 secs</code></pre>
+<pre><code>Tempo para carregar os dados de UGPA3 | ITUB4 | VALE3 | PETR4 : 0.03261 secs</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span>time_series_sample_1 <span class="sc">%in%</span> <span class="fu">unique</span>(similar_assets_df<span class="sc">$</span>asset)) {</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  time_series_sample_1 <span class="ot">&lt;-</span> time_series_sample_1_similar_assets[<span class="dv">1</span>]</span>
@@ -255,11 +258,11 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>wide_df <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>date) <span class="sc">%&gt;%</span> <span class="fu">cor</span>(<span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>          ITUB4     NATU3     PETR4     VALE3
-ITUB4 1.0000000 0.3099771 0.5763641 0.7985866
-NATU3 0.3099771 1.0000000 0.6412405 0.3050426
-PETR4 0.5763641 0.6412405 1.0000000 0.7357319
-VALE3 0.7985866 0.3050426 0.7357319 1.0000000</code></pre>
+<pre><code>          ITUB4     PETR4     UGPA3     VALE3
+ITUB4 1.0000000 0.5763641 0.6832008 0.7985866
+PETR4 0.5763641 1.0000000 0.8652834 0.7357319
+UGPA3 0.6832008 0.8652834 1.0000000 0.7503926
+VALE3 0.7985866 0.7357319 0.7503926 1.0000000</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(wide_df[<span class="sc">-</span><span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">

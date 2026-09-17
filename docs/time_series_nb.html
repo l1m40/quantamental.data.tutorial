@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -68,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="time_series_nb_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="time_series_nb_files/libs/quarto-html/anchor.min.js"></script>
 <link href="time_series_nb_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="time_series_nb_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="time_series_nb_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="time_series_nb_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="time_series_nb_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="time_series_nb_files/libs/bootstrap/bootstrap-138a6193a3bd40baf1e627da441a4734.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="time_series_nb_files/libs/bootstrap/bootstrap-917079515d91bccb85b543faf8aa8bb6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -133,7 +136,7 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>start_time<span class="ot">=</span><span class="fu">Sys.time</span>() ; df <span class="ot">&lt;-</span> quantamental<span class="sc">$</span><span class="fu">asset</span>(time_series_sample_1) ; d <span class="ot">&lt;-</span> <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(), start_time, <span class="at">units =</span> <span class="st">"secs"</span>) ; <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="fu">paste0</span>(<span class="st">"Tempo para carregar os dados de "</span>,time_series_sample_1,<span class="st">" : %.5f %s"</span>), <span class="fu">as.numeric</span>(d), <span class="fu">attr</span>(d, <span class="st">"units"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tempo para carregar os dados de LREN3 : 0.03075 secs</code></pre>
+<pre><code>Tempo para carregar os dados de LREN3 : 0.02856 secs</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="co">#filter(year(date)&gt;=2025) |&gt; </span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(date,pe))<span class="sc">+</span></span>
@@ -169,12 +172,12 @@ indexes updated at 2026-05-05 (IBOV~60%=12) (IBOV~90%=38) (IBOV=79) (SMLL=110) <
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>similar_assets <span class="ot">&lt;-</span> <span class="fu">sample</span>((ontology<span class="sc">$</span><span class="fu">get_similarity_asset_df</span>(time_series_sample_1,<span class="at">n=</span><span class="dv">8</span>))<span class="sc">$</span>asset2,<span class="dv">1</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>similar_assets</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "AZZA3"</code></pre>
+<pre><code>[1] "VIVA3"</code></pre>
 </div>
 </div>
 </section>
-<section id="comparar-com-empresas-semelhantes-azza3" class="level3">
-<h3 class="anchored" data-anchor-id="comparar-com-empresas-semelhantes-azza3">Comparar com empresas semelhantes… <br> AZZA3</h3>
+<section id="comparar-com-empresas-semelhantes-viva3" class="level3">
+<h3 class="anchored" data-anchor-id="comparar-com-empresas-semelhantes-viva3">Comparar com empresas semelhantes… <br> VIVA3</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>quantamental<span class="sc">$</span><span class="fu">query</span>() <span class="sc">|&gt;</span>  <span class="co">#</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(asset <span class="sc">%in%</span> <span class="fu">c</span>(time_series_sample_1,similar_assets),<span class="fu">year</span>(date)<span class="sc">&gt;=</span><span class="dv">2022</span>) <span class="sc">|&gt;</span></span>
@@ -270,7 +273,7 @@ Global        9     -none-     character</code></pre>
  </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 0.127347 secs</code></pre>
+<pre><code>Time difference of 0.120774 secs</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>  start_time<span class="ot">=</span><span class="fu">Sys.time</span>() ; <span class="fu">cat</span>(<span class="st">"Load IBOV historical standard deviations... </span><span class="sc">\n</span><span class="st"> "</span>) ; IBOV_SD_df <span class="ot">&lt;-</span> quantamental<span class="sc">$</span><span class="fu">query</span>() <span class="sc">|&gt;</span>  </span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(asset <span class="sc">%in%</span> indices[[<span class="st">"IBOV"</span>]]) <span class="sc">|&gt;</span> </span>
@@ -281,7 +284,7 @@ Global        9     -none-     character</code></pre>
  </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 0.1129029 secs</code></pre>
+<pre><code>Time difference of 0.1231191 secs</code></pre>
 </div>
 </div>
 <p></p>
